@@ -227,7 +227,8 @@
     transform:skewX(-14deg);pointer-events:none;}
   .reviews-head{position:relative;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:36px;}
   .reviews-scroll{
-    position:relative;display:flex;gap:20px;overflow-x:auto;padding:6px 4px 20px;
+    position:relative;display:flex;gap:20px;overflow-x:auto;
+    padding:24px max(24px, calc((100% - 1180px) / 2 + 24px)) 60px;
     scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--teal-bright) transparent;
   }
   .reviews-scroll::-webkit-scrollbar{height:8px;}
@@ -238,7 +239,7 @@
     padding:26px 24px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;
     transition:transform .3s var(--ease), box-shadow .3s var(--ease);
   }
-  .review-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);}
+  .review-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(10,30,38,.20);}
   .review-card::before{content:"\201C";position:absolute;top:10px;right:18px;font-family:var(--font-display);
     font-size:52px;color:var(--sky);line-height:1;z-index:0;}
   .review-top{display:flex;align-items:center;gap:12px;position:relative;z-index:1;}
@@ -474,8 +475,9 @@
       </div>
       <p class="trust-chip" style="color:var(--navy);border-color:rgba(10,30,38,.18);background:rgba(255,255,255,.5);">★ 100% recommend <b style="color:var(--teal);">&middot;</b> 7 reviews on Facebook</p>
     </div>
+  </div>
 
-    <div class="reviews-scroll">
+  <div class="reviews-scroll">
       <div class="review-card">
         <div class="review-top">
           <div class="review-avatar">R</div>
@@ -511,7 +513,6 @@
         <p class="review-quote">&ldquo;Fantastic service, done an amazing job with my car, cleaned inside and out and looks like a new car. Would highly recommend.&rdquo;</p>
         <p class="review-meta">Facebook recommendation &middot; 23 Nov</p>
       </div>
-    </div>
   </div>
 </section>
 
