@@ -91,7 +91,7 @@
   }
   .eyebrow::before{content:"";width:22px;height:9px;background:var(--red);
     clip-path:polygon(20% 0,100% 0,80% 100%,0 100%);}
-  section{padding:88px 0;}
+  section{padding:88px 0;scroll-margin-top:78px;}
   @media (max-width:640px){section{padding:60px 0;}}
 
   @media (prefers-reduced-motion: no-preference){
@@ -220,6 +220,38 @@
   .spotlight ul li{margin-bottom:8px;}
   .spotlight .quote{font-size:17px;color:#e7f3fa;font-style:italic;margin-bottom:20px;}
 
+  /* Reviews */
+  .reviews{background:linear-gradient(165deg, #e4f4fc 0%, #cfe9f5 55%, #c3e2f2 100%);position:relative;overflow:hidden;}
+  .reviews::before{content:"";position:absolute;top:-10%;left:-6%;width:40%;height:130%;
+    background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,0));
+    transform:skewX(-14deg);pointer-events:none;}
+  .reviews-head{position:relative;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:36px;}
+  .reviews-scroll{
+    position:relative;display:flex;gap:20px;overflow-x:auto;padding:6px 4px 20px;
+    scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--teal-bright) transparent;
+  }
+  .reviews-scroll::-webkit-scrollbar{height:8px;}
+  .reviews-scroll::-webkit-scrollbar-track{background:rgba(10,30,38,.06);border-radius:99px;}
+  .reviews-scroll::-webkit-scrollbar-thumb{background:var(--teal-bright);border-radius:99px;}
+  .review-card{
+    position:relative;flex:0 0 300px;scroll-snap-align:start;background:#fff;border-radius:18px;
+    padding:26px 24px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .review-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);}
+  .review-card::before{content:"\201C";position:absolute;top:10px;right:18px;font-family:var(--font-display);
+    font-size:52px;color:var(--sky);line-height:1;z-index:0;}
+  .review-top{display:flex;align-items:center;gap:12px;position:relative;z-index:1;}
+  .review-avatar{
+    width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--teal-bright),var(--teal));
+    color:#fff;font-family:var(--font-display);font-weight:700;font-size:16px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .review-who strong{display:block;font-size:14.5px;color:var(--navy);}
+  .review-stars{color:#f4a300;font-size:13px;letter-spacing:1px;}
+  .review-quote{font-size:14.5px;color:var(--ink);position:relative;z-index:1;}
+  .review-meta{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-top:auto;}
+
   /* Gallery */
   .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
   @media (max-width:840px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
@@ -301,6 +333,7 @@
     <div class="menu-row">
       <nav class="links">
         <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
         <a href="#gallery">Our Work</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -428,6 +461,56 @@
     </div>
     <div class="about-photo reveal">
       <img src="images/job-golf-interior.jpg" alt="Deep cleaned interior seats and carpets after a HWJ Valets detail">
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div class="reveal">
+        <p class="eyebrow">Customer reviews</p>
+        <h2>What our customers say</h2>
+      </div>
+      <p class="trust-chip" style="color:var(--navy);border-color:rgba(10,30,38,.18);background:rgba(255,255,255,.5);">★ 100% recommend <b style="color:var(--teal);">&middot;</b> 7 reviews on Facebook</p>
+    </div>
+
+    <div class="reviews-scroll">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">R</div>
+          <div class="review-who"><strong>Robert McDougall</strong><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-quote">&ldquo;Cleaned my car and done a fantastic job, paint work beforehand honestly felt like sand paper, now the car feels silky smooth and the interior is like new again. Deffo recommend!&rdquo;</p>
+        <p class="review-meta">Facebook recommendation &middot; 6 days ago</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">M</div>
+          <div class="review-who"><strong>Melanie Colley</strong><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-quote">&ldquo;Brought my father in law a valet for Father's Day, they have done such an amazing job and were reliable, easy to reach and communicate with. 100% will use again. Thank you, he's so happy.&rdquo;</p>
+        <p class="review-meta">Facebook recommendation &middot; 28 Jun</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">J</div>
+          <div class="review-who"><strong>Jason King</strong><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-quote">&ldquo;Harry did a great job on our car and the price was very reasonable. Would recommend him to anyone.&rdquo;</p>
+        <p class="review-meta">Facebook recommendation &middot; 9 Apr</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">N</div>
+          <div class="review-who"><strong>Natasha Perry</strong><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-quote">&ldquo;Fantastic service, done an amazing job with my car, cleaned inside and out and looks like a new car. Would highly recommend.&rdquo;</p>
+        <p class="review-meta">Facebook recommendation &middot; 23 Nov</p>
+      </div>
     </div>
   </div>
 </section>
