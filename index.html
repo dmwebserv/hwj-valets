@@ -12,6 +12,10 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HWJ Valets">
 <meta property="og:title" content="HWJ Valets | Mobile Car Valeting &amp; Detailing">
@@ -60,14 +64,18 @@
     --mist:#f2f9fd;
     --border:#d7e9f2;
     --shadow: 0 20px 50px rgba(10,30,38,0.12);
+    --shadow-lift: 0 30px 60px rgba(10,30,38,0.20);
     --radius: 18px;
     --max: 1180px;
+    --font-display: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --ease: cubic-bezier(.22,.9,.32,1);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family:var(--font-body);
     color:var(--ink);
     background:var(--paper);
     line-height:1.6;
@@ -75,50 +83,95 @@
   a{color:inherit;}
   img{max-width:100%;display:block;}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
-  h1,h2,h3{line-height:1.15;margin:0 0 .5em;}
+  h1,h2,h3{font-family:var(--font-display);line-height:1.12;margin:0 0 .5em;letter-spacing:-.01em;}
   .eyebrow{
-    text-transform:uppercase;letter-spacing:.12em;font-size:13px;font-weight:700;
-    color:var(--teal);margin:0 0 10px;
+    display:inline-flex;align-items:center;gap:8px;
+    text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;font-weight:700;
+    color:var(--teal);margin:0 0 12px;
   }
-  section{padding:80px 0;}
-  @media (max-width:640px){section{padding:56px 0;}}
+  .eyebrow::before{content:"";width:22px;height:9px;background:var(--red);
+    clip-path:polygon(20% 0,100% 0,80% 100%,0 100%);}
+  section{padding:88px 0;}
+  @media (max-width:640px){section{padding:60px 0;}}
+
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease), transform .7s var(--ease);}
+    .reveal.is-visible{opacity:1;transform:translateY(0);}
+    .services-grid .card.reveal:nth-child(1){transition-delay:.02s;}
+    .services-grid .card.reveal:nth-child(2){transition-delay:.10s;}
+    .services-grid .card.reveal:nth-child(3){transition-delay:.18s;}
+    .services-grid .card.reveal:nth-child(4){transition-delay:.26s;}
+    .gallery-grid .gallery-item.reveal:nth-child(1){transition-delay:.02s;}
+    .gallery-grid .gallery-item.reveal:nth-child(2){transition-delay:.08s;}
+    .gallery-grid .gallery-item.reveal:nth-child(3){transition-delay:.14s;}
+    .gallery-grid .gallery-item.reveal:nth-child(4){transition-delay:.20s;}
+    .gallery-grid .gallery-item.reveal:nth-child(5){transition-delay:.26s;}
+    .gallery-grid .gallery-item.reveal:nth-child(6){transition-delay:.32s;}
+  }
 
   /* Header */
   header{
-    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid transparent;
+    transition:box-shadow .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
   }
+  header.scrolled{background:rgba(255,255,255,.96);border-color:var(--border);box-shadow:0 8px 30px rgba(10,30,38,.08);}
+  body{padding-top:78px;}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--max);margin:0 auto;}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);}
-  .brand img{width:44px;height:44px;}
-  .brand strong{font-size:19px;letter-spacing:-.01em;}
-  .brand span{display:block;font-size:12px;color:var(--muted);font-weight:500;}
-  nav.links{display:flex;gap:28px;font-weight:600;font-size:15px;}
-  nav.links a{text-decoration:none;color:var(--ink);}
+  .brand img{width:44px;height:44px;transition:transform .4s var(--ease);}
+  .brand:hover img{transform:rotate(-8deg) scale(1.06);}
+  .brand strong{font-family:var(--font-display);font-size:19px;letter-spacing:-.01em;}
+  .brand span{display:block;font-size:12px;color:var(--muted);font-weight:500;font-family:var(--font-body);}
+  nav.links{display:flex;gap:30px;font-weight:600;font-size:15px;}
+  nav.links a{position:relative;text-decoration:none;color:var(--ink);padding-bottom:4px;}
+  nav.links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--red);transition:right .3s var(--ease);}
   nav.links a:hover{color:var(--teal);}
+  nav.links a:hover::after{right:0;}
   .call-pill{
-    display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;
+    position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;
     padding:10px 18px;border-radius:999px;font-weight:700;text-decoration:none;font-size:14px;
-    box-shadow:0 10px 24px rgba(236,0,23,.28);
+    box-shadow:0 10px 24px rgba(236,0,23,.28);transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+    overflow:hidden;
   }
+  .call-pill::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.4) 45%,transparent 60%);
+    transform:translateX(-120%);transition:transform .6s var(--ease);}
+  .call-pill:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(236,0,23,.4);}
+  .call-pill:hover::before{transform:translateX(120%);}
   .menu-row{display:flex;align-items:center;gap:28px;}
   @media (max-width:820px){ nav.links{display:none;} }
 
   /* Hero */
   .hero{position:relative;color:#fff;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
-  .hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,18,24,.78) 0%, rgba(8,18,24,.55) 45%, rgba(8,18,24,.85) 100%);}
-  .hero-inner{position:relative;padding:110px 24px 90px;max-width:var(--max);margin:0 auto;}
-  .hero h1{font-size:clamp(34px,5.2vw,58px);max-width:15ch;margin-bottom:.35em;}
+  .hero-bg{position:absolute;inset:-6% -6%;background-size:cover;background-position:center;}
+  .hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,18,24,.80) 0%, rgba(8,18,24,.52) 45%, rgba(8,18,24,.88) 100%);}
+  .hero-diag{position:absolute;top:0;right:-10%;width:60%;height:140%;
+    background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0));
+    transform:skewX(-14deg);pointer-events:none;}
+  .hero-inner{position:relative;padding:120px 24px 100px;max-width:var(--max);margin:0 auto;}
+  .hero h1{font-size:clamp(34px,5.2vw,58px);max-width:15ch;margin-bottom:.35em;font-weight:800;}
   .hero p.lead{font-size:19px;max-width:52ch;color:#e7f3fa;margin-bottom:32px;}
   .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
   .btn{
-    display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;
-    font-weight:700;text-decoration:none;font-size:15px;border:2px solid transparent;transition:transform .15s ease;
+    position:relative;display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;
+    font-weight:700;text-decoration:none;font-size:15px;border:2px solid transparent;
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease);overflow:hidden;
   }
-  .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--red);color:#fff;box-shadow:0 14px 30px rgba(236,0,23,.35);}
+  .btn::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 45%,transparent 60%);
+    transform:translateX(-120%);transition:transform .6s var(--ease);}
+  .btn:hover::before{transform:translateX(120%);}
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 14px 30px rgba(236,0,23,.35);
+    animation:pulseRing 2.6s ease-out infinite;}
+  .btn-primary:hover{box-shadow:0 20px 40px rgba(236,0,23,.45);}
+  @media (prefers-reduced-motion: reduce){.btn-primary{animation:none;}}
+  @keyframes pulseRing{
+    0%{box-shadow:0 14px 30px rgba(236,0,23,.35), 0 0 0 0 rgba(236,0,23,.45);}
+    70%{box-shadow:0 14px 30px rgba(236,0,23,.35), 0 0 0 14px rgba(236,0,23,0);}
+    100%{box-shadow:0 14px 30px rgba(236,0,23,.35), 0 0 0 0 rgba(236,0,23,0);}
+  }
   .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.5);}
+  .btn-ghost:hover{background:rgba(255,255,255,.16);border-color:#fff;}
   .trust-chip{
     display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);
     border:1px solid rgba(255,255,255,.35);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;
@@ -131,13 +184,15 @@
   @media (max-width:640px){.services-grid{grid-template-columns:1fr;}}
   .card{
     background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);
-    padding:28px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+    padding:28px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
   }
-  .card.featured{border:2px solid var(--teal-bright);position:relative;}
+  .card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lift);border-color:var(--teal-bright);}
+  .card.featured{border:2px solid var(--teal-bright);padding-top:44px;overflow:hidden;}
   .card.featured::before{
-    content:"Most popular";position:absolute;top:-13px;left:24px;background:var(--teal-bright);
-    color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
-    padding:5px 12px;border-radius:999px;
+    content:"Most popular";position:absolute;top:16px;right:-38px;background:var(--red);
+    color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+    padding:5px 42px;transform:rotate(38deg);box-shadow:0 6px 14px rgba(236,0,23,.35);
   }
   .card h3{font-size:21px;color:var(--navy);}
   .card ul{padding-left:20px;margin:0 0 14px;font-size:14.5px;color:var(--ink);}
@@ -148,12 +203,16 @@
   .card-cta{
     margin-top:auto;text-align:center;padding:11px;border-radius:12px;background:var(--mist);
     color:var(--teal);font-weight:700;text-decoration:none;font-size:14px;border:1px solid var(--border);
+    transition:background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
   }
-  .card-cta:hover{background:var(--sky);}
+  .card-cta:hover{background:var(--teal-bright);color:#fff;transform:translateX(3px);}
 
   /* Recent work */
-  .spotlight{background:var(--navy);color:#fff;}
-  .spotlight-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .spotlight{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+  .spotlight::after{content:"";position:absolute;top:-20%;right:-8%;width:46%;height:160%;
+    background:linear-gradient(180deg, rgba(116,172,195,.16), rgba(116,172,195,0));
+    transform:skewX(-14deg);pointer-events:none;}
+  .spotlight-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
   @media (max-width:840px){.spotlight-inner{grid-template-columns:1fr;}}
   .spotlight h2{font-size:30px;}
   .spotlight ul{padding-left:20px;color:#cfe6f0;font-size:15px;}
@@ -165,18 +224,20 @@
   @media (max-width:840px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:520px){.gallery-grid{grid-template-columns:1fr;}}
   .gallery-item{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;}
-  .gallery-item img{width:100%;height:100%;object-fit:cover;}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+  .gallery-item:hover img{transform:scale(1.08);}
   .gallery-item figcaption{
-    position:absolute;left:0;right:0;bottom:0;padding:12px 14px;
-    background:linear-gradient(0deg, rgba(8,18,24,.85), rgba(8,18,24,0));
-    color:#fff;font-size:13px;font-weight:600;
+    position:absolute;left:0;right:0;bottom:0;padding:14px;
+    background:linear-gradient(0deg, rgba(8,18,24,.88), rgba(8,18,24,0));
+    color:#fff;font-size:13px;font-weight:600;transform:translateY(4px);transition:transform .4s var(--ease);
   }
+  .gallery-item:hover figcaption{transform:translateY(0);}
 
   /* About */
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
   @media (max-width:840px){.about-grid{grid-template-columns:1fr;}}
   .stat-row{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap;}
-  .stat b{display:block;font-size:28px;color:var(--navy);}
+  .stat b{display:block;font-family:var(--font-display);font-size:30px;color:var(--navy);}
   .stat span{font-size:13px;color:var(--muted);}
   .about-photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;}
   .about-photo img{width:100%;height:100%;object-fit:cover;}
@@ -189,11 +250,13 @@
     display:flex;align-items:center;justify-content:space-between;gap:12px;
     background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;
     text-decoration:none;color:var(--ink);margin-bottom:12px;
+    transition:border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
   }
-  .contact-card:hover{border-color:var(--teal-bright);}
+  .contact-card:hover{border-color:var(--teal-bright);transform:translateX(4px);box-shadow:var(--shadow);}
   .contact-card strong{display:block;font-size:15px;}
   .contact-card span span{font-size:13px;color:var(--muted);}
-  .contact-card .arrow{color:var(--teal-bright);font-weight:700;}
+  .contact-card .arrow{color:var(--teal-bright);font-weight:700;transition:transform .25s var(--ease);}
+  .contact-card:hover .arrow{transform:translateX(4px);}
 
   form{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -202,20 +265,23 @@
   .input-group label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--navy);}
   .input-group input,.input-group select,.input-group textarea{
     width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:10px;font-size:15px;
-    font-family:inherit;background:var(--mist);
+    font-family:inherit;background:var(--mist);transition:border-color .2s var(--ease), background .2s var(--ease);
   }
-  .input-group input:focus,.input-group select:focus,.input-group textarea:focus{outline:2px solid var(--teal-bright);}
+  .input-group input:focus,.input-group select:focus,.input-group textarea:focus{outline:none;border-color:var(--teal-bright);background:#fff;}
   .submit-btn{
-    width:100%;padding:14px;border:none;border-radius:12px;background:var(--red);color:#fff;
-    font-weight:800;font-size:16px;cursor:pointer;
+    position:relative;overflow:hidden;width:100%;padding:14px;border:none;border-radius:12px;background:var(--red);color:#fff;
+    font-weight:800;font-size:16px;cursor:pointer;transition:transform .25s var(--ease), box-shadow .25s var(--ease);
   }
-  .submit-btn:hover{filter:brightness(1.05);}
+  .submit-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 45%,transparent 60%);
+    transform:translateX(-120%);transition:transform .6s var(--ease);}
+  .submit-btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(236,0,23,.32);}
+  .submit-btn:hover::before{transform:translateX(120%);}
 
   footer{background:var(--navy);color:#cfe6f0;padding:44px 0 26px;font-size:14px;}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
   .footer-brand{display:flex;align-items:center;gap:10px;}
   .footer-brand img{width:32px;height:32px;}
-  .footer-links a{color:#cfe6f0;text-decoration:none;margin-left:18px;}
+  .footer-links a{position:relative;color:#cfe6f0;text-decoration:none;margin-left:18px;transition:color .2s var(--ease);}
   .footer-links a:hover{color:#fff;}
 </style>
 </head>
@@ -241,8 +307,9 @@
 
 <div id="top"></div>
 <section class="hero">
-  <div class="hero-bg" style="background-image:url('images/job-bmw-exterior-wash.jpg')"></div>
+  <div class="hero-bg" id="heroBg" style="background-image:url('images/job-bmw-exterior-wash.jpg')"></div>
   <div class="hero-scrim"></div>
+  <div class="hero-diag"></div>
   <div class="hero-inner">
     <p class="trust-chip">★ 100% recommended <b>&middot;</b> 7 reviews on Facebook</p>
     <h1>Professional car care, brought to your driveway.</h1>
@@ -256,12 +323,12 @@
 
 <section id="services">
   <div class="wrap">
-    <p class="eyebrow">Our packages</p>
-    <h2>Every vehicle, cleaned properly</h2>
-    <p style="max-width:60ch;color:var(--muted);">All packages start with a safe exterior wash using the two-bucket method, protecting your paintwork from scratches and swirl marks. No fixed price list &mdash; every vehicle is different, so message us for a free, no-obligation quote.</p>
+    <p class="eyebrow reveal">Our packages</p>
+    <h2 class="reveal">Every vehicle, cleaned properly</h2>
+    <p class="reveal" style="max-width:60ch;color:var(--muted);">All packages start with a safe exterior wash using the two-bucket method, protecting your paintwork from scratches and swirl marks. No fixed price list &mdash; every vehicle is different, so message us for a free, no-obligation quote.</p>
 
     <div class="services-grid">
-      <div class="card">
+      <div class="card reveal">
         <h3>Exterior Wash Package</h3>
         <ul>
           <li>Exterior wash-down</li>
@@ -282,7 +349,7 @@
         <a class="card-cta" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27d%20like%20a%20quote%20for%20the%20Exterior%20Wash%20Package" target="_blank" rel="noopener">Get a quote &rarr;</a>
       </div>
 
-      <div class="card featured">
+      <div class="card featured reveal">
         <h3>Mini Valet Package</h3>
         <ul>
           <li>Exterior wash-down, including all the steps from our exterior wash package</li>
@@ -300,7 +367,7 @@
         <a class="card-cta" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27d%20like%20a%20quote%20for%20the%20Mini%20Valet%20Package" target="_blank" rel="noopener">Get a quote &rarr;</a>
       </div>
 
-      <div class="card">
+      <div class="card reveal">
         <h3>Deep Clean Package</h3>
         <ul>
           <li>Exterior wash-down and interior vacuum throughout, including all steps from our mini valet package</li>
@@ -318,7 +385,7 @@
         <a class="card-cta" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27d%20like%20a%20quote%20for%20the%20Deep%20Clean%20Package" target="_blank" rel="noopener">Get a quote &rarr;</a>
       </div>
 
-      <div class="card">
+      <div class="card reveal">
         <h3>Premium Detail</h3>
         <ul>
           <li>A full deep clean of the interior</li>
@@ -340,7 +407,7 @@
 
 <section class="spotlight">
   <div class="wrap spotlight-inner">
-    <div>
+    <div class="reveal">
       <p class="eyebrow" style="color:var(--sky);">Recent job</p>
       <h2>Audi A5 &mdash; Premium Detail</h2>
       <p class="quote">&ldquo;This Audi A5 received a premium detail from us &mdash; after a full day's work the car was back to looking, feeling and smelling brand new.&rdquo;</p>
@@ -351,9 +418,9 @@
         <li>Exterior safe wash</li>
         <li>Paint decontamination and clay bar</li>
       </ul>
-      <a class="btn btn-primary" style="margin-top:10px;" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20my%20car%20needs%20the%20same%20treatment" target="_blank" rel="noopener">If your car needs the same &rarr;</a>
+      <a class="btn btn-primary" style="margin-top:10px;animation:none;" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20my%20car%20needs%20the%20same%20treatment" target="_blank" rel="noopener">If your car needs the same &rarr;</a>
     </div>
-    <div class="about-photo">
+    <div class="about-photo reveal">
       <img src="images/job-golf-interior.jpg" alt="Deep cleaned interior seats and carpets after a HWJ Valets detail">
     </div>
   </div>
@@ -361,30 +428,30 @@
 
 <section id="gallery">
   <div class="wrap">
-    <p class="eyebrow">Our work</p>
-    <h2>Real jobs, real results</h2>
+    <p class="eyebrow reveal">Our work</p>
+    <h2 class="reveal">Real jobs, real results</h2>
     <div class="gallery-grid">
-      <figure class="gallery-item">
+      <figure class="gallery-item reveal">
         <img src="images/job-bmw-exterior-wash.jpg" alt="BMW 5 Series covered in snow foam during an exterior wash">
         <figcaption>BMW 5 Series &mdash; pre-wash &amp; snow foam</figcaption>
       </figure>
-      <figure class="gallery-item">
+      <figure class="gallery-item reveal">
         <img src="images/job-red-coupe-detail.jpg" alt="Red sports coupe after a full exterior detail">
         <figcaption>Full exterior detail &amp; wheel clean</figcaption>
       </figure>
-      <figure class="gallery-item">
+      <figure class="gallery-item reveal">
         <img src="images/job-golf-r-snowfoam.jpg" alt="VW Golf R covered in snow foam during a safe exterior wash">
         <figcaption>VW Golf R &mdash; safe exterior wash</figcaption>
       </figure>
-      <figure class="gallery-item">
+      <figure class="gallery-item reveal">
         <img src="images/job-golf-interior.jpg" alt="VW Golf interior seats and carpets after a deep clean">
         <figcaption>VW Golf &mdash; interior deep clean</figcaption>
       </figure>
-      <figure class="gallery-item">
+      <figure class="gallery-item reveal">
         <img src="images/job-golf-boot-clean.jpg" alt="Car boot and load area after being valeted">
         <figcaption>Boot &amp; load area valeted</figcaption>
       </figure>
-      <figure class="gallery-item">
+      <figure class="gallery-item reveal">
         <img src="images/job-caddy-van-wash.jpg" alt="VW Caddy work van covered in snow foam during a wash">
         <figcaption>VW Caddy &mdash; commercial van wash</figcaption>
       </figure>
@@ -394,18 +461,18 @@
 
 <section id="about" style="background:var(--mist);">
   <div class="wrap about-grid">
-    <div>
+    <div class="reveal">
       <p class="eyebrow">About HWJ Valets</p>
       <h2>Car care that comes to you</h2>
       <p style="color:var(--ink);">HWJ Valets is a professional mobile car care and vehicle detailing service, covering Clacton, Colchester, Tendring and the surrounding areas. From a quick exterior wash to a full premium detail, every vehicle is washed using the safe two-bucket method to protect paintwork, then finished by hand.</p>
       <p style="color:var(--muted);">Cars, vans and everything in between &mdash; get in touch and we'll come to you.</p>
       <div class="stat-row">
-        <div class="stat"><b>100%</b><span>Recommended on Facebook</span></div>
-        <div class="stat"><b>7</b><span>Customer reviews</span></div>
-        <div class="stat"><b>3</b><span>Areas covered: Clacton, Colchester, Tendring</span></div>
+        <div class="stat"><b data-count="100" data-suffix="%">0%</b><span>Recommended on Facebook</span></div>
+        <div class="stat"><b data-count="7">0</b><span>Customer reviews</span></div>
+        <div class="stat"><b data-count="3">0</b><span>Areas covered: Clacton, Colchester, Tendring</span></div>
       </div>
     </div>
-    <div class="about-photo">
+    <div class="about-photo reveal">
       <img src="images/job-caddy-van-wash.jpg" alt="HWJ Valets at work washing a VW Caddy van">
     </div>
   </div>
@@ -413,7 +480,7 @@
 
 <section id="contact" class="contact-section">
   <div class="wrap contact-grid">
-    <div>
+    <div class="reveal">
       <p class="eyebrow">Get in touch</p>
       <h2>Book your valet</h2>
       <p style="color:var(--muted);margin-bottom:24px;">Call, WhatsApp or message us on Facebook / Instagram &mdash; or fill in the form and we'll get back to you.</p>
@@ -440,7 +507,7 @@
       </a>
     </div>
 
-    <form action="https://formsubmit.co/hwjvalets@gmail.com" method="POST">
+    <form class="reveal" action="https://formsubmit.co/hwjvalets@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New HWJ Valets website enquiry">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
@@ -510,6 +577,59 @@
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+var header = document.querySelector('header');
+window.addEventListener('scroll', function(){
+  header.classList.toggle('scrolled', window.scrollY > 8);
+}, { passive: true });
+
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!reduceMotion) {
+  var heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', function(){
+    var y = Math.min(window.scrollY, 600);
+    heroBg.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+  }, { passive: true });
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.14 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var counted = false;
+  var statIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting && !counted){
+        counted = true;
+        document.querySelectorAll('.stat b').forEach(function(el){
+          var target = parseInt(el.getAttribute('data-count'), 10);
+          var suffix = el.getAttribute('data-suffix') || '';
+          var start = performance.now();
+          var dur = 1100;
+          function tick(now){
+            var p = Math.min((now - start) / dur, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(target * eased) + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+        statIo.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  var statRow = document.querySelector('.stat-row');
+  if (statRow) statIo.observe(statRow);
+} else {
+  document.querySelectorAll('.stat b').forEach(function(el){
+    el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
+  });
+}
+</script>
 </body>
 </html>
