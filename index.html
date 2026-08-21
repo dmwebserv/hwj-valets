@@ -262,13 +262,42 @@
   @media (max-width:520px){.gallery-grid{grid-template-columns:1fr;}}
   .gallery-item{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;}
   .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
-  .gallery-item:hover img{transform:scale(1.08);}
+  .gallery-item:hover img:not(.ba-img){transform:scale(1.08);}
   .gallery-item figcaption{
     position:absolute;left:0;right:0;bottom:0;padding:14px;
     background:linear-gradient(0deg, rgba(8,18,24,.88), rgba(8,18,24,0));
     color:#fff;font-size:13px;font-weight:600;transform:translateY(4px);transition:transform .4s var(--ease);
+    z-index:3;pointer-events:none;
   }
   .gallery-item:hover figcaption{transform:translateY(0);}
+
+  /* Before/after slider */
+  .ba-figure{cursor:ew-resize;}
+  .ba-slider{position:absolute;inset:0;--pos:50%;touch-action:none;-webkit-user-select:none;user-select:none;}
+  .ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+  .ba-before{clip-path:inset(0 calc(100% - var(--pos)) 0 0);}
+  .ba-tag{
+    position:absolute;top:12px;z-index:2;background:rgba(10,30,38,.62);color:#fff;font-size:11px;font-weight:800;
+    letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;pointer-events:none;
+  }
+  .ba-tag-before{left:12px;}
+  .ba-tag-after{right:12px;}
+  .ba-handle{
+    position:absolute;top:0;bottom:0;left:var(--pos);transform:translateX(-50%);width:3px;
+    background:rgba(255,255,255,.9);box-shadow:0 0 0 1px rgba(10,30,38,.15);z-index:2;pointer-events:none;
+  }
+  .ba-grip{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;
+    background:#fff;color:var(--teal);display:flex;align-items:center;justify-content:center;gap:2px;
+    box-shadow:0 8px 20px rgba(10,30,38,.35);animation:baPulse 2.6s ease-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce){.ba-grip{animation:none;}}
+  @keyframes baPulse{
+    0%{box-shadow:0 8px 20px rgba(10,30,38,.35), 0 0 0 0 rgba(255,255,255,.5);}
+    70%{box-shadow:0 8px 20px rgba(10,30,38,.35), 0 0 0 12px rgba(255,255,255,0);}
+    100%{box-shadow:0 8px 20px rgba(10,30,38,.35), 0 0 0 0 rgba(255,255,255,0);}
+  }
+  .ba-slider:focus-visible{outline:3px solid var(--teal-bright);outline-offset:-3px;}
 
   /* About */
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
@@ -528,9 +557,19 @@
         <img src="images/job-aston-martin-db9.jpg" alt="Aston Martin DB9 parked on a driveway after a valet">
         <figcaption>Aston Martin DB9</figcaption>
       </figure>
-      <figure class="gallery-item reveal">
-        <img src="images/job-mercedes-before-after.jpg" alt="Mercedes-Benz A-Class AMG interior before and after a deep clean">
-        <figcaption>Mercedes-Benz A-Class AMG - before &amp; after</figcaption>
+      <figure class="gallery-item reveal ba-figure">
+        <div class="ba-slider" tabindex="0" role="slider" aria-label="Mercedes-Benz A-Class AMG interior, before and after cleaning. Use the arrow keys or drag to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <img class="ba-img ba-after" src="images/job-mercedes-after.jpg" alt="Mercedes-Benz A-Class AMG interior after a deep clean">
+          <img class="ba-img ba-before" src="images/job-mercedes-before.jpg" alt="Mercedes-Benz A-Class AMG interior before a deep clean, dirty footwell and seats">
+          <span class="ba-tag ba-tag-before">Before</span>
+          <span class="ba-tag ba-tag-after">After</span>
+          <div class="ba-handle">
+            <span class="ba-grip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 6l6 6-6 6M9 6l-6 6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </div>
+        <figcaption>Mercedes-Benz A-Class AMG - drag to compare</figcaption>
       </figure>
       <figure class="gallery-item reveal">
         <img src="images/job-bmw-interior-dash.jpg" alt="BMW 5 Series dashboard and front seats after a detail">
@@ -736,6 +775,42 @@ if (!reduceMotion) {
     el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
   });
 }
+
+document.querySelectorAll('.ba-slider').forEach(function(slider){
+  var pos = 50;
+  var dragging = false;
+
+  function setPos(p){
+    pos = Math.max(0, Math.min(100, p));
+    slider.style.setProperty('--pos', pos + '%');
+    slider.setAttribute('aria-valuenow', Math.round(pos));
+  }
+
+  function posFromX(clientX){
+    var rect = slider.getBoundingClientRect();
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+
+  slider.addEventListener('pointerdown', function(e){
+    dragging = true;
+    slider.setPointerCapture(e.pointerId);
+    setPos(posFromX(e.clientX));
+  });
+  slider.addEventListener('pointermove', function(e){
+    if (!dragging) return;
+    setPos(posFromX(e.clientX));
+  });
+  slider.addEventListener('pointerup', function(){ dragging = false; });
+  slider.addEventListener('pointercancel', function(){ dragging = false; });
+  slider.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowLeft'){ setPos(pos - 5); e.preventDefault(); }
+    if (e.key === 'ArrowRight'){ setPos(pos + 5); e.preventDefault(); }
+    if (e.key === 'Home'){ setPos(0); e.preventDefault(); }
+    if (e.key === 'End'){ setPos(100); e.preventDefault(); }
+  });
+
+  setPos(50);
+});
 </script>
 </body>
 </html>
