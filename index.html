@@ -41,7 +41,7 @@
   "image": "https://hwjvalets.co.uk/images/og-image.jpg",
   "priceRange": "££",
   "telephone": "+447926517296",
-  "email": "hwjvalets@gmail.com",
+  "email": "harry@hwjvalets.co.uk",
   "serviceType": ["Mobile car valeting", "Car detailing", "Interior deep cleaning", "Exterior car washing"],
   "areaServed": [
     {"@type": "City", "name": "Colchester"},
@@ -49,7 +49,7 @@
     {"@type": "AdministrativeArea", "name": "Suffolk"}
   ],
   "sameAs": [
-    "https://www.facebook.com/share/19BSMyPaAs/",
+    "https://www.facebook.com/people/HWJ-Valets/61579054444028/",
     "https://www.instagram.com/hwjvalets/"
   ]
 }
@@ -275,6 +275,14 @@
     z-index:3;pointer-events:none;
   }
   .gallery-item:hover figcaption{transform:translateY(0);}
+  .gallery-pair{grid-column:span 2;aspect-ratio:8/3;background:#fff;}
+  .gallery-pair-media{display:grid;grid-template-columns:repeat(2,1fr);height:100%;}
+  .gallery-pair-media img{min-width:0;}
+  @media (max-width:520px){
+    .gallery-pair{grid-column:span 1;aspect-ratio:auto;}
+    .gallery-pair-media{grid-template-columns:1fr;height:auto;}
+    .gallery-pair .gallery-pair-media img{aspect-ratio:4/3;height:auto;}
+  }
 
   /* Before/after slider */
   .ba-figure{cursor:ew-resize;}
@@ -328,6 +336,11 @@
   .contact-card span span{font-size:13px;color:var(--muted);}
   .contact-card .arrow{color:var(--teal-bright);font-weight:700;transition:transform .25s var(--ease);}
   .contact-card:hover .arrow{transform:translateX(4px);}
+  .contact-note{margin:16px 0 0;color:var(--muted);font-size:13.5px;}
+  .form-note{margin:0 0 18px;color:var(--muted);font-size:14px;}
+  .form-footer{display:grid;gap:12px;}
+  .privacy-link{font-size:13.5px;color:var(--muted);text-align:center;margin:0;}
+  .privacy-link a{color:var(--teal);font-weight:800;}
 
   form{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -601,6 +614,13 @@
         <img loading="lazy" decoding="async" src="images/hyundai-coupe.jpg" alt="Hyundai Coupe after professional detailing by HWJ Valets">
         <figcaption>Hyundai Coupe</figcaption>
       </figure>
+      <figure class="gallery-item gallery-pair reveal" aria-labelledby="paint-correction-title">
+        <div class="gallery-pair-media">
+          <img loading="lazy" decoding="async" src="images/corsa-paint1.jpg" width="1100" height="1467" alt="Black Vauxhall Corsa after a Stage 1 paint correction in a driveway">
+          <img loading="lazy" decoding="async" src="images/corsa-paint-close.jpg" width="1100" height="1467" alt="Close-up of polished black Vauxhall Corsa front wing after a Stage 1 paint correction">
+        </div>
+        <figcaption id="paint-correction-title">Stage 1 paint correction</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -610,7 +630,7 @@
   <div class="wrap certification-card reveal">
     <div><p class="eyebrow">Certified expertise</p><h2 id="cert-title">Ceramic protection, professionally installed</h2>
     <p>Harry is a <strong>Cartec Certified Ceramic Installer</strong> and an <strong>AutoRitz Ceramic Installer</strong>. These professional credentials give you confidence your vehicle’s coating is prepared and applied to the correct standard.</p></div>
-    <div class="cert-badges" aria-label="Professional ceramic installer certifications">
+    <div class="cert-badges" role="group" aria-label="Professional ceramic installer certifications">
       <img src="images/cartec-1.jpg" alt="Cartec Certified Ceramic Installer certificate" loading="lazy">
       <img src="images/cartec-2.jpg" alt="AutoRitz Ceramic Installer certificate" loading="lazy">
     </div>
@@ -627,7 +647,7 @@
       <div class="stat-row">
         <div class="stat"><b data-count="100" data-suffix="%">0%</b><span>Recommended on Facebook</span></div>
         <div class="stat"><b data-count="7">0</b><span>Customer reviews</span></div>
-        <div class="stat"><b>Colchester</b><span>Based here, covering Essex &amp; parts of Suffolk</span></div>
+        <div class="stat"><b>Colchester</b><span>Based in Colchester, covering Essex &amp; parts of Suffolk</span></div>
       </div>
     </div>
     <div class="about-photo reveal">
@@ -651,11 +671,11 @@
         <span><strong>WhatsApp</strong><span>Fastest way to get a quote</span></span>
         <span class="arrow">&rarr;</span>
       </a>
-      <a class="contact-card" href="mailto:hwjvalets@gmail.com">
-        <span><strong>Email</strong><span>hwjvalets@gmail.com</span></span>
+      <a class="contact-card" href="mailto:harry@hwjvalets.co.uk">
+        <span><strong>Email</strong><span>harry@hwjvalets.co.uk</span></span>
         <span class="arrow">&rarr;</span>
       </a>
-      <a class="contact-card" href="https://www.facebook.com/share/19BSMyPaAs/" target="_blank" rel="noopener">
+      <a class="contact-card" href="https://www.facebook.com/people/HWJ-Valets/61579054444028/" target="_blank" rel="noopener">
         <span><strong>Facebook</strong><span>HWJ Valets</span></span>
         <span class="arrow">&rarr;</span>
       </a>
@@ -663,14 +683,17 @@
         <span><strong>Instagram</strong><span>@hwjvalets</span></span>
         <span class="arrow">&rarr;</span>
       </a>
+      <p class="contact-note">Payment accepted by cash or bank transfer.</p>
     </div>
 
-    <form class="reveal" action="https://formsubmit.co/hwjvalets@gmail.com" method="POST">
+    <form class="reveal" action="https://formsubmit.co/harry@hwjvalets.co.uk" method="POST">
       <input type="hidden" name="_subject" value="New HWJ Valets website enquiry">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="thanks.html">
+      <input type="hidden" name="_next" value="https://hwjvalets.co.uk/thanks.html">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <p class="form-note">We usually respond within two hours. Your details will only be used to respond to your enquiry.</p>
 
       <div class="form-row">
         <div class="input-group">
@@ -686,7 +709,7 @@
       <div class="form-row">
         <div class="input-group">
           <label for="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email">
+          <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" inputmode="email">
         </div>
         <div class="input-group">
           <label for="location">Town / postcode</label>
@@ -716,7 +739,10 @@
         <textarea id="message" name="message" rows="5" placeholder="Tell us about your vehicle and what you need doing..."></textarea>
       </div>
 
-      <button class="submit-btn" type="submit">Send enquiry</button>
+      <div class="form-footer">
+        <button class="submit-btn" type="submit">Send enquiry</button>
+        <p class="privacy-link"><a href="privacy-policy.html">Privacy Policy</a></p>
+      </div>
     </form>
   </div>
 </section>
@@ -729,7 +755,7 @@
       <span>&copy; <span id="year"></span> HWJ Valets. All rights reserved.</span>
     </div>
     <div class="footer-links">
-      <a href="https://www.facebook.com/share/19BSMyPaAs/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.facebook.com/people/HWJ-Valets/61579054444028/" target="_blank" rel="noopener">Facebook</a>
       <a href="https://www.instagram.com/hwjvalets/" target="_blank" rel="noopener">Instagram</a>
       <a href="/#services">Services</a>
       <a href="/#contact">Contact</a>

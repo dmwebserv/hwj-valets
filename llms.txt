@@ -1,6 +1,6 @@
 # HWJ Valets
 
-> HWJ Valets is a mobile car valeting and vehicle detailing business serving Colchester, Essex and parts of Suffolk, UK.
+> HWJ Valets is a mobile car valeting and vehicle detailing business based in Colchester, covering Essex and parts of Suffolk, UK.
 
 ## Key pages
 - [Homepage](https://hwjvalets.co.uk/): Services, genuine customer reviews, recent work, business information and contact form.
@@ -11,9 +11,10 @@
 
 ## Business details
 - Phone: +44 7926 517296
-- Email: hwjvalets@gmail.com
+- Email: harry@hwjvalets.co.uk
+- Facebook: https://www.facebook.com/people/HWJ-Valets/61579054444028/
 - Instagram: https://www.instagram.com/hwjvalets/
-- Service area: Colchester, Essex and parts of Suffolk
+- Service area: based in Colchester, covering Essex and parts of Suffolk
 - Services are quoted according to the vehicle and work required; the website does not publish fixed prices.
 
 ## Content provenance
