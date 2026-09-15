@@ -768,7 +768,7 @@ if (!reduceMotion) {
     entries.forEach(function(e){
       if (e.isIntersecting && !counted){
         counted = true;
-        document.querySelectorAll('.stat b').forEach(function(el){
+        document.querySelectorAll('.stat b[data-count]').forEach(function(el){
           var target = parseInt(el.getAttribute('data-count'), 10);
           var suffix = el.getAttribute('data-suffix') || '';
           var start = performance.now();
@@ -788,7 +788,7 @@ if (!reduceMotion) {
   var statRow = document.querySelector('.stat-row');
   if (statRow && statIo) statIo.observe(statRow);
 } else {
-  document.querySelectorAll('.stat b').forEach(function(el){
+  document.querySelectorAll('.stat b[data-count]').forEach(function(el){
     el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
   });
 }
