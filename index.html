@@ -32,12 +32,17 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AutoWash",
+  "@type": ["LocalBusiness", "AutoWash"],
+  "@id": "https://hwjvalets.co.uk/#business",
   "name": "HWJ Valets",
   "description": "Professional car care and vehicle detailing. We cover Clacton, Colchester, Tendring and surrounding areas.",
-  "image": "https://hwjvalets.co.uk/images/logo.png",
+  "url": "https://hwjvalets.co.uk/",
+  "logo": "https://hwjvalets.co.uk/images/logo.png",
+  "image": "https://hwjvalets.co.uk/images/og-image.jpg",
+  "priceRange": "££",
   "telephone": "+447926517296",
   "email": "hwjvalets@gmail.com",
+  "serviceType": ["Mobile car valeting", "Car detailing", "Interior deep cleaning", "Exterior car washing"],
   "areaServed": [
     {"@type": "City", "name": "Clacton-on-Sea"},
     {"@type": "City", "name": "Colchester"},
@@ -360,7 +365,7 @@
 <header>
   <div class="nav">
     <a class="brand" href="#top">
-      <img src="images/logo.png" alt="HWJ Valets logo">
+      <img src="images/logo.png" alt="HWJ Valets logo" width="44" height="44">
       <span><strong>HWJ Valets</strong><span>Car care specialists</span></span>
     </a>
     <div class="menu-row">
@@ -376,6 +381,7 @@
   </div>
 </header>
 
+<main id="main-content">
 <div id="top"></div>
 <section class="hero">
   <div class="hero-bg" id="heroBg" style="background-image:url('images/job-bmw-exterior-wash.jpg')"></div>
@@ -493,7 +499,7 @@
       <a class="btn btn-primary" style="margin-top:10px;animation:none;" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20my%20car%20needs%20the%20same%20treatment" target="_blank" rel="noopener">If your car needs the same &rarr;</a>
     </div>
     <div class="about-photo reveal">
-      <img src="images/job-audi-a5.jpg" alt="Audi A5 after a premium detail from HWJ Valets">
+      <img loading="lazy" decoding="async" src="images/job-audi-a5.jpg" alt="Audi A5 after a premium detail from HWJ Valets">
     </div>
   </div>
 </section>
@@ -554,7 +560,7 @@
     <h2 class="reveal">Real jobs, real results</h2>
     <div class="gallery-grid">
       <figure class="gallery-item reveal">
-        <img src="images/job-aston-martin-db9.jpg" alt="Aston Martin DB9 parked on a driveway after a valet">
+        <img loading="lazy" decoding="async" src="images/job-aston-martin-db9.jpg" alt="Aston Martin DB9 parked on a driveway after a valet">
         <figcaption>Aston Martin DB9</figcaption>
       </figure>
       <figure class="gallery-item reveal ba-figure">
@@ -572,31 +578,31 @@
         <figcaption>Mercedes-Benz A-Class AMG - drag to compare</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img src="images/job-bmw-interior-dash.jpg" alt="BMW 5 Series dashboard and front seats after a detail">
+        <img loading="lazy" decoding="async" src="images/job-bmw-interior-dash.jpg" alt="BMW 5 Series dashboard and front seats after a detail">
         <figcaption>BMW 5 Series - dashboard &amp; seats</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img src="images/job-bmw-interior-cabin.jpg" alt="BMW 5 Series full cabin and footwell after a detail">
+        <img loading="lazy" decoding="async" src="images/job-bmw-interior-cabin.jpg" alt="BMW 5 Series full cabin and footwell after a detail">
         <figcaption>BMW 5 Series - full cabin detail</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img src="images/job-boot-deep-clean.jpg" alt="Car boot and load area after being deep cleaned">
+        <img loading="lazy" decoding="async" src="images/job-boot-deep-clean.jpg" alt="Car boot and load area after being deep cleaned">
         <figcaption>Boot &amp; load area - deep clean</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img src="images/job-tesla-model-y.jpg" alt="Tesla Model Y parked outside a house after a valet">
+        <img loading="lazy" decoding="async" src="images/job-tesla-model-y.jpg" alt="Tesla Model Y parked outside a house after a valet">
         <figcaption>Tesla Model Y</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img src="images/job-tesla-interior.jpg" alt="Tesla rear seats and cabin after an interior detail">
+        <img loading="lazy" decoding="async" src="images/job-tesla-interior.jpg" alt="Tesla rear seats and cabin after an interior detail">
         <figcaption>Tesla - rear cabin detail</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img src="images/job-suv-boot-clean.jpg" alt="Large SUV boot after being deep cleaned">
+        <img loading="lazy" decoding="async" src="images/job-suv-boot-clean.jpg" alt="Large SUV boot after being deep cleaned">
         <figcaption>Large SUV - boot deep clean</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img src="images/job-boot-clean-2.jpg" alt="Hatchback boot after being deep cleaned">
+        <img loading="lazy" decoding="async" src="images/job-boot-clean-2.jpg" alt="Hatchback boot after being deep cleaned">
         <figcaption>Hatchback boot - deep clean</figcaption>
       </figure>
     </div>
@@ -617,7 +623,7 @@
       </div>
     </div>
     <div class="about-photo reveal">
-      <img src="images/job-caddy-van-wash.jpg" alt="HWJ Valets at work washing a VW Caddy van">
+      <img loading="lazy" decoding="async" src="images/job-caddy-van-wash.jpg" alt="HWJ Valets at work washing a VW Caddy van">
     </div>
   </div>
 </section>
@@ -707,15 +713,18 @@
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img src="images/logo.png" alt="HWJ Valets logo">
+      <img src="images/logo.png" alt="HWJ Valets logo" width="44" height="44">
       <span>&copy; <span id="year"></span> HWJ Valets. All rights reserved.</span>
     </div>
     <div class="footer-links">
       <a href="https://www.facebook.com/share/19BSMyPaAs/" target="_blank" rel="noopener">Facebook</a>
       <a href="https://www.instagram.com/hwjvalets/" target="_blank" rel="noopener">Instagram</a>
+      <a href="/#services">Services</a>
+      <a href="/#contact">Contact</a>
       <a href="privacy-policy.html">Privacy Policy</a>
     </div>
   </div>
@@ -739,15 +748,15 @@ if (!reduceMotion) {
     heroBg.style.transform = 'translateY(' + (y * 0.12) + 'px)';
   }, { passive: true });
 
-  var io = new IntersectionObserver(function(entries){
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if (e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.14 });
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }, { threshold: 0.14 }) : null;
+  document.querySelectorAll('.reveal').forEach(function(el){ if (io) io.observe(el); else el.classList.add('is-visible'); });
 
   var counted = false;
-  var statIo = new IntersectionObserver(function(entries){
+  var statIo = 'IntersectionObserver' in window ? new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if (e.isIntersecting && !counted){
         counted = true;
@@ -767,9 +776,9 @@ if (!reduceMotion) {
         statIo.disconnect();
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.4 }) : null;
   var statRow = document.querySelector('.stat-row');
-  if (statRow) statIo.observe(statRow);
+  if (statRow && statIo) statIo.observe(statRow);
 } else {
   document.querySelectorAll('.stat b').forEach(function(el){
     el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
