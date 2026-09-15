@@ -1,38 +1,50 @@
 # HWJ Valets
 
-Marketing website for HWJ Valets, a mobile car valeting and detailing business covering Clacton, Colchester, Tendring and the surrounding areas.
+Marketing website for HWJ Valets, a mobile car valeting and detailing business based in Colchester, covering Essex and parts of Suffolk.
 
 Static HTML/CSS site, no build step or framework. Pages:
 
-- `index.html`: homepage (services, gallery, about, contact/enquiry form)
-- `privacy-policy.html`
-- `thanks.html`: enquiry form landing page (noindex)
+- `index.html`: homepage with services, gallery, about, contact details and enquiry form
+- `privacy-policy.html`: privacy information for enquiries and analytics
+- `thanks.html`: enquiry form landing page, marked noindex
+
+## Contact and social details
+
+- Phone: 07926 517296
+- Email: harry@hwjvalets.co.uk
+- Facebook: https://www.facebook.com/people/HWJ-Valets/61579054444028/
+- Instagram: https://www.instagram.com/hwjvalets/
+- Service area: based in Colchester, covering Essex and parts of Suffolk
 
 ## Content sourced from
 
-All copy, service packages, contact details and photos come from HWJ Valets' real Facebook page and marketing flyers (not invented):
+All copy, service packages, contact details and photos come from HWJ Valets' supplied materials and public social profiles:
 
-- Business bio, phone, email, coverage area, follower/review counts: Facebook page
-- Service package descriptions (Exterior Wash, Mini Valet, Deep Clean): real promotional flyers
+- Business bio, phone, email, coverage area and review details: HWJ Valets materials and public profiles
+- Service package descriptions: real promotional flyers and supplied package wording
 - "Premium Detail" write-up: a real Facebook post about an Audi A5 job
-- Gallery photos: real job photos, cropped out of the promotional flyers (`images/job-*.jpg`)
-- Logo: supplied directly, resized into `images/logo.png` plus a generated favicon set
+- Gallery photos: real job photos, including the Stage 1 paint correction images in `images/corsa-paint1.jpg` and `images/corsa-paint-close.jpg`
+- Logo: supplied directly, resized into `images/logo.png` plus favicon assets
 
-No prices are listed anywhere in HWJ's own materials, so none are invented here either. Every package links through to a WhatsApp quote request instead, matching HWJ's existing "Call or WhatsApp to book" pattern.
+Package prices are shown as starting prices only and may vary by vehicle size, condition and the work required. Every package links through to a WhatsApp quote request, matching HWJ Valets' existing "Call or WhatsApp to book" pattern.
+
+## Form handling
+
+The enquiry form posts to [FormSubmit.co](https://formsubmit.co) at `https://formsubmit.co/harry@hwjvalets.co.uk`, uses the table template, and redirects successful submissions to `https://hwjvalets.co.uk/thanks.html`.
+
+FormSubmit requires a one-time activation email for `harry@hwjvalets.co.uk` before live enquiries are delivered. Do not send a real test submission or activate the address without the business owner's approval.
 
 ## Known gaps / TODO
 
-- **Domain**: no domain is registered yet. All canonical/OG URLs currently point at a placeholder `https://hwjvalets.co.uk`. Update every `<link rel="canonical">`, `og:url`, `og:image`, `twitter:image`, the JSON-LD `url`, `robots.txt` and `sitemap.xml` once a real domain is bought and a `CNAME` file is added.
-- **Facebook link**: uses the share-link URL provided (`facebook.com/share/19BSMyPaAs/`) since no vanity URL was confirmed. Swap for `facebook.com/HWJValets` (or whatever the real vanity handle is) once confirmed.
-- **Contact form**: wired to [FormSubmit.co](https://formsubmit.co) posting to `hwjvalets@gmail.com`, same working pattern as the kcmcleaning/lwp-painting sites. FormSubmit requires a one-time confirmation click from that inbox the first time the form is submitted. Make sure that happens before relying on it live.
-- More real job photos (before/afters, exterior details, vans) would strengthen the gallery over time.
+- Replace the placeholder Google Analytics measurement ID in `analytics.js` once the GA4 property is ready.
+- More real job photos, such as extra before/after sets, exterior details and vans, would strengthen the gallery over time.
 
 ## Local preview
 
-```
-python3 -m http.server
+```bash
+python3 -m http.server 8000
 ```
 
 ## Deploy
 
-Enable GitHub Pages on this repo (Settings &rarr; Pages &rarr; deploy from `main`). Add a `CNAME` file once a domain is registered.
+GitHub Pages should deploy from `main`. The `CNAME` file is present for `hwjvalets.co.uk`; keep the custom domain and HTTPS configuration enabled in GitHub Pages.
