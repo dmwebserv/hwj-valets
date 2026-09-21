@@ -514,23 +514,7 @@ PREVIEW_CSS = """
 \tbody.pv-preview { padding-top: 0; }
 """
 
-SNIPPET_HEADER = """<!--
-\t================================================================================
-\t{page_name} — CMS page body
-\t================================================================================
-\tCMS page URL:   /page/{slug}
-\tCMS page name:  {page_name}   (the CMS renders this as the page H1)
-\tMetadata:       see metadata.md for the title tag, meta description and
-\t                canonical URL to set on this page.
-\tPaste everything below into the page body. Do not paste the opening comment.
-
-\tNo H1 is included because the CMS renders the page name as the heading, in
-\tthe same way as the existing materials calculator page. If your CMS page
-\ttype does not output a heading, uncomment the H1 just below.
-\t================================================================================
--->
-<!-- <h1 class="calc-h1">{h1_text}</h1> -->
-<style>{calc_css}{guide_css}</style>
+SNIPPET_HEADER = """<!-- {page_name} — copy this ENTIRE file and paste it into the CMS page body for /page/{slug}. Nothing to run or build: it is plain HTML. -->
 """
 
 
