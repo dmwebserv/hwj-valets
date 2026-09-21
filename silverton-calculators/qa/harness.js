@@ -610,6 +610,9 @@ for (const [file, type, slug] of pagesMeta) {
 
 	check(file + ' snippet: only one calculator present',
 		(snip.match(/class="tabcontent/g) || []).length === 1);
+	check(file + ' snippet: CSS included (style block with calculator styles)',
+		snip.indexOf('<style>') !== -1 && snip.indexOf('.calculator-container {') !== -1 &&
+		snip.indexOf('.calc-card {') !== -1);
 	check(file + ' snippet: relative links for CMS', snip.indexOf('href="/category/') !== -1 && snip.indexOf(LIVE) === -1);
 	check(file + ' snippet: FAQPage schema present', snip.indexOf('"@type": "FAQPage"') !== -1);
 	check(file + ' snippet: breadcrumb schema present', snip.indexOf('"@type": "BreadcrumbList"') !== -1);

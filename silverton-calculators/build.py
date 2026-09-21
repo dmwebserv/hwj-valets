@@ -515,6 +515,7 @@ PREVIEW_CSS = """
 """
 
 SNIPPET_HEADER = """<!-- {page_name} — copy this ENTIRE file and paste it into the CMS page body for /page/{slug}. Nothing to run or build: it is plain HTML. -->
+<style>{calc_css}{guide_css}</style>
 """
 
 
