@@ -33,12 +33,20 @@ LIVE = "https://www.silvertonbuildersmerchants.com"
 # styles for the new guide/shop/FAQ sections on the specialist pages.
 # ---------------------------------------------------------------------------
 CALC_CSS = """
-\tbody {
+\t/* Note: the original calculator code included a page-wide
+\t   `body { background:#fff; ... }` rule which overrode the site theme —
+\t   removed so pages keep the standard #f5f5f5 background with the CMS
+\t   white content card. Fonts/colours are scoped to the calculator. */
+\t.calculator-container {
 \t\tfont-family: 'Poppins', sans-serif;
-\t\tbackground-color: #ffffff;
-\t\tmargin: 0;
-\t\tpadding: 0;
 \t\tcolor: #18452e;
+\t\tbackground-color: #ffffff;
+\t\tborder-radius: 20px;
+\t\tpadding: 15px;
+\t\tbox-shadow: 0 0 10px rgba(0, 0, 0, 0);
+\t\toverflow: hidden;
+\t\tposition: relative;
+\t\tmargin: 20px auto;
 \t}
 
 \t@media (max-width: 992px) {
@@ -54,17 +62,6 @@ CALC_CSS = """
 \t\t\t/* Add margin to separate it from other content */
 \t\t\ttext-align: center;
 \t\t}
-\t}
-
-\t.calculator-container {
-\t\tmax-width: 700px;
-\t\tbackground-color: #ffffff;
-\t\tborder-radius: 20px;
-\t\tpadding: 15px;
-\t\tbox-shadow: 0 0 10px rgba(0, 0, 0, 0);
-\t\toverflow: hidden;
-\t\tposition: relative;
-\t\tmargin: 20px auto;
 \t}
 
 \t.materials-heading {
@@ -497,21 +494,25 @@ TRACKING_JS = """<script>
 # footer, breadcrumb and H1 on the live site).
 # ---------------------------------------------------------------------------
 PREVIEW_CSS = """
+\t/* Mimics the live site: #f5f5f5 page background with the CMS content
+\t   column rendered as a white card (col-sm-12 pattern). */
+\tbody.pv-preview { background: #f5f5f5; margin: 0; }
+\tmain.pv-main { background: #ffffff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0, 0, 0, .05); max-width: 1170px; margin: 26px auto 60px; padding: 10px 22px 34px; }
+\t@media (max-width: 640px) { main.pv-main { margin: 12px 8px 40px; padding: 4px 8px 22px; } }
 \t.pv-header { background: #18452e; color: #fff; padding: 14px 18px; font-family: 'Poppins', sans-serif; }
-\t.pv-header-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+\t.pv-header-inner { max-width: 1170px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 \t.pv-brand { color: #fff; font-weight: 700; font-size: 18px; text-decoration: none; letter-spacing: .02em; }
 \t.pv-brand span { color: #daaf3b; }
 \t.pv-nav a { color: #cfe0d6; text-decoration: none; font-size: 14px; margin-left: 16px; }
 \t.pv-nav a:hover { color: #fff; }
 \t.pv-breadcrumb { background: #f2f4f2; border-bottom: 1px solid #e2e6e2; padding: 9px 18px; font-size: 13.5px; font-family: 'Poppins', sans-serif; color: #4c554c; }
-\t.pv-breadcrumb-inner { max-width: 1000px; margin: 0 auto; }
+\t.pv-breadcrumb-inner { max-width: 1170px; margin: 0 auto; }
 \t.pv-breadcrumb a { color: #18452e; text-decoration: none; }
 \t.pv-h1 { font-family: 'Poppins', sans-serif; color: #18452e; font-size: 28px; text-align: center; max-width: 700px; margin: 26px auto 0; padding: 0 15px; font-weight: 600; }
 \t.pv-footer { background: #18452e; color: #cfe0d6; margin-top: 50px; padding: 26px 18px; font-size: 13.5px; line-height: 1.7; font-family: 'Poppins', sans-serif; }
 \t.pv-footer-inner { max-width: 760px; margin: 0 auto; }
 \t.pv-footer a { color: #daaf3b; text-decoration: none; }
 \t.pv-note { font-size: 12px; color: #9db5a5; }
-\tbody.pv-preview { padding-top: 0; }
 """
 
 SNIPPET_HEADER = """<!-- {page_name} — copy this ENTIRE file and paste it into the CMS page body for /page/{slug}. Nothing to run or build: it is plain HTML. -->
@@ -577,7 +578,7 @@ def build_preview_page(page):
 \t</header>
 \t<nav class="pv-breadcrumb"><div class="pv-breadcrumb-inner">{crumbs}</div></nav>
 \t<h1 class="pv-h1">{page['h1']}</h1>
-\t<main>
+\t<main class="pv-main">
 {body}
 \t</main>
 \t<footer class="pv-footer">
