@@ -18,20 +18,36 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<style>
-	/* Note: the original calculator code included a page-wide
-	   `body { background:#fff; ... }` rule which overrode the site theme —
-	   removed so pages keep the standard #f5f5f5 background with the CMS
-	   white content card. Fonts/colours are scoped to the calculator. */
-	.calculator-container {
+	/* One white card holds the whole page; sections inside it are transparent
+	   so the content reads as a single card on the site's #f5f5f5 background.
+	   (The original code forced a page-wide white body background and split
+	   the content into lots of separate white boxes — both removed.) */
+	.calc-page {
 		font-family: 'Poppins', sans-serif;
 		color: #18452e;
 		background-color: #ffffff;
-		border-radius: 20px;
-		padding: 15px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-		overflow: hidden;
-		position: relative;
+		border-radius: 16px;
+		padding: 30px 28px 10px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
 		margin: 20px auto;
+	}
+
+	@media (max-width: 640px) {
+		.calc-page {
+			border-radius: 12px;
+			padding: 16px 12px 6px;
+			margin: 12px auto;
+		}
+	}
+
+	.calculator-container {
+		background: none;
+		border-radius: 0;
+		padding: 0;
+		box-shadow: none;
+		overflow: visible;
+		position: static;
+		margin: 0 0 30px;
 	}
 
 	@media (max-width: 992px) {
@@ -118,6 +134,20 @@
 		display: block;
 	}
 
+	.tabcontent input[type="number"],
+	.tabcontent select {
+		width: 220px;
+		max-width: 100%;
+		padding: 9px 12px;
+		border: 1px solid #cfd6cf;
+		border-radius: 8px;
+		font-size: 15px;
+		font-family: inherit;
+		text-align: center;
+		background-color: #ffffff;
+		color: #18452e;
+	}
+
 	.result {
 		font-size: 18px;
 		margin-top: 15px;
@@ -167,7 +197,7 @@
 		/* Add padding */
 		border-radius: 10px;
 		margin-top: 20px;
-		margin-right: 20px;
+		margin-right: 0;
 		text-align: center;
 		max-width: 100%;
 		/* Limiting the width */
@@ -184,6 +214,7 @@
 		display: flex;
 		justify-content: space-between;
 		width: 60%;
+		max-width: 480px;
 		margin: 0 auto;
 	}
 
@@ -248,8 +279,11 @@
 	.calc-guide h2 {
 		color: #18452e;
 		font-size: 21px;
-		margin: 26px 0 12px;
+		margin: 26px 0 14px;
 		text-align: left;
+		display: inline-block;
+		padding-bottom: 4px;
+		border-bottom: 3px solid #daaf3b;
 	}
 
 	.calc-guide h3 {
@@ -275,6 +309,19 @@
 	.calc-guide img {
 		max-width: 100%;
 		height: auto;
+	}
+
+	.calc-note {
+		font-size: 13.5px;
+		color: #666;
+		text-align: center;
+		margin: 20px 0 2px;
+		line-height: 1.65;
+	}
+
+	.calc-note a {
+		color: #18452e;
+		font-weight: 600;
 	}
 
 	.calc-h1 {
@@ -408,11 +455,10 @@
 		}
 	}
 
-	/* Mimics the live site: #f5f5f5 page background with the CMS content
-	   column rendered as a white card (col-sm-12 pattern). */
+	/* Mimics the live site: #f5f5f5 page background. The white card comes
+	   from the snippet itself (.calc-page), so preview main stays plain. */
 	body.pv-preview { background: #f5f5f5; margin: 0; }
-	main.pv-main { background: #ffffff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0, 0, 0, .05); max-width: 1170px; margin: 26px auto 60px; padding: 10px 22px 34px; }
-	@media (max-width: 640px) { main.pv-main { margin: 12px 8px 40px; padding: 4px 8px 22px; } }
+	main.pv-main { max-width: 1170px; margin: 0 auto 60px; padding: 0 10px; }
 	.pv-header { background: #18452e; color: #fff; padding: 14px 18px; font-family: 'Poppins', sans-serif; }
 	.pv-header-inner { max-width: 1170px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 	.pv-brand { color: #fff; font-weight: 700; font-size: 18px; text-decoration: none; letter-spacing: .02em; }
@@ -443,6 +489,8 @@
 	<nav class="pv-breadcrumb"><div class="pv-breadcrumb-inner">		<a href="https://www.silvertonbuildersmerchants.com/">Home</a> &rsaquo; <strong>Materials Calculator</strong></div></nav>
 	<h1 class="pv-h1">Materials Calculator</h1>
 	<main class="pv-main">
+
+<div class="calc-page">
 
 <div class="calculator-container">
 	<div class="materials-disclaimer">
@@ -1094,6 +1142,9 @@
 		document.querySelector('.tab').click();
 	</script>
 </div>
+
+</div>
+<!-- /calc-page -->
 
 	</main>
 	<footer class="pv-footer">

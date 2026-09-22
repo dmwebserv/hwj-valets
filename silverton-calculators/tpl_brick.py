@@ -16,15 +16,7 @@ BRICK = {
         ("Brick & Block Calculator", None),
     ],
     "body": r"""
-<div class="calculator-container">
-	<div class="materials-disclaimer">
-
-		<p>If you have any questions or think something is wrong, <a href="@@BASE@@/page/customer-services/contact-us">give us a call</a>:
-			<br><a href="tel:01255446920"><strong>01255 446920</strong>.</a></p>
-
-		<p><span style="color: #FF4C4C;">Note:</span> This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
-	</div>
-</div>
+<div class="calc-page">
 
 <div class="calculator-container calc-guide">
 	<p class="calc-back"><a href="@@BASE@@/page/materials-calculator">&larr; All materials calculators</a></p>
@@ -32,17 +24,6 @@ BRICK = {
 </div>
 
 <div class="calculator-container" style="text-align: center;"><img src="@@BASE@@/file/Dimensions.png" alt="Diagram showing how to measure the length and height of a wall in metres" style="max-width: 100%;"></div>
-
-<div class="calculator-container calc-guide">
-	<h2>How to use the brick &amp; block calculator</h2>
-	<ol>
-		<li>Choose <strong>Single Skin Wall</strong> for a half-brick wall (one 100mm leaf) or <strong>Double Skin Wall</strong> for a wall built with two leaves.</li>
-		<li>Enter the <strong>length</strong> and <strong>height</strong> of your wall in metres. For L-shaped walls, calculate each section separately and add the results together.</li>
-		<li>Select your material: <strong>Standard Brick (215 x 65mm)</strong>, <strong>Standard Block (440 x 215mm)</strong> or <strong>Custom</strong>.</li>
-		<li>If you chose Custom, enter the face <strong>width</strong> and <strong>height</strong> of the brick or block in millimetres.</li>
-		<li>Press <strong>Calculate</strong>. The results table shows the number of bricks or blocks, the sand required in kilograms with a breakdown by bag size, and the cement in kilograms and 25kg bags.</li>
-	</ol>
-</div>
 
 <div class="calculator-container" style="text-align: center;">
 	<div class="tabcontent active" id="brickBlockCalculator" data-calculator-type="brick_and_block" style="display: block;">
@@ -100,7 +81,20 @@ BRICK = {
 			</div>
 			<p class="calc-products">Popular right now: <a href="@@BASE@@/product/category/b000105">Forterra Atherstone Stock Red Brick</a> &middot; <a href="@@BASE@@/product/category/b000502">LBC Common Brick</a> &middot; <a href="@@BASE@@/product/category/b000266">Lignacrete Solid 2000 Block 440 x 215 x 100mm</a> &middot; <a href="@@BASE@@/product/category/a000268">Ordinary Portland Cement 25kg (Castle)</a></p>
 		</div>
+
+		<p class="calc-note">If you have any questions or think something is wrong, <a href="@@BASE@@/page/customer-services/contact-us">give us a call</a> on <a href="tel:01255446920"><strong>01255 446920</strong></a>. This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
 	</div>
+</div>
+
+<div class="calculator-container calc-guide">
+	<h2>How to use the brick &amp; block calculator</h2>
+	<ol>
+		<li>Choose <strong>Single Skin Wall</strong> for a half-brick wall (one 100mm leaf) or <strong>Double Skin Wall</strong> for a wall built with two leaves.</li>
+		<li>Enter the <strong>length</strong> and <strong>height</strong> of your wall in metres. For L-shaped walls, calculate each section separately and add the results together.</li>
+		<li>Select your material: <strong>Standard Brick (215 x 65mm)</strong>, <strong>Standard Block (440 x 215mm)</strong> or <strong>Custom</strong>.</li>
+		<li>If you chose Custom, enter the face <strong>width</strong> and <strong>height</strong> of the brick or block in millimetres.</li>
+		<li>Press <strong>Calculate</strong>. The results table shows the number of bricks or blocks, the sand required in kilograms with a breakdown by bag size, and the cement in kilograms and 25kg bags.</li>
+	</ol>
 </div>
 
 <div class="calculator-container calc-guide">
@@ -151,6 +145,9 @@ BRICK = {
 		<a class="calc-card" href="@@BASE@@/page/paving-calculator"><strong>Paving calculator</strong><span>Slab quantities for patios and paths, including patio packs.</span></a>
 	</div>
 </div>
+
+</div>
+<!-- /calc-page -->
 
 <script>
 	/* ===== Brick & Block Calculator — calculation rules identical to the master

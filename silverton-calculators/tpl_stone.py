@@ -16,15 +16,7 @@ STONE = {
         ("Decorative Stone Calculator", None),
     ],
     "body": r"""
-<div class="calculator-container">
-	<div class="materials-disclaimer">
-
-		<p>If you have any questions or think something is wrong, <a href="@@BASE@@/page/customer-services/contact-us">give us a call</a>:
-			<br><a href="tel:01255446920"><strong>01255 446920</strong>.</a></p>
-
-		<p><span style="color: #FF4C4C;">Note:</span> This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
-	</div>
-</div>
+<div class="calc-page">
 
 <div class="calculator-container calc-guide">
 	<p class="calc-back"><a href="@@BASE@@/page/materials-calculator">&larr; All materials calculators</a></p>
@@ -32,17 +24,6 @@ STONE = {
 </div>
 
 <div class="calculator-container" style="text-align: center;"><img src="@@BASE@@/file/Dimensions.png" alt="Diagram showing how to measure the width, length and depth of an area in metres and millimetres" style="max-width: 100%;"></div>
-
-<div class="calculator-container calc-guide">
-	<h2>How to use the decorative stone calculator</h2>
-	<ol>
-		<li>Enter the <strong>width</strong> and <strong>length</strong> of the area you are covering, in metres.</li>
-		<li>Press <strong>Calculate Area</strong> for the square meterage on its own.</li>
-		<li>To work out how much stone to order, tick <strong>Calculate Volume</strong>, enter your <strong>depth</strong> in millimetres (30&ndash;50mm is typical for borders and paths) and press <strong>Calculate Volume</strong>.</li>
-		<li>The result shows the <strong>volume in cubic metres</strong>, the approximate <strong>tonnage</strong>, and the number of <strong>bulk bags, mini bulk bags and small bags</strong> that make up that weight.</li>
-		<li>For awkward shapes, split the area into rectangles, calculate each one and add the results together.</li>
-	</ol>
-</div>
 
 <div class="calculator-container" style="text-align: center;">
 	<div class="tabcontent active" id="areaVolumeCalculator" data-calculator-type="decorative_stone" style="display: block;">
@@ -81,7 +62,20 @@ STONE = {
 			</div>
 			<p class="calc-products">Popular right now: <a href="@@BASE@@/product/category/l000145">Cotswold Buff Chippings 20mm &mdash; Bulk Bag</a> &middot; <a href="@@BASE@@/product/category/l000303">Polar White Chippings 20mm &mdash; Bulk Bag</a> &middot; <a href="@@BASE@@/product/category/l000229">Black Ice Chippings 20mm &mdash; Bulk Bag</a></p>
 		</div>
+
+		<p class="calc-note">If you have any questions or think something is wrong, <a href="@@BASE@@/page/customer-services/contact-us">give us a call</a> on <a href="tel:01255446920"><strong>01255 446920</strong></a>. This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
 	</div>
+</div>
+
+<div class="calculator-container calc-guide">
+	<h2>How to use the decorative stone calculator</h2>
+	<ol>
+		<li>Enter the <strong>width</strong> and <strong>length</strong> of the area you are covering, in metres.</li>
+		<li>Press <strong>Calculate Area</strong> for the square meterage on its own.</li>
+		<li>To work out how much stone to order, tick <strong>Calculate Volume</strong>, enter your <strong>depth</strong> in millimetres (30&ndash;50mm is typical for borders and paths) and press <strong>Calculate Volume</strong>.</li>
+		<li>The result shows the <strong>volume in cubic metres</strong>, the approximate <strong>tonnage</strong>, and the number of <strong>bulk bags, mini bulk bags and small bags</strong> that make up that weight.</li>
+		<li>For awkward shapes, split the area into rectangles, calculate each one and add the results together.</li>
+	</ol>
 </div>
 
 <div class="calculator-container calc-guide">
@@ -130,6 +124,9 @@ STONE = {
 		<a class="calc-card" href="@@BASE@@/page/paving-calculator"><strong>Paving calculator</strong><span>Slab quantities for patios and paths, including patio packs.</span></a>
 	</div>
 </div>
+
+</div>
+<!-- /calc-page -->
 
 <script>
 	/* ===== Decorative Stone (Area & Volume) Calculator — calculation rules

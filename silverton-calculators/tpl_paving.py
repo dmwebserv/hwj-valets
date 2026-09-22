@@ -16,15 +16,7 @@ PAVING = {
         ("Paving Calculator", None),
     ],
     "body": r"""
-<div class="calculator-container">
-	<div class="materials-disclaimer">
-
-		<p>If you have any questions or think something is wrong, <a href="@@BASE@@/page/customer-services/contact-us">give us a call</a>:
-			<br><a href="tel:01255446920"><strong>01255 446920</strong>.</a></p>
-
-		<p><span style="color: #FF4C4C;">Note:</span> This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
-	</div>
-</div>
+<div class="calc-page">
 
 <div class="calculator-container calc-guide">
 	<p class="calc-back"><a href="@@BASE@@/page/materials-calculator">&larr; All materials calculators</a></p>
@@ -32,17 +24,6 @@ PAVING = {
 </div>
 
 <div class="calculator-container" style="text-align: center;"><img src="@@BASE@@/file/Dimensions.png" alt="Diagram showing how to measure the width and length of a patio area in metres" style="max-width: 100%;"></div>
-
-<div class="calculator-container calc-guide">
-	<h2>How to use the paving calculator</h2>
-	<ol>
-		<li>Enter the <strong>width</strong> and <strong>length</strong> of your patio or path, in metres.</li>
-		<li>For single-size slabs, enter the <strong>slab width</strong> and <strong>height</strong> in millimetres (600 x 600mm is pre-filled).</li>
-		<li>If you are buying a mixed-size <strong>patio pack</strong>, tick <strong>I want to use Patio Packs</strong> instead &mdash; the custom size fields are hidden.</li>
-		<li>Press <strong>Calculate</strong> to see the area in square metres and the number of slabs needed.</li>
-		<li>For L-shaped or irregular areas, split the space into rectangles, calculate each one separately and add the results together.</li>
-	</ol>
-</div>
 
 <div class="calculator-container" style="text-align: center;">
 	<div class="tabcontent active" id="pavingCalculator" data-calculator-type="paving" style="display: block;">
@@ -89,7 +70,20 @@ PAVING = {
 			</div>
 			<p class="calc-products">Popular right now: <a href="@@BASE@@/product/category/p000001">Bradstone Sandstone Mixed Sizes &mdash; Fossil Buff</a> &middot; <a href="@@BASE@@/product/category/p900466">Sandstone Kandla Grey 900 x 600</a> &middot; <a href="@@BASE@@/product/category/p900624">Black Limestone 900 x 600mm</a> &mdash; plus <a href="@@BASE@@/category/landscaping-and-gardening/joint-compounds">joint compounds</a> and <a href="@@BASE@@/category/landscaping-and-gardening/paving/paving-accessories">paving accessories</a> to finish the job.</p>
 		</div>
+
+		<p class="calc-note">If you have any questions or think something is wrong, <a href="@@BASE@@/page/customer-services/contact-us">give us a call</a> on <a href="tel:01255446920"><strong>01255 446920</strong></a>. This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
 	</div>
+</div>
+
+<div class="calculator-container calc-guide">
+	<h2>How to use the paving calculator</h2>
+	<ol>
+		<li>Enter the <strong>width</strong> and <strong>length</strong> of your patio or path, in metres.</li>
+		<li>For single-size slabs, enter the <strong>slab width</strong> and <strong>height</strong> in millimetres (600 x 600mm is pre-filled).</li>
+		<li>If you are buying a mixed-size <strong>patio pack</strong>, tick <strong>I want to use Patio Packs</strong> instead &mdash; the custom size fields are hidden.</li>
+		<li>Press <strong>Calculate</strong> to see the area in square metres and the number of slabs needed.</li>
+		<li>For L-shaped or irregular areas, split the space into rectangles, calculate each one separately and add the results together.</li>
+	</ol>
 </div>
 
 <div class="calculator-container calc-guide">
@@ -137,6 +131,9 @@ PAVING = {
 		<a class="calc-card" href="@@BASE@@/page/decorative-stone-calculator"><strong>Decorative stone calculator</strong><span>Gravel and stone coverage by area or depth, in every bag size.</span></a>
 	</div>
 </div>
+
+</div>
+<!-- /calc-page -->
 
 <script>
 	/* ===== Paving Calculator — calculation rules identical to the master

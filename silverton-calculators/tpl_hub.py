@@ -15,6 +15,8 @@ HUB = {
         ("Materials Calculator", None),
     ],
     "body": r"""
+<div class="calc-page">
+
 <div class="calculator-container">
 	<div class="materials-disclaimer">
 
@@ -609,5 +611,8 @@ HUB = {
 		document.querySelector('.tab').click();
 	</script>
 </div>
+
+</div>
+<!-- /calc-page -->
 """,
 }

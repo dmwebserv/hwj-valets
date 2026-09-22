@@ -33,20 +33,36 @@ LIVE = "https://www.silvertonbuildersmerchants.com"
 # styles for the new guide/shop/FAQ sections on the specialist pages.
 # ---------------------------------------------------------------------------
 CALC_CSS = """
-\t/* Note: the original calculator code included a page-wide
-\t   `body { background:#fff; ... }` rule which overrode the site theme —
-\t   removed so pages keep the standard #f5f5f5 background with the CMS
-\t   white content card. Fonts/colours are scoped to the calculator. */
-\t.calculator-container {
+\t/* One white card holds the whole page; sections inside it are transparent
+\t   so the content reads as a single card on the site's #f5f5f5 background.
+\t   (The original code forced a page-wide white body background and split
+\t   the content into lots of separate white boxes — both removed.) */
+\t.calc-page {
 \t\tfont-family: 'Poppins', sans-serif;
 \t\tcolor: #18452e;
 \t\tbackground-color: #ffffff;
-\t\tborder-radius: 20px;
-\t\tpadding: 15px;
-\t\tbox-shadow: 0 0 10px rgba(0, 0, 0, 0);
-\t\toverflow: hidden;
-\t\tposition: relative;
+\t\tborder-radius: 16px;
+\t\tpadding: 30px 28px 10px;
+\t\tbox-shadow: 0 2px 10px rgba(0, 0, 0, .05);
 \t\tmargin: 20px auto;
+\t}
+
+\t@media (max-width: 640px) {
+\t\t.calc-page {
+\t\t\tborder-radius: 12px;
+\t\t\tpadding: 16px 12px 6px;
+\t\t\tmargin: 12px auto;
+\t\t}
+\t}
+
+\t.calculator-container {
+\t\tbackground: none;
+\t\tborder-radius: 0;
+\t\tpadding: 0;
+\t\tbox-shadow: none;
+\t\toverflow: visible;
+\t\tposition: static;
+\t\tmargin: 0 0 30px;
 \t}
 
 \t@media (max-width: 992px) {
@@ -133,6 +149,20 @@ CALC_CSS = """
 \t\tdisplay: block;
 \t}
 
+\t.tabcontent input[type="number"],
+\t.tabcontent select {
+\t\twidth: 220px;
+\t\tmax-width: 100%;
+\t\tpadding: 9px 12px;
+\t\tborder: 1px solid #cfd6cf;
+\t\tborder-radius: 8px;
+\t\tfont-size: 15px;
+\t\tfont-family: inherit;
+\t\ttext-align: center;
+\t\tbackground-color: #ffffff;
+\t\tcolor: #18452e;
+\t}
+
 \t.result {
 \t\tfont-size: 18px;
 \t\tmargin-top: 15px;
@@ -182,7 +212,7 @@ CALC_CSS = """
 \t\t/* Add padding */
 \t\tborder-radius: 10px;
 \t\tmargin-top: 20px;
-\t\tmargin-right: 20px;
+\t\tmargin-right: 0;
 \t\ttext-align: center;
 \t\tmax-width: 100%;
 \t\t/* Limiting the width */
@@ -199,6 +229,7 @@ CALC_CSS = """
 \t\tdisplay: flex;
 \t\tjustify-content: space-between;
 \t\twidth: 60%;
+\t\tmax-width: 480px;
 \t\tmargin: 0 auto;
 \t}
 
@@ -265,8 +296,11 @@ GUIDE_CSS = """
 \t.calc-guide h2 {
 \t\tcolor: #18452e;
 \t\tfont-size: 21px;
-\t\tmargin: 26px 0 12px;
+\t\tmargin: 26px 0 14px;
 \t\ttext-align: left;
+\t\tdisplay: inline-block;
+\t\tpadding-bottom: 4px;
+\t\tborder-bottom: 3px solid #daaf3b;
 \t}
 
 \t.calc-guide h3 {
@@ -292,6 +326,19 @@ GUIDE_CSS = """
 \t.calc-guide img {
 \t\tmax-width: 100%;
 \t\theight: auto;
+\t}
+
+\t.calc-note {
+\t\tfont-size: 13.5px;
+\t\tcolor: #666;
+\t\ttext-align: center;
+\t\tmargin: 20px 0 2px;
+\t\tline-height: 1.65;
+\t}
+
+\t.calc-note a {
+\t\tcolor: #18452e;
+\t\tfont-weight: 600;
 \t}
 
 \t.calc-h1 {
@@ -494,11 +541,10 @@ TRACKING_JS = """<script>
 # footer, breadcrumb and H1 on the live site).
 # ---------------------------------------------------------------------------
 PREVIEW_CSS = """
-\t/* Mimics the live site: #f5f5f5 page background with the CMS content
-\t   column rendered as a white card (col-sm-12 pattern). */
+\t/* Mimics the live site: #f5f5f5 page background. The white card comes
+\t   from the snippet itself (.calc-page), so preview main stays plain. */
 \tbody.pv-preview { background: #f5f5f5; margin: 0; }
-\tmain.pv-main { background: #ffffff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0, 0, 0, .05); max-width: 1170px; margin: 26px auto 60px; padding: 10px 22px 34px; }
-\t@media (max-width: 640px) { main.pv-main { margin: 12px 8px 40px; padding: 4px 8px 22px; } }
+\tmain.pv-main { max-width: 1170px; margin: 0 auto 60px; padding: 0 10px; }
 \t.pv-header { background: #18452e; color: #fff; padding: 14px 18px; font-family: 'Poppins', sans-serif; }
 \t.pv-header-inner { max-width: 1170px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 \t.pv-brand { color: #fff; font-weight: 700; font-size: 18px; text-decoration: none; letter-spacing: .02em; }

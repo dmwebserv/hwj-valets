@@ -610,6 +610,8 @@ for (const [file, type, slug] of pagesMeta) {
 
 	check(file + ' snippet: only one calculator present',
 		(snip.match(/class="tabcontent/g) || []).length === 1);
+	check(file + ' snippet: single-card layout (one calc-page wrapper)',
+		(snip.match(/class="calc-page"/g) || []).length === 1 && snip.indexOf('<!-- /calc-page -->') !== -1);
 	const snipCssOnly = snip.replace(/<!--[\s\S]*?-->/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
 	check(file + ' snippet: CSS included (style block with calculator styles)',
 		snip.indexOf('<style>') !== -1 && snip.indexOf('.calculator-container {') !== -1 &&
