@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Paving Calculator: How Many Slabs Do I Need? | Silverton</title>
+	<meta name="description" content="Calculate how many paving slabs you need for a patio or path, with custom slab sizes and patio pack coverage. Free paving calculator from Silverton Builders Merchants.">
+	<link rel="canonical" href="https://www.silvertonbuildersmerchants.com/page/paving-calculator">
+	<meta name="robots" content="noindex">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Silverton Builders Merchants">
+	<meta property="og:title" content="Paving Calculator: How Many Slabs Do I Need? | Silverton">
+	<meta property="og:description" content="Calculate how many paving slabs you need for a patio or path, with custom slab sizes and patio pack coverage. Free paving calculator from Silverton Builders Merchants.">
+	<meta property="og:url" content="https://www.silvertonbuildersmerchants.com/page/paving-calculator">
+	<meta property="og:image" content="https://www.silvertonbuildersmerchants.com/images/ocw/p000001-extra-large.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+	/* One white card holds the whole page; sections inside it are transparent
+	   so the content reads as a single card on the site's #f5f5f5 background.
+	   (The original code forced a page-wide white body background and split
+	   the content into lots of separate white boxes — both removed.) */
+	.calc-page {
+		font-family: 'Poppins', sans-serif;
+		color: #18452e;
+		background-color: #ffffff;
+		border-radius: 16px;
+		padding: 30px 28px 10px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+		margin: 20px auto;
+	}
+
+	@media (max-width: 640px) {
+		.calc-page {
+			border-radius: 12px;
+			padding: 16px 12px 6px;
+			margin: 12px auto;
+		}
+	}
+
+	.calculator-container {
+		background: none;
+		border-radius: 0;
+		padding: 0;
+		box-shadow: none;
+		overflow: visible;
+		position: static;
+		margin: 0 0 30px;
+	}
+
+	@media (max-width: 992px) {
+		/* Adjust this breakpoint as needed */
+		.fixed-box {
+			position: static;
+			/* Change to static so it appears underneath the calculator */
+			width: auto;
+			/* Adjust width as needed */
+			margin-top: 20px;
+			/* Add margin to separate it from the calculator */
+			margin-bottom: 20px;
+			/* Add margin to separate it from other content */
+			text-align: center;
+		}
+	}
+
+	.materials-heading {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 0px;
+	}
+
+	.materials-disclaimer {
+		background-color: #f0f0f0;
+		border-radius: 10px;
+		padding: 10px;
+		margin-bottom: 20px;
+		text-align: center;
+		max-width: 100%;
+		/* Limiting the width */
+		overflow-x: auto;
+		/* Adding horizontal scrollbar if needed */
+	}
+
+	.materials-disclaimer p {
+		color: #666;
+		font-size: 14px;
+	}
+
+	.calculator-buttons {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 20px;
+		flex-wrap: wrap;
+	}
+
+	.calculator-buttons .tab {
+		flex: 0 0 calc(50% - 10px);
+		background-color: #18452e;
+		color: #ffffff;
+		border: none;
+		padding: 25px 0;
+		cursor: pointer;
+		border-radius: 10px;
+		text-transform: uppercase;
+		transition: background-color 0.3s ease;
+		font-weight: 500;
+		margin-bottom: 10px;
+		font-family: 'Poppins', sans-serif;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.calculator-buttons .tab.active {
+		color: #daaf3b;
+	}
+
+	.calculator-buttons .tab:hover {
+		background-color: #3c6e4d;
+	}
+
+	.tabcontent {
+		width: 100%;
+		display: none;
+		padding: 20px;
+		border-radius: 10px;
+		background-color: #f9f9f9;
+		margin-top: 10px;
+		text-align: center;
+	}
+
+	.tabcontent.active {
+		display: block;
+	}
+
+	.tabcontent input[type="number"],
+	.tabcontent select {
+		width: 220px;
+		max-width: 100%;
+		padding: 9px 12px;
+		border: 1px solid #cfd6cf;
+		border-radius: 8px;
+		font-size: 15px;
+		font-family: inherit;
+		text-align: center;
+		background-color: #ffffff;
+		color: #18452e;
+	}
+
+	.result {
+		font-size: 18px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.grey-box {
+		background-color: #f0f0f0;
+		padding: 10px;
+		border-radius: 10px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		text-align: center;
+		max-width: 100%;
+		/* Limiting the width */
+		overflow-x: auto;
+		/* Adding horizontal scrollbar if needed */
+	}
+
+	.button-calculate {
+		background-color: #18452e;
+		color: #fff;
+		border: none;
+		padding: 2px 15px;
+		cursor: pointer;
+		border-radius: 10px;
+		text-transform: uppercase;
+		transition: background-color 0.3s ease;
+		font-weight: 500;
+		margin-bottom: 10px;
+		font-family: 'Poppins', sans-serif;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.button-calculate:hover {
+		background-color: #3c6e4d;
+	}
+
+	.small-text {
+		font-size: smaller;
+	}
+
+	.grey-container {
+		background-color: #f0f0f0;
+		padding: 10px;
+		/* Add padding */
+		border-radius: 10px;
+		margin-top: 20px;
+		margin-right: 0;
+		text-align: center;
+		max-width: 100%;
+		/* Limiting the width */
+		overflow-x: auto;
+		/* Adding horizontal scrollbar if needed */
+	}
+
+	.switch.active {
+		color: #ffffff;
+		background-color: #2ecc71;
+	}
+
+	.calculator-options {
+		display: flex;
+		justify-content: space-between;
+		width: 60%;
+		max-width: 480px;
+		margin: 0 auto;
+	}
+
+	.calculator-options .switch {
+		flex: 1;
+		text-align: center;
+		cursor: pointer;
+		background-color: #f0f0f0;
+		border-radius: 5px;
+		padding: 10px;
+		transition: background-color 0.3s ease;
+	}
+
+	.calculator-options .switch.active {
+		background-color: #daaf3b;
+		color: #ffffff;
+	}
+
+	.calculator-buttons .wide-tab {
+		flex-grow: 2;
+		/* Makes the tab span the width of two buttons */
+	}
+
+	.calculator-buttons {
+		display: flex;
+		/* Ensures buttons are laid out in a row */
+		gap: 10px;
+		/* Optional spacing between buttons */
+	}
+
+	.tab {
+		padding: 10px 20px;
+		/* Adjusts button size */
+		flex-grow: 1;
+		/* Ensures other buttons occupy equal space */
+		text-align: center;
+		border: 1px solid #ccc;
+		background-color: #f4f4f4;
+		cursor: pointer;
+	}
+
+	.tab.active {
+		background-color: #18452e;
+		font-weight: bold;
+	}
+
+	/* ===== Styles for the guide, shop links and FAQ sections on the
+	   specialist calculator pages (added 2026 — does not affect the
+	   original calculator controls above). ===== */
+	.calc-guide {
+		font-family: 'Poppins', sans-serif;
+		color: #333733;
+		text-align: left;
+	}
+
+	.calc-guide p {
+		line-height: 1.65;
+		font-size: 15px;
+		margin: 0 0 14px;
+	}
+
+	.calc-guide h2 {
+		color: #18452e;
+		font-size: 21px;
+		margin: 26px 0 14px;
+		text-align: left;
+		display: inline-block;
+		padding-bottom: 4px;
+		border-bottom: 3px solid #daaf3b;
+	}
+
+	.calc-guide h3 {
+		color: #18452e;
+		font-size: 17px;
+		margin: 0 0 10px;
+		text-align: left;
+	}
+
+	.calc-guide ol,
+	.calc-guide ul {
+		line-height: 1.65;
+		font-size: 15px;
+		padding-left: 22px;
+		margin: 0 0 14px;
+		text-align: left;
+	}
+
+	.calc-guide li {
+		margin-bottom: 8px;
+	}
+
+	.calc-guide img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.calc-note {
+		font-size: 13.5px;
+		color: #666;
+		text-align: center;
+		margin: 20px 0 2px;
+		line-height: 1.65;
+	}
+
+	.calc-note a {
+		color: #18452e;
+		font-weight: 600;
+	}
+
+	.calc-h1 {
+		color: #18452e;
+		font-size: 26px;
+		text-align: center;
+		margin: 6px 0 4px;
+		font-weight: 600;
+	}
+
+	.calc-back {
+		margin-bottom: 4px;
+	}
+
+	.calc-back a {
+		color: #18452e;
+		font-weight: 600;
+		text-decoration: none;
+		font-size: 14px;
+	}
+
+	.calc-back a:hover {
+		text-decoration: underline;
+	}
+
+	.calc-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 12px;
+		margin: 14px 0 18px;
+		padding: 0;
+	}
+
+	.calc-card {
+		background: #ffffff;
+		border: 1px solid #e2e6e2;
+		border-radius: 10px;
+		padding: 14px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.calc-card:hover {
+		border-color: #daaf3b;
+	}
+
+	.calc-card strong {
+		display: block;
+		color: #18452e;
+		font-size: 15.5px;
+		margin-bottom: 5px;
+		font-weight: 600;
+	}
+
+	.calc-card span {
+		display: block;
+		color: #5a615a;
+		font-size: 13.5px;
+		line-height: 1.5;
+	}
+
+	.calc-shop {
+		margin-top: 22px;
+		text-align: left;
+	}
+
+	.calc-products {
+		font-size: 14px;
+		color: #444a44;
+		line-height: 1.9;
+		margin: 0 0 4px;
+	}
+
+	.calc-products a {
+		color: #18452e;
+		font-weight: 600;
+	}
+
+	.assumptions {
+		background: #f0f0f0;
+		border-radius: 10px;
+		padding: 16px 20px;
+	}
+
+	.assumptions ul {
+		margin: 0;
+	}
+
+	.faq-item {
+		background: #f9f9f9;
+		border: 1px solid #e2e6e2;
+		border-radius: 10px;
+		margin-bottom: 10px;
+		overflow: hidden;
+	}
+
+	.faq-item summary {
+		cursor: pointer;
+		padding: 13px 16px;
+		font-weight: 600;
+		color: #18452e;
+		font-size: 15px;
+	}
+
+	.faq-item[open] summary {
+		border-bottom: 1px solid #e2e6e2;
+	}
+
+	.faq-item p {
+		padding: 12px 16px 14px;
+		margin: 0;
+	}
+
+	.calc-more-link {
+		text-align: center;
+		margin: 16px 0 2px;
+		font-size: 14.5px;
+	}
+
+	.calc-hub-links h2 {
+		margin-top: 0;
+	}
+
+	@media (max-width: 480px) {
+		.calc-cards {
+			grid-template-columns: 1fr;
+		}
+
+		.calc-guide h2 {
+			font-size: 19px;
+		}
+	}
+
+	/* Mimics the live site: #f5f5f5 page background. The white card comes
+	   from the snippet itself (.calc-page), so preview main stays plain. */
+	body.pv-preview { background: #f5f5f5; margin: 0; }
+	main.pv-main { max-width: 1170px; margin: 0 auto 60px; padding: 0 10px; }
+	.pv-header { background: #18452e; color: #fff; padding: 14px 18px; font-family: 'Poppins', sans-serif; }
+	.pv-header-inner { max-width: 1170px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+	.pv-brand { color: #fff; font-weight: 700; font-size: 18px; text-decoration: none; letter-spacing: .02em; }
+	.pv-brand span { color: #daaf3b; }
+	.pv-nav a { color: #cfe0d6; text-decoration: none; font-size: 14px; margin-left: 16px; }
+	.pv-nav a:hover { color: #fff; }
+	.pv-breadcrumb { background: #f2f4f2; border-bottom: 1px solid #e2e6e2; padding: 9px 18px; font-size: 13.5px; font-family: 'Poppins', sans-serif; color: #4c554c; }
+	.pv-breadcrumb-inner { max-width: 1170px; margin: 0 auto; }
+	.pv-breadcrumb a { color: #18452e; text-decoration: none; }
+	.pv-h1 { font-family: 'Poppins', sans-serif; color: #18452e; font-size: 28px; text-align: center; max-width: 700px; margin: 26px auto 0; padding: 0 15px; font-weight: 600; }
+	.pv-footer { background: #18452e; color: #cfe0d6; margin-top: 50px; padding: 26px 18px; font-size: 13.5px; line-height: 1.7; font-family: 'Poppins', sans-serif; }
+	.pv-footer-inner { max-width: 760px; margin: 0 auto; }
+	.pv-footer a { color: #daaf3b; text-decoration: none; }
+	.pv-note { font-size: 12px; color: #9db5a5; }
+</style>
+</head>
+<body class="pv-preview">
+	<header class="pv-header">
+		<div class="pv-header-inner">
+			<a class="pv-brand" href="https://www.silvertonbuildersmerchants.com/">SILVERTON <span>BUILDERS MERCHANTS</span></a>
+			<nav class="pv-nav">
+				<a href="https://www.silvertonbuildersmerchants.com/">Live site</a>
+				<a href="materials-calculator-hub.html">Calculator hub</a>
+				<a href="index.html">Preview index</a>
+			</nav>
+		</div>
+	</header>
+	<nav class="pv-breadcrumb"><div class="pv-breadcrumb-inner">		<a href="https://www.silvertonbuildersmerchants.com/">Home</a> &rsaquo; 		<a href="https://www.silvertonbuildersmerchants.com/page/materials-calculator">Materials Calculator</a> &rsaquo; <strong>Paving Calculator</strong></div></nav>
+	<h1 class="pv-h1">Paving Calculator</h1>
+	<main class="pv-main">
+
+<div class="calc-page">
+
+<div class="calculator-container calc-guide">
+	<p class="calc-back"><a href="materials-calculator-hub.html">&larr; All materials calculators</a></p>
+	<p>Planning a new patio or path? Our paving calculator works out how many slabs you will need from the width and length of the area. Choose your own slab size in millimetres &mdash; 600 x 600mm slabs are pre-filled &mdash; or tick <strong>I want to use Patio Packs</strong> if you are buying a mixed-size project pack, where one of each slab size covers approximately 1.17m&sup2;. Once you know your quantities, browse porcelain, natural stone and concrete paving from Silverton Builders Merchants, with free local delivery across Essex, Suffolk, Norfolk and Cambridgeshire when you spend over &pound;20.</p>
+</div>
+
+<div class="calculator-container" style="text-align: center;"><img src="https://www.silvertonbuildersmerchants.com/file/Dimensions.png" alt="Diagram showing how to measure the width and length of a patio area in metres" style="max-width: 100%;"></div>
+
+<div class="calculator-container" style="text-align: center;">
+	<div class="tabcontent active" id="pavingCalculator" data-calculator-type="paving" style="display: block;">
+
+		<h3>Paving Calculator</h3>
+		<label for="pavingWidth">Width (m):</label>
+		<input type="number" id="pavingWidth" name="pavingWidth" value="1" min="0">
+		<br>
+		<br>
+		<label for="pavingLength">Length (m):</label>
+		<input type="number" id="pavingLength" name="pavingLength" value="1" min="0">
+		<br>
+		<br>
+		<div>
+			<input type="checkbox" id="usePatioPacksCheckbox" value="on">
+			<label for="usePatioPacksCheckbox">I want to use Patio Packs</label>
+		</div>
+		<br>
+		<br>
+		<div id="customSizeInputs">
+			<label for="slabWidth">Slab Width (mm):</label>
+			<input type="number" id="slabWidth" name="slabWidth" value="600" min="0">
+			<br>
+			<br>
+			<label for="slabHeight">Slab Height (mm):</label>
+			<input type="number" id="slabHeight" name="slabHeight" value="600" min="0">
+		</div>
+		<br>
+		<br>
+		<button class="button-calculate" onclick="runPavingCalc()" type="button">Calculate</button>
+		<div class="grey-container" id="pavingResult">
+			<div class="result">Area: <strong>1.00 m&sup2;</strong>
+				<br>Slabs Needed: <strong>3 slabs needed.</strong>
+				<div class="grey-box" style="margin-top: -10px; font-size: 0.8em;"><em>𝓲 &nbsp; Result does not include joint.</em></div></div>
+			<div class="grey-box" style="margin-top: -10px; font-size: 15px;"><em><a href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/paving">Click here to browse <strong>Paving Slabs</strong></a></em></div></div>
+
+		<div class="calc-shop">
+			<h3>Shop paving</h3>
+			<div class="calc-cards">
+				<a class="calc-card" href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/paving"><strong>All paving</strong><span>Every slab we stock, including setts and accessories.</span></a>
+				<a class="calc-card" href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/paving/porcelain"><strong>Porcelain paving</strong><span>Clean, contemporary, low-maintenance slabs.</span></a>
+				<a class="calc-card" href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/paving/natural-stone"><strong>Natural stone paving</strong><span>Sandstone, limestone and slate with real texture.</span></a>
+				<a class="calc-card" href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/paving/concrete"><strong>Concrete paving</strong><span>Affordable peak, textured and utility slabs.</span></a>
+			</div>
+			<p class="calc-products">Popular right now: <a href="https://www.silvertonbuildersmerchants.com/product/category/p000001">Bradstone Sandstone Mixed Sizes &mdash; Fossil Buff</a> &middot; <a href="https://www.silvertonbuildersmerchants.com/product/category/p900466">Sandstone Kandla Grey 900 x 600</a> &middot; <a href="https://www.silvertonbuildersmerchants.com/product/category/p900624">Black Limestone 900 x 600mm</a> &mdash; plus <a href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/joint-compounds">joint compounds</a> and <a href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/paving/paving-accessories">paving accessories</a> to finish the job.</p>
+		</div>
+
+		<p class="calc-note">If you have any questions or think something is wrong, <a href="https://www.silvertonbuildersmerchants.com/page/customer-services/contact-us">give us a call</a> on <a href="tel:01255446920"><strong>01255 446920</strong></a>. This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
+	</div>
+</div>
+
+<div class="calculator-container calc-guide">
+	<h2>How to use the paving calculator</h2>
+	<ol>
+		<li>Enter the <strong>width</strong> and <strong>length</strong> of your patio or path, in metres.</li>
+		<li>For single-size slabs, enter the <strong>slab width</strong> and <strong>height</strong> in millimetres (600 x 600mm is pre-filled).</li>
+		<li>If you are buying a mixed-size <strong>patio pack</strong>, tick <strong>I want to use Patio Packs</strong> instead &mdash; the custom size fields are hidden.</li>
+		<li>Press <strong>Calculate</strong> to see the area in square metres and the number of slabs needed.</li>
+		<li>For L-shaped or irregular areas, split the space into rectangles, calculate each one separately and add the results together.</li>
+	</ol>
+</div>
+
+<div class="calculator-container calc-guide">
+	<h2>What the paving calculator assumes</h2>
+	<div class="assumptions">
+		<ul>
+			<li>Slab counts divide the area by the face area of one slab, assuming slabs are laid <strong>edge to edge with no joint gap</strong>.</li>
+			<li><strong>Patio pack mode</strong> assumes one of each slab size covers <strong>1.17m&sup2;</strong>. The mix of sizes in delivered packs may vary, but the total meterage is correct.</li>
+			<li>The default slab size is <strong>600 x 600mm</strong> &mdash; change it to match your product.</li>
+			<li>No <strong>wastage allowance</strong> is included. Add 5&ndash;10% for cuts and breakage, and more for diagonal layouts or irregular shapes.</li>
+			<li>Areas are treated as simple <strong>rectangles</strong>; break irregular spaces into rectangles and calculate each separately.</li>
+		</ul>
+	</div>
+
+	<h2>Frequently asked questions</h2>
+	<details class="faq-item">
+		<summary>How many 600 x 600mm slabs do I need per square metre?</summary>
+		<p>A 600 x 600mm slab covers 0.36m&sup2;, so allow three slabs per square metre. The calculator rounds up to whole slabs for you.</p>
+	</details>
+	<details class="faq-item">
+		<summary>What is a patio pack?</summary>
+		<p>A patio or project pack contains a fixed mix of slab sizes. The calculator assumes one of each size covers about 1.17m&sup2;, so it tells you how many of each size you need.</p>
+	</details>
+	<details class="faq-item">
+		<summary>How much extra paving should I allow for wastage?</summary>
+		<p>Add 5&ndash;10% for cuts and breakage on straightforward layouts. Allow more for diagonal patterns, curves or irregularly shaped areas.</p>
+	</details>
+	<details class="faq-item">
+		<summary>Does the calculator allow for joints between slabs?</summary>
+		<p>No &mdash; the result assumes slabs laid edge to edge. Joint gaps mean you need slightly fewer slabs, so the calculator errs on the safe side.</p>
+	</details>
+	<details class="faq-item">
+		<summary>What else do I need to lay a patio?</summary>
+		<p>A compacted sub-base, a bedding mortar and jointing compound, plus a plate compactor and basic laying tools. See our <a href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/paving/paving-accessories">paving accessories</a> and <a href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/joint-compounds">joint compounds</a> ranges.</p>
+	</details>
+	<details class="faq-item">
+		<summary>Porcelain or natural stone paving &mdash; which is better?</summary>
+		<p>Porcelain is low maintenance with a clean, contemporary finish; natural stone has more texture and character. Our blog post, <a href="https://www.silvertonbuildersmerchants.com/articles/blog/31/porcelain-vs-natural-stone-paving-which-is-right-for-you">Porcelain vs Natural Stone Paving</a>, compares the two in detail.</p>
+	</details>
+
+	<h2>Other materials calculators</h2>
+	<div class="calc-cards">
+		<a class="calc-card" href="materials-calculator-hub.html"><strong>All materials calculators</strong><span>The Silverton calculator hub, with every tool in one place.</span></a>
+		<a class="calc-card" href="brick-and-block-calculator.html"><strong>Brick &amp; block calculator</strong><span>Bricks, blocks, sand and cement for single or double skin walls.</span></a>
+		<a class="calc-card" href="decorative-stone-calculator.html"><strong>Decorative stone calculator</strong><span>Gravel and stone coverage by area or depth, in every bag size.</span></a>
+	</div>
+</div>
+
+</div>
+<!-- /calc-page -->
+
+<script>
+	/* ===== Calculator tracking — pushes to the GTM dataLayer. See tracking.md ===== */
+	(function () {
+		window.SilvertonCalc = {
+			started: {},
+			TYPE_BY_CONTAINER: {
+				brickBlockCalculator: 'brick_and_block',
+				areaVolumeCalculator: 'decorative_stone',
+				tileCalculator: 'roof_tiles',
+				pavingCalculator: 'paving'
+			},
+			typeForLink: function (link) {
+				var owner = link.closest ? link.closest('.tabcontent,[data-calculator-type]') : null;
+				if (!owner) { return 'unknown'; }
+				return (owner.dataset && owner.dataset.calculatorType) || this.TYPE_BY_CONTAINER[owner.id] || 'unknown';
+			},
+			push: function (data) {
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push(data);
+			},
+			start: function (type) {
+				if (this.started[type]) { return; }
+				this.started[type] = true;
+				this.push({ event: 'calculator_start', calculator_type: type });
+			},
+			complete: function (type, mode) {
+				var payload = { event: 'calculator_complete', calculator_type: type };
+				if (mode) { payload.calculator_mode = mode; }
+				this.push(payload);
+			},
+			error: function (type, message) {
+				this.push({ event: 'calculator_error', calculator_type: type, error_message: message });
+			}
+		};
+
+		/* product_or_category_click — delegated so links rendered inside
+		   calculator results are tracked too. */
+		document.addEventListener('click', function (ev) {
+			var link = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+			if (!link) { return; }
+			var url;
+			try { url = new URL(link.href, window.location.href); } catch (e) { return; }
+			var linkType = null;
+			if (url.pathname.indexOf('/category/') === 0) { linkType = 'category'; }
+			else if (url.pathname.indexOf('/product/') === 0) { linkType = 'product'; }
+			if (!linkType) { return; }
+			window.SilvertonCalc.push({
+				event: 'product_or_category_click',
+				calculator_type: window.SilvertonCalc.typeForLink(link),
+				link_url: url.href,
+				link_text: (link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 100),
+				link_type: linkType
+			});
+		});
+	})();
+</script>
+<script>
+	/* ===== Paving Calculator — calculation rules identical to the master
+	   calculator: area in m², custom slabs divided by face area with no joint
+	   allowance, patio packs at 1.17m² per size. New: input validation, the
+	   custom size fields now hide when Patio Packs is ticked (the toggle
+	   existed on the master page but was never wired up), and GA4 tracking. ===== */
+	var CALC_TYPE = 'paving';
+
+	function readNumber(id) {
+		var value = parseFloat(document.getElementById(id).value);
+		return (isFinite(value) && value > 0) ? value : null;
+	}
+
+	function showCalcError(message) {
+		document.getElementById('pavingResult').innerHTML =
+			'<div class="grey-box" style="color:#a33;"><b>Please check your inputs.</b><br>' + message + '</div>';
+	}
+
+	function toggleCustomSizeInputs() {
+		var usePatioPacksCheckbox = document.getElementById("usePatioPacksCheckbox");
+		var customSizeInputs = document.getElementById("customSizeInputs");
+
+		if (usePatioPacksCheckbox.checked) {
+			customSizeInputs.style.display = "none";
+		} else {
+			customSizeInputs.style.display = "block";
+		}
+	}
+
+	function calculatePaving() {
+		var width = readNumber('pavingWidth');
+		var length = readNumber('pavingLength');
+		if (width === null || length === null) {
+			var msg = 'Enter a width and length in metres, greater than zero.';
+			showCalcError(msg);
+			return { ok: false, message: msg };
+		}
+
+		var usePatioPacksCheckbox = document.getElementById("usePatioPacksCheckbox");
+
+		var totalArea = width * length;
+		var slabs;
+		var resultText;
+		var mode = usePatioPacksCheckbox.checked ? 'patio_packs' : 'custom_size';
+
+		if (usePatioPacksCheckbox.checked) {
+			// Calculate total meters needed by dividing the area by 1.17
+			slabs = totalArea / 1.17;
+			resultText = `Approx ${Math.ceil(slabs)} of each size required.`;
+		} else {
+			// Calculate slabs based on custom size inputs
+			var slabWidth = readNumber('slabWidth');
+			var slabHeight = readNumber('slabHeight');
+			if (slabWidth === null || slabHeight === null) {
+				var sizeMsg = 'Enter a slab width and height in millimetres, greater than zero.';
+				showCalcError(sizeMsg);
+				return { ok: false, message: sizeMsg };
+			}
+			slabs = totalArea / ((slabWidth / 1000) * (slabHeight / 1000)); // convert mm to meters
+			resultText = `${Math.ceil(slabs)} slabs needed.`;
+		}
+
+		var resultHtml = `<div class="result">Area: <b>${totalArea.toFixed(2)} m²</b><br>Slabs Needed: <b>${resultText}</b>`;
+		var disclaimerHtml = '';
+		if (usePatioPacksCheckbox.checked) {
+			disclaimerHtml = `<div class="grey-box" style="font-size: 0.8em;"><i>𝓲  Slab calculation based on 1 of each slab equating to 1.17m² - ordered slab distribution of sizes may vary but meterage will be correct.</i></div>`;
+		}
+		disclaimerHtml += `<div class="grey-box" style="margin-top: -10px; font-size: 0.8em;"><i>𝓲   Result does not include joint.</i></div></div>`;
+		disclaimerHtml += `<div class="grey-box" style="margin-top: -10px; font-size: 15px;"><i><a href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/paving">Click here to browse <b>Paving Slabs</b></a></i></div></div>`;
+		document.getElementById('pavingResult').innerHTML = resultHtml + disclaimerHtml;
+		return { ok: true, mode: mode };
+	}
+
+	function runPavingCalc() {
+		SilvertonCalc.start(CALC_TYPE);
+		var result = calculatePaving();
+		if (result.ok) {
+			SilvertonCalc.complete(CALC_TYPE, result.mode);
+		} else {
+			SilvertonCalc.error(CALC_TYPE, result.message);
+		}
+	}
+
+	/* Wiring — mirrors the master: the initial result is calculated on load
+	   (without tracking), inputs refresh as you type, and the Patio Packs
+	   checkbox recalculates immediately. */
+	var pavingInputs = document.querySelectorAll('#pavingCalculator input[type="number"]');
+	for (var i = 0; i < pavingInputs.length; i++) {
+		pavingInputs[i].addEventListener('input', runPavingCalc);
+	}
+	document.getElementById('usePatioPacksCheckbox').addEventListener('change', function () {
+		toggleCustomSizeInputs();
+		runPavingCalc();
+	});
+
+	// Initial calculation (no tracking event — nothing has been interacted with yet)
+	calculatePaving();
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": [
+		{
+			"@type": "Question",
+			"name": "How many 600 x 600mm slabs do I need per square metre?",
+			"acceptedAnswer": { "@type": "Answer", "text": "A 600 x 600mm slab covers 0.36m², so allow three slabs per square metre. The calculator rounds up to whole slabs for you." }
+		},
+		{
+			"@type": "Question",
+			"name": "What is a patio pack?",
+			"acceptedAnswer": { "@type": "Answer", "text": "A patio or project pack contains a fixed mix of slab sizes. The calculator assumes one of each size covers about 1.17m², so it tells you how many of each size you need." }
+		},
+		{
+			"@type": "Question",
+			"name": "How much extra paving should I allow for wastage?",
+			"acceptedAnswer": { "@type": "Answer", "text": "Add 5–10% for cuts and breakage on straightforward layouts. Allow more for diagonal patterns, curves or irregularly shaped areas." }
+		},
+		{
+			"@type": "Question",
+			"name": "Does the calculator allow for joints between slabs?",
+			"acceptedAnswer": { "@type": "Answer", "text": "No — the result assumes slabs laid edge to edge. Joint gaps mean you need slightly fewer slabs, so the calculator errs on the safe side." }
+		},
+		{
+			"@type": "Question",
+			"name": "What else do I need to lay a patio?",
+			"acceptedAnswer": { "@type": "Answer", "text": "A compacted sub-base, a bedding mortar and jointing compound, plus a plate compactor and basic laying tools." }
+		},
+		{
+			"@type": "Question",
+			"name": "Porcelain or natural stone paving — which is better?",
+			"acceptedAnswer": { "@type": "Answer", "text": "Porcelain is low maintenance with a clean, contemporary finish; natural stone has more texture and character." }
+		}
+	]
+}
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.silvertonbuildersmerchants.com/" },
+		{ "@type": "ListItem", "position": 2, "name": "Materials Calculator", "item": "materials-calculator-hub.html" },
+		{ "@type": "ListItem", "position": 3, "name": "Paving Calculator" }
+	]
+}
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "WebApplication",
+	"name": "Paving Calculator",
+	"url": "paving-calculator.html",
+	"applicationCategory": "UtilityApplication",
+	"operatingSystem": "Any",
+	"browserRequirements": "Requires JavaScript",
+	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+	"publisher": { "@type": "Organization", "name": "Silverton Builders Merchants", "url": "https://www.silvertonbuildersmerchants.com/" }
+}
+</script>
+
+	</main>
+	<footer class="pv-footer">
+		<div class="pv-footer-inner">
+			<p><strong>Silverton Builders Merchants Ltd</strong> &middot; Devereux Farm, Walton Road, Kirby-le-Soken, Frinton-on-Sea, Essex CO13 0DA</p>
+			<p>Webshop support: <a href="tel:01255446920">01255 446920</a> &middot; <a href="mailto:info@silverton.uk.com">info@silverton.uk.com</a> &middot; <a href="https://www.silvertonbuildersmerchants.com/page/branches/branch-finder">Branch finder</a></p>
+			<p class="pv-note">Local preview build for QA — this file is not part of silvertonbuildersmerchants.com. Deployment-ready blocks are in <code>cms-snippets/</code>; metadata and tracking setup are documented in <code>metadata.md</code> and <code>tracking.md</code>.</p>
+		</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,618 @@
+# -*- coding: utf-8 -*-
+"""Materials Calculator hub — updated master page template (@@BASE@@ tokens)."""
+
+HUB = {
+    "slug": "materials-calculator",
+    "snippet_name": "materials-calculator-hub.html",
+    "preview_name": "materials-calculator-hub.html",
+    "page_name": "Materials Calculator",
+    "h1": "Materials Calculator",
+    "title": "Materials Calculator | Brick, Stone & Paving Calculators | Silverton",
+    "description": "Free building materials calculators: brick and block quantities with sand and cement, decorative stone coverage by bag size, and paving slab counts, from Silverton Builders Merchants.",
+    "og_image": "https://www.silvertonbuildersmerchants.com/images/ocw/l000145-extra-large.jpg",
+    "crumbs": [
+        ("Home", "https://www.silvertonbuildersmerchants.com/"),
+        ("Materials Calculator", None),
+    ],
+    "body": r"""
+<div class="calc-page">
+
+<div class="calculator-container">
+	<div class="materials-disclaimer">
+
+		<p>If you have any questions or think something is wrong, <a href="@@BASE@@/page/customer-services/contact-us">give us a call</a>:
+			<br><a href="tel:01255446920"><strong>01255 446920</strong>.</a></p>
+
+		<p><span style="color: #FF4C4C;">Note:</span> This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
+	</div></div>
+<div class="calculator-container" style="text-align: center;"><img src="@@BASE@@/file/Dimensions.png" alt="Diagram showing how to measure length, width, height and depth for the materials calculators" style="max-width: 100%;"></div>
+
+<div class="calculator-container calc-guide">
+	<div class="calc-hub-links">
+		<h2>Specialist materials calculators</h2>
+		<p>Each calculator now has its own page with full instructions, assumptions and answers to common questions:</p>
+		<div class="calc-cards">
+			<a class="calc-card" href="@@BASE@@/page/brick-and-block-calculator"><strong>Brick &amp; Block Calculator</strong><span>Bricks, blocks, sand and cement for single or double skin walls.</span></a>
+			<a class="calc-card" href="@@BASE@@/page/decorative-stone-calculator"><strong>Decorative Stone Calculator</strong><span>Gravel and stone coverage by area or depth, in every bag size.</span></a>
+			<a class="calc-card" href="@@BASE@@/page/paving-calculator"><strong>Paving Calculator</strong><span>Slab quantities for patios and paths, including patio packs.</span></a>
+		</div>
+	</div>
+</div>
+
+<div class="calculator-container" style="text-align: center;">
+	<div class="calculator-buttons" style="text-align: center;">
+		<button class="tab brick-block-tab active" onclick="openCalculator(event, 'brickBlockCalculator')" style="color: rgb(218, 175, 59);" type="button">Brick &amp; Block</button>
+		<button class="tab" onclick="openCalculator(event, 'areaVolumeCalculator')" style="color: rgb(255, 255, 255);" type="button">Decorative Stone</button>
+		<button class="tab wide-tab" onclick="openCalculator(event, 'pavingCalculator')" style="color: rgb(255, 255, 255);" type="button">Paving</button>
+	</div>
+	<div class="tabcontent active" id="brickBlockCalculator" style="display: block;">
+
+		<h3>Brick &amp; Block Calculator</h3>
+		<div class="calculator-options">
+			<label class="switch active" id="singleSkinLabel" onclick="toggleSkin('single')">Single Skin Wall</label>
+			<label class="switch" id="doubleSkinLabel" onclick="toggleSkin('double')">Double Skin Wall</label>
+		</div>
+		<br>
+		<br>
+		<label for="length">Length of Wall (m):</label>
+		<input type="number" id="length" name="length" value="1" min="0">
+		<br>
+		<br>
+		<label for="height">Height of Wall (m):</label>
+		<input type="number" id="height" name="height" value="1" min="0">
+		<br>
+		<br>
+		<label for="brickSize">Brick/Block Size:</label>
+		<select id="brickSize" name="brickSize">
+			<option value="house">Standard Brick (215 x 65mm)</option>
+			<option value="block">Standard Block (440 x 215mm)</option>
+			<option value="custom">Custom</option>
+		</select>
+		<br>
+		<br>
+		<div id="customSize" style="display: none;">
+			<label for="brickWidth">Brick/Block Width (mm):</label>
+			<input type="number" id="brickWidth" name="brickWidth" value="" min="0">
+			<br>
+			<br>
+			<label for="brickHeight">Brick/Block Height (mm):</label>
+			<input type="number" id="brickHeight" name="brickHeight" value="" min="0">
+			<br>
+			<br>
+		</div>
+		<button class="button-calculate" onclick="runBrickBlockCalc()" type="button">Calculate</button>
+		<div style="background-color: #f0f0f0; border-radius: 7px; padding: 10px; margin-right: 20; margin-top: 20px; text-align: center;"><span style="font-size: 14px;"><em>If you change any of the variables or from single to double skin, please press calculate again.</em></span></div>
+		<div class="grey-container" id="brickBlockResult">
+			<br>
+			<br>
+			<table id="resultsTable" style="margin-top: 20px;"></table>
+			<div class="grey-box" style="margin-top: 0px; margin-bottom: -10px;"><em>Total includes 10mm mortar joint</em></div>
+			<div class="grey-box" style="margin-top: 0px;"><em><a href="@@BASE@@/category/building-supplies/bricks">Click here to browse <strong>bricks</strong></a> or <strong><a href="@@BASE@@/category/building-supplies/blocks">blocks</a></strong></em></div></div>
+		<p class="calc-more-link"><em>See the full <a href="@@BASE@@/page/brick-and-block-calculator">Brick &amp; Block Calculator guide</a> for instructions, assumptions and FAQs.</em></p>
+	</div>
+	<div class="tabcontent" id="areaVolumeCalculator" style="display: none;">
+
+		<h3>Area &amp; Volume Calculator</h3>
+		<label for="widthAV">Width (m):</label>
+		<input type="number" id="widthAV" name="widthAV" value="1" min="0">
+		<br>
+		<br>
+		<label for="heightAV">Length (m):</label>
+		<input type="number" id="heightAV" name="heightAV" value="1" min="0">
+		<br>
+		<br>
+		<label>
+			<input type="checkbox" id="volumeCheckboxAV" onclick="toggleVolumeInputAV()" value="on">&nbsp;Calculate Volume </label>
+		<br>
+		<br>
+		<div class="volumeInput" id="volumeInputAV" style="display: none;">
+			<label for="depthAV">Depth (mm):</label>
+			<input type="number" id="depthAV" name="depthAV" value="1" min="0">
+			<br>
+			<br>
+		</div>
+		<button class="button-calculate" id="calculateAreaButton" onclick="handleAVButton()" type="button">Calculate Area</button>
+		<br>
+		<div class="grey-container" id="areaVolumeResult" style="font-size: 16px;">
+			<br>
+		</div>
+		<p class="calc-more-link"><em>See the full <a href="@@BASE@@/page/decorative-stone-calculator">Decorative Stone Calculator guide</a> for instructions, assumptions and FAQs.</em></p>
+	</div>
+	<div class="tabcontent" id="tileCalculator" style="display: none;">
+
+		<h3>Tile Calculator</h3>
+		<label for="tileWidth">Roof Width (m):</label>
+		<input type="number" id="tileWidth" name="tileWidth" value="1" min="0">
+		<br>
+		<br>
+		<label for="tileHeight">Roof Height (m):</label>
+		<input type="number" id="tileHeight" name="tileHeight" value="1" min="0">
+		<br>
+		<br>
+		<label for="tileSize">Tile Size:</label>
+		<select id="tileSize" name="tileSize">
+			<option value="100x100">100 x 100</option>
+			<option value="108x108">108 x 108</option>
+			<option value="150x150">150 x 150</option>
+			<option value="200x100">200 x 100</option>
+			<option value="200x150">200 x 150</option>
+			<option value="225x150">225 x 150</option>
+			<option value="225x225">225 x 225</option>
+			<option value="250x150">250 x 150</option>
+			<option value="250x250">250 x 250</option>
+			<option value="300x200">300 x 200</option>
+			<option value="300x300">300 x 300</option>
+			<option value="330x330">330 x 330</option>
+			<option value="other">Other</option>
+		</select>
+		<br>
+		<br>
+		<div id="customTileSize" style="display: none; margin-bottom: 20px;">
+			<label for="customTileWidth">Custom Tile Width (mm):</label>
+			<input type="number" id="customTileWidth" name="customTileWidth" value="" min="0">
+			<br>
+			<br>
+			<label for="customTileHeight">Custom Tile Height (mm):</label>
+			<input type="number" id="customTileHeight" name="customTileHeight" value="" min="0">
+		</div>
+		<button class="button-calculate" onclick="runTileCalc()" type="button">Calculate</button>
+		<div class="grey-container" id="tileResult">
+			<br>
+		</div>
+	</div>
+	<div class="tabcontent" id="pavingCalculator" style="display: none;">
+
+		<h3>Paving Calculator</h3>
+		<label for="pavingWidth">Width (m):</label>
+		<input type="number" id="pavingWidth" name="pavingWidth" value="1" min="0">
+		<br>
+		<br>
+		<label for="pavingLength">Length (m):</label>
+		<input type="number" id="pavingLength" name="pavingLength" value="1" min="0">
+		<br>
+		<br>
+		<div>
+			<input type="checkbox" id="usePatioPacksCheckbox" value="on">
+			<label for="usePatioPacksCheckbox">I want to use Patio Packs</label>
+		</div>
+		<br>
+		<br>
+		<div id="customSizeInputs">
+			<label for="slabWidth">Slab Width (mm):</label>
+			<input type="number" id="slabWidth" name="slabWidth" value="600" min="0">
+			<br>
+			<br>
+			<label for="slabHeight">Slab Height (mm):</label>
+			<input type="number" id="slabHeight" name="slabHeight" value="600" min="0">
+		</div>
+		<br>
+		<br>
+		<button class="button-calculate" onclick="runPavingCalc()" type="button">Calculate</button>
+		<div class="grey-container" id="pavingResult">
+			<div class="result">Area: <strong>1.00 m&sup2;</strong>
+				<br>Slabs Needed: <strong>3 slabs needed.</strong>
+				<div class="grey-box" style="margin-top: -10px; font-size: 0.8em;"><em>𝓲 &nbsp; Result does not include joint.</em></div></div>
+			<div class="grey-box" style="margin-top: -10px; font-size: 15px;"><em><a href="@@BASE@@/category/landscaping-and-gardening/paving">Click here to browse <strong>Paving Slabs</strong></a></em></div></div>
+		<p class="calc-more-link"><em>See the full <a href="@@BASE@@/page/paving-calculator">Paving Calculator guide</a> for instructions, assumptions and FAQs.</em></p>
+	</div>
+
+	<script>
+		/* ===== Materials Calculator hub — consolidated from the original page.
+		   Calculation rules are unchanged. New: links to the specialist
+		   calculator pages, input validation and GA4 tracking events fired
+		   per calculator type (calculator_start / calculator_complete /
+		   calculator_error / product_or_category_click). ===== */
+
+		var TYPE_BY_CONTAINER = {
+			brickBlockCalculator: 'brick_and_block',
+			areaVolumeCalculator: 'decorative_stone',
+			tileCalculator: 'roof_tiles',
+			pavingCalculator: 'paving'
+		};
+		var STATUS_KEY_BY_CONTAINER = {
+			brickBlockCalculator: 'brickBlock',
+			areaVolumeCalculator: 'areaVolume',
+			tileCalculator: 'tiles',
+			pavingCalculator: 'paving'
+		};
+
+		function readNumber(id) {
+			var value = parseFloat(document.getElementById(id).value);
+			return (isFinite(value) && value > 0) ? value : null;
+		}
+
+		function showCalcError(resultId, message) {
+			document.getElementById(resultId).innerHTML =
+				'<div class="grey-box" style="color:#a33;"><b>Please check your inputs.</b><br>' + message + '</div>';
+		}
+
+		/* ---------- Tab switching (unchanged from the original page) ---------- */
+		function openCalculator(evt, calculatorName) {
+			var i, tabcontent, tablinks;
+
+			// Hide all tab content
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+
+			// Deactivate all tab links and set text color to white
+			tablinks = document.getElementsByClassName("tab");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].classList.remove("active");
+				tablinks[i].style.color = "#ffffff"; // Set text color to white
+			}
+
+			// Show the selected tab content and activate the corresponding tab link
+			document.getElementById(calculatorName).style.display = "block";
+			evt.currentTarget.classList.add("active");
+			evt.currentTarget.style.color = "#daaf3b"; // Set text color of active tab to yellow
+		}
+
+		/* ---------- Brick & Block (calculation rules unchanged) ---------- */
+		function toggleSkin(skin) {
+			var singleSkinLabel = document.getElementById("singleSkinLabel");
+			var doubleSkinLabel = document.getElementById("doubleSkinLabel");
+
+			if (skin === 'single') {
+				singleSkinLabel.classList.add('active');
+				doubleSkinLabel.classList.remove('active');
+			} else {
+				doubleSkinLabel.classList.add('active');
+				singleSkinLabel.classList.remove('active');
+			}
+		}
+
+		function toggleCustomSize() {
+			var brickSize = document.getElementById("brickSize").value;
+			var customSize = document.getElementById("customSize");
+			if (brickSize === 'custom') {
+				customSize.style.display = "block";
+			} else {
+				customSize.style.display = "none";
+			}
+		}
+
+		function calculateBrickBlock() {
+			var length = readNumber('length');
+			var height = readNumber('height');
+			if (length === null || height === null) {
+				var msg = 'Enter a wall length and height in metres, greater than zero.';
+				showCalcError('brickBlockResult', msg);
+				return { ok: false, message: msg };
+			}
+
+			var brickSize = document.getElementById('brickSize').value;
+			var multiplier = 1;
+
+			var doubleSkinLabel = document.getElementById('doubleSkinLabel');
+			if (doubleSkinLabel.classList.contains('active')) {
+				multiplier = 2;
+			}
+
+			var bricks, sand, cement;
+
+			if (brickSize === 'house') {
+				bricks = Math.ceil((length * height) * 60 * multiplier);
+				sand = Math.ceil(bricks * 1);
+				cement = Math.ceil(bricks / 6);
+			} else if (brickSize === 'block') {
+				bricks = Math.ceil((length * height) * 10 * multiplier);
+				sand = Math.ceil((bricks / 10) * 20);
+				cement = Math.ceil((bricks / 10) * 4);
+			} else if (brickSize === 'custom') {
+				var brickWidth = readNumber('brickWidth');
+				var brickHeight = readNumber('brickHeight');
+				if (brickWidth === null || brickHeight === null) {
+					var customMsg = 'Enter a custom brick or block width and height in millimetres, greater than zero.';
+					showCalcError('brickBlockResult', customMsg);
+					return { ok: false, message: customMsg };
+				}
+				bricks = Math.ceil((length * height) / ((brickWidth / 1000) * (brickHeight / 1000)) * multiplier);
+				sand = Math.ceil(bricks * 1);
+				cement = Math.ceil(bricks / 6);
+			} else {
+				return { ok: false, message: 'Unknown brick/block size option.' };
+			}
+
+			var bulkBags = Math.floor(sand / 850); // Calculate number of bulk bags (850 kg)
+			var miniBags = Math.floor((sand % 850) / 425); // Calculate number of mini bulk bags (425 kg)
+			var smallBags = Math.ceil(((sand % 850) % 425) / 25); // Calculate number of small plastic bags (25 kg)
+
+			var resultHtml = `
+        <table style="width: 100%; margin: 0 auto; border-collapse: collapse;">
+            <tr>
+                <th style="border: 1px solid #ddd; padding: 8px;">Material</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Quantity</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Total Bags</th>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">Bricks/Blocks</td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><b>${bricks}</b></td>
+                <td style="border: 1px solid #ddd; padding: 8px;">-</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">Sand (kg)</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">${sand}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><b>${bulkBags > 0 ? bulkBags + ' bulk bag(s)' : ''} ${miniBags > 0 ? miniBags + ' mini bag(s)' : ''} ${smallBags > 0 ? smallBags + ' small plastic bag(s)' : ''}</b></td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">Cement(kg)</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">${cement}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><b>${Math.ceil(cement / 25)} bag(s)</b></td>
+            </tr>
+        </table>
+        <div class="grey-box" style="margin-bottom: -10px">
+            <i>Total includes 10 mm mortar joint</i>
+        </div>
+        <div class="grey-box" style="margin-top: 0px;"><em>Click here to browse <b><a href="@@BASE@@/category/building-supplies/bricks">bricks</a></b> or <b><a href="@@BASE@@/category/building-supplies/blocks">blocks</a></b></em></div>`;
+			document.getElementById("brickBlockResult").innerHTML = resultHtml;
+			return { ok: true };
+		}
+
+		/* ---------- Area & Volume / Decorative Stone (rules unchanged) ---------- */
+		function calculateAreaAV() {
+			var width = readNumber('widthAV');
+			var height = readNumber('heightAV');
+			if (width === null || height === null) {
+				var msg = 'Enter a width and length in metres, greater than zero.';
+				showCalcError('areaVolumeResult', msg);
+				return { ok: false, message: msg };
+			}
+			var area = width * height;
+			document.getElementById('areaVolumeResult').innerHTML = "<br>Area: <span><strong>" + area.toFixed(2) + " square meters</strong></span>";
+			return { ok: true };
+		}
+
+		function calculateVolumeAV() {
+			var width = readNumber('widthAV');
+			var height = readNumber('heightAV');
+			var depth = readNumber('depthAV');
+			if (width === null || height === null) {
+				var msg = 'Enter a width and length in metres, greater than zero.';
+				showCalcError('areaVolumeResult', msg);
+				return { ok: false, message: msg };
+			}
+			if (depth === null) {
+				var depthMsg = 'Enter a depth in millimetres, greater than zero.';
+				showCalcError('areaVolumeResult', depthMsg);
+				return { ok: false, message: depthMsg };
+			}
+
+			var volume = width * height * (depth / 1000); // Calculate volume in cubic meters
+			var totalWeightKg = volume / 0.6; // Convert volume from cubic meters to tonnes
+
+			var bulkBags = Math.floor(totalWeightKg / 0.85); // Calculate the number of bulk bags
+			var remainingWeightForMiniBags = totalWeightKg - bulkBags * 0.85; // Calculate remaining weight after bulk bags
+			var miniBags = Math.floor(remainingWeightForMiniBags / 0.425); // Calculate the number of mini bulk bags
+			var remainingWeightForSmallBags = (remainingWeightForMiniBags - miniBags * 0.425) * 1000; // Calculate remaining weight after mini bulk bags, converted back to kilograms
+			var smallBags = Math.ceil(remainingWeightForSmallBags / 20); // Calculate the number of small bags
+
+			// Build the result string for bag counts
+			var bagCounts = [];
+
+			if (bulkBags > 0) {
+				bagCounts.push(bulkBags + ' x bulk bag' + (bulkBags > 1 ? 's' : ''));
+			}
+
+			if (miniBags > 0) {
+				bagCounts.push(miniBags + ' x mini bulk bag' + (miniBags > 1 ? 's' : ''));
+			}
+
+			if (smallBags > 0) {
+				bagCounts.push(smallBags + ' x small bag' + (smallBags > 1 ? 's' : ''));
+			}
+
+			// Combine bag counts into a single sentence
+			var bagsResult = bagCounts.join(', ').replace(/, ([^,]*)$/, ' and $1');
+
+			// Display the results
+			var resultHtml = `
+        <div class="result">Volume: <b>${volume.toFixed(2)} m³</b></div>
+        <div class="result" style="margin-top: -10px;">Tonne: <b>${(volume / 0.6).toFixed(2)} T</b></div>
+        <div style="text-align: center;">
+            <div style="margin-bottom: 2px;"><b>For decorative stone coverage, you need a total of:</b></div>
+            <div>${bagsResult}</div>
+            <div style="font-size: 13px; margin-bottom: 10px; margin-top: 10px;">There are approx. 42 small decorative bags in a bulk bag</div>
+                <div style="font-style: italic; margin-top: 10px;"><a href="@@BASE@@/category/aggregates/decorative-stone">Click here to browse Decorative Stone</a></div>
+        </div>
+    `;
+
+			document.getElementById('areaVolumeResult').innerHTML = resultHtml;
+			return { ok: true };
+		}
+
+		function toggleVolumeInputAV() {
+			var volumeInput = document.getElementById("volumeInputAV");
+			var calculateAreaButton = document.getElementById("calculateAreaButton");
+			if (volumeInput.style.display === "none") {
+				volumeInput.style.display = "block";
+				calculateAreaButton.textContent = "Calculate Volume";
+			} else {
+				volumeInput.style.display = "none";
+				calculateAreaButton.textContent = "Calculate Area";
+			}
+			fireFor('areaVolumeCalculator', calculateAll().areaVolume, 'area');
+		}
+
+		/* ---------- Roof tiles (unchanged; the original page kept this
+		   calculator in the markup with no tab linking to it) ---------- */
+		function toggleCustomTileSize() {
+			var tileSize = document.getElementById("tileSize").value;
+			var customTileSize = document.getElementById("customTileSize");
+			if (tileSize === 'other') {
+				customTileSize.style.display = "block";
+			} else {
+				customTileSize.style.display = "none";
+			}
+		}
+
+		function calculateTiles() {
+			var width = parseFloat(document.getElementById("tileWidth").value);
+			var height = parseFloat(document.getElementById("tileHeight").value);
+			var tileSize = document.getElementById("tileSize").value;
+			var customTileWidth = parseFloat(document.getElementById("customTileWidth").value);
+			var customTileHeight = parseFloat(document.getElementById("customTileHeight").value);
+
+			if (tileSize === 'other') {
+				var tileArea = customTileWidth * customTileHeight / 1000000; // Convert mm^2 to m^2
+			} else {
+				var dimensions = tileSize.split("x");
+				var tileWidth = parseFloat(dimensions[0]);
+				var tileHeight = parseFloat(dimensions[1]);
+				var tileArea = tileWidth * tileHeight / 1000000; // Convert mm^2 to m^2
+			}
+
+			var totalTiles = (width * height) / tileArea;
+			var resultHtml = `<div class="result">Tiles Needed: <b>${Math.ceil(totalTiles)}</b><br><div style="padding: 10px; max-width: 92%; overflow-x: auto;"><i style="font-size: 0.9em;">Please note that this value does not include allowance for overlapping due to the different needs per type of roof tile.</i></div></div>`;
+			document.getElementById("tileResult").innerHTML = resultHtml;
+			return { ok: true };
+		}
+
+		/* ---------- Paving (rules unchanged) ---------- */
+		function toggleCustomSizeInputs() {
+			var usePatioPacksCheckbox = document.getElementById("usePatioPacksCheckbox");
+			var customSizeInputs = document.getElementById("customSizeInputs");
+
+			if (usePatioPacksCheckbox.checked) {
+				customSizeInputs.style.display = "none";
+			} else {
+				customSizeInputs.style.display = "block";
+			}
+		}
+
+		function calculatePaving() {
+			var width = readNumber('pavingWidth');
+			var length = readNumber('pavingLength');
+			if (width === null || length === null) {
+				var msg = 'Enter a width and length in metres, greater than zero.';
+				showCalcError('pavingResult', msg);
+				return { ok: false, message: msg };
+			}
+
+			var usePatioPacksCheckbox = document.getElementById("usePatioPacksCheckbox");
+
+			var totalArea = width * length;
+			var slabs;
+			var resultText;
+			var mode = usePatioPacksCheckbox.checked ? 'patio_packs' : 'custom_size';
+
+			if (usePatioPacksCheckbox.checked) {
+				// Calculate total meters needed by dividing the area by 1.17
+				slabs = totalArea / 1.17;
+				resultText = `Approx ${Math.ceil(slabs)} of each size required.`;
+			} else {
+				// Calculate slabs based on custom size inputs
+				var slabWidth = readNumber('slabWidth');
+				var slabHeight = readNumber('slabHeight');
+				if (slabWidth === null || slabHeight === null) {
+					var sizeMsg = 'Enter a slab width and height in millimetres, greater than zero.';
+					showCalcError('pavingResult', sizeMsg);
+					return { ok: false, message: sizeMsg };
+				}
+				slabs = totalArea / ((slabWidth / 1000) * (slabHeight / 1000)); // convert mm to meters
+				resultText = `${Math.ceil(slabs)} slabs needed.`;
+			}
+
+			var resultHtml = `<div class="result">Area: <b>${totalArea.toFixed(2)} m²</b><br>Slabs Needed: <b>${resultText}</b>`;
+			var disclaimerHtml = '';
+			if (usePatioPacksCheckbox.checked) {
+				disclaimerHtml = `<div class="grey-box" style="font-size: 0.8em;"><i>𝓲  Slab calculation based on 1 of each slab equating to 1.17m² - ordered slab distribution of sizes may vary but meterage will be correct.</i></div>`;
+			}
+			disclaimerHtml += `<div class="grey-box" style="margin-top: -10px; font-size: 0.8em;"><i>𝓲   Result does not include joint.</i></div></div>`;
+			disclaimerHtml += `<div class="grey-box" style="margin-top: -10px; font-size: 15px;"><i><a href="@@BASE@@/category/landscaping-and-gardening/paving">Click here to browse <b>Paving Slabs</b></a></i></div></div>`;
+			document.getElementById('pavingResult').innerHTML = resultHtml + disclaimerHtml;
+			return { ok: true, mode: mode };
+		}
+
+		/* ---------- Recalculate every calculator, exactly as the original
+		   page did whenever any input changed ---------- */
+		function calculateAll() {
+			return {
+				brickBlock: calculateBrickBlock(),
+				areaVolume: calculateAreaAV(),
+				tiles: calculateTiles(),
+				paving: calculatePaving()
+			};
+		}
+
+		/* ---------- GA4 event helpers ---------- */
+		function currentSkinMode() {
+			return document.getElementById('doubleSkinLabel').classList.contains('active') ? 'double_skin' : 'single_skin';
+		}
+
+		function currentPavingMode() {
+			return document.getElementById('usePatioPacksCheckbox').checked ? 'patio_packs' : 'custom_size';
+		}
+
+		function fireFor(containerId, status, modeOverride) {
+			var type = TYPE_BY_CONTAINER[containerId];
+			if (!type) { return; }
+			SilvertonCalc.start(type);
+			var mode = modeOverride !== undefined ? modeOverride :
+				(containerId === 'brickBlockCalculator' ? currentSkinMode() :
+					containerId === 'areaVolumeCalculator' ? 'area' :
+					containerId === 'pavingCalculator' ? currentPavingMode() : undefined);
+			if (status && status.ok) {
+				SilvertonCalc.complete(type, mode);
+			} else if (status) {
+				SilvertonCalc.error(type, status.message);
+			}
+		}
+
+		function runBrickBlockCalc() {
+			fireFor('brickBlockCalculator', calculateBrickBlock());
+		}
+
+		function runTileCalc() {
+			calculateTiles(); // unreachable from the tab bar; kept as the original page had it
+		}
+
+		function runPavingCalc() {
+			fireFor('pavingCalculator', calculatePaving());
+		}
+
+		function handleAVButton() {
+			var volumeMode = document.getElementById('volumeCheckboxAV').checked;
+			var status = volumeMode ? calculateVolumeAV() : calculateAreaAV();
+			fireFor('areaVolumeCalculator', status, volumeMode ? 'volume' : 'area');
+		}
+
+		/* ---------- Wiring ---------- */
+		document.getElementById('brickSize').addEventListener('change', function () {
+			toggleCustomSize();
+			fireFor('brickBlockCalculator', calculateAll().brickBlock);
+		});
+		document.getElementById('tileSize').addEventListener('change', toggleCustomTileSize);
+
+		var hubInputs = document.querySelectorAll('.tabcontent input[type="number"]');
+		for (var i = 0; i < hubInputs.length; i++) {
+			(function (input) {
+				input.addEventListener('input', function () {
+					var container = input.closest('.tabcontent');
+					if (!container) { return; }
+					var statuses = calculateAll(); // original behaviour: every calculator refreshes
+					fireFor(container.id, statuses[STATUS_KEY_BY_CONTAINER[container.id]]);
+				});
+			})(hubInputs[i]);
+		}
+
+		/* The original page bound only calculatePaving to this checkbox; the
+		   toggleCustomSizeInputs function existed but was never wired up. It
+		   now hides the custom size fields too — results are unchanged. */
+		document.getElementById('usePatioPacksCheckbox').addEventListener('change', function () {
+			toggleCustomSizeInputs();
+			runPavingCalc();
+		});
+
+		/* Initial state — same as the original page (no tracking events until
+		   the visitor interacts) */
+		calculatePaving();
+		document.querySelector('.tab').click();
+	</script>
+</div>
+
+</div>
+<!-- /calc-page -->
+""",
+}

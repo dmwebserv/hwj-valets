@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Decorative Stone Calculator | Silverton Builders Merchants</title>
+	<meta name="description" content="Work out how much decorative stone or gravel you need by area and depth, with coverage in tonnes, bulk bags, mini bulk bags and small bags. Free calculator from Silverton.">
+	<link rel="canonical" href="https://www.silvertonbuildersmerchants.com/page/decorative-stone-calculator">
+	<meta name="robots" content="noindex">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Silverton Builders Merchants">
+	<meta property="og:title" content="Decorative Stone Calculator | Silverton Builders Merchants">
+	<meta property="og:description" content="Work out how much decorative stone or gravel you need by area and depth, with coverage in tonnes, bulk bags, mini bulk bags and small bags. Free calculator from Silverton.">
+	<meta property="og:url" content="https://www.silvertonbuildersmerchants.com/page/decorative-stone-calculator">
+	<meta property="og:image" content="https://www.silvertonbuildersmerchants.com/images/ocw/l000145-extra-large.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+	/* One white card holds the whole page; sections inside it are transparent
+	   so the content reads as a single card on the site's #f5f5f5 background.
+	   (The original code forced a page-wide white body background and split
+	   the content into lots of separate white boxes — both removed.) */
+	.calc-page {
+		font-family: 'Poppins', sans-serif;
+		color: #18452e;
+		background-color: #ffffff;
+		border-radius: 16px;
+		padding: 30px 28px 10px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+		margin: 20px auto;
+	}
+
+	@media (max-width: 640px) {
+		.calc-page {
+			border-radius: 12px;
+			padding: 16px 12px 6px;
+			margin: 12px auto;
+		}
+	}
+
+	.calculator-container {
+		background: none;
+		border-radius: 0;
+		padding: 0;
+		box-shadow: none;
+		overflow: visible;
+		position: static;
+		margin: 0 0 30px;
+	}
+
+	@media (max-width: 992px) {
+		/* Adjust this breakpoint as needed */
+		.fixed-box {
+			position: static;
+			/* Change to static so it appears underneath the calculator */
+			width: auto;
+			/* Adjust width as needed */
+			margin-top: 20px;
+			/* Add margin to separate it from the calculator */
+			margin-bottom: 20px;
+			/* Add margin to separate it from other content */
+			text-align: center;
+		}
+	}
+
+	.materials-heading {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 0px;
+	}
+
+	.materials-disclaimer {
+		background-color: #f0f0f0;
+		border-radius: 10px;
+		padding: 10px;
+		margin-bottom: 20px;
+		text-align: center;
+		max-width: 100%;
+		/* Limiting the width */
+		overflow-x: auto;
+		/* Adding horizontal scrollbar if needed */
+	}
+
+	.materials-disclaimer p {
+		color: #666;
+		font-size: 14px;
+	}
+
+	.calculator-buttons {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 20px;
+		flex-wrap: wrap;
+	}
+
+	.calculator-buttons .tab {
+		flex: 0 0 calc(50% - 10px);
+		background-color: #18452e;
+		color: #ffffff;
+		border: none;
+		padding: 25px 0;
+		cursor: pointer;
+		border-radius: 10px;
+		text-transform: uppercase;
+		transition: background-color 0.3s ease;
+		font-weight: 500;
+		margin-bottom: 10px;
+		font-family: 'Poppins', sans-serif;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.calculator-buttons .tab.active {
+		color: #daaf3b;
+	}
+
+	.calculator-buttons .tab:hover {
+		background-color: #3c6e4d;
+	}
+
+	.tabcontent {
+		width: 100%;
+		display: none;
+		padding: 20px;
+		border-radius: 10px;
+		background-color: #f9f9f9;
+		margin-top: 10px;
+		text-align: center;
+	}
+
+	.tabcontent.active {
+		display: block;
+	}
+
+	.tabcontent input[type="number"],
+	.tabcontent select {
+		width: 220px;
+		max-width: 100%;
+		padding: 9px 12px;
+		border: 1px solid #cfd6cf;
+		border-radius: 8px;
+		font-size: 15px;
+		font-family: inherit;
+		text-align: center;
+		background-color: #ffffff;
+		color: #18452e;
+	}
+
+	.result {
+		font-size: 18px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.grey-box {
+		background-color: #f0f0f0;
+		padding: 10px;
+		border-radius: 10px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		text-align: center;
+		max-width: 100%;
+		/* Limiting the width */
+		overflow-x: auto;
+		/* Adding horizontal scrollbar if needed */
+	}
+
+	.button-calculate {
+		background-color: #18452e;
+		color: #fff;
+		border: none;
+		padding: 2px 15px;
+		cursor: pointer;
+		border-radius: 10px;
+		text-transform: uppercase;
+		transition: background-color 0.3s ease;
+		font-weight: 500;
+		margin-bottom: 10px;
+		font-family: 'Poppins', sans-serif;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.button-calculate:hover {
+		background-color: #3c6e4d;
+	}
+
+	.small-text {
+		font-size: smaller;
+	}
+
+	.grey-container {
+		background-color: #f0f0f0;
+		padding: 10px;
+		/* Add padding */
+		border-radius: 10px;
+		margin-top: 20px;
+		margin-right: 0;
+		text-align: center;
+		max-width: 100%;
+		/* Limiting the width */
+		overflow-x: auto;
+		/* Adding horizontal scrollbar if needed */
+	}
+
+	.switch.active {
+		color: #ffffff;
+		background-color: #2ecc71;
+	}
+
+	.calculator-options {
+		display: flex;
+		justify-content: space-between;
+		width: 60%;
+		max-width: 480px;
+		margin: 0 auto;
+	}
+
+	.calculator-options .switch {
+		flex: 1;
+		text-align: center;
+		cursor: pointer;
+		background-color: #f0f0f0;
+		border-radius: 5px;
+		padding: 10px;
+		transition: background-color 0.3s ease;
+	}
+
+	.calculator-options .switch.active {
+		background-color: #daaf3b;
+		color: #ffffff;
+	}
+
+	.calculator-buttons .wide-tab {
+		flex-grow: 2;
+		/* Makes the tab span the width of two buttons */
+	}
+
+	.calculator-buttons {
+		display: flex;
+		/* Ensures buttons are laid out in a row */
+		gap: 10px;
+		/* Optional spacing between buttons */
+	}
+
+	.tab {
+		padding: 10px 20px;
+		/* Adjusts button size */
+		flex-grow: 1;
+		/* Ensures other buttons occupy equal space */
+		text-align: center;
+		border: 1px solid #ccc;
+		background-color: #f4f4f4;
+		cursor: pointer;
+	}
+
+	.tab.active {
+		background-color: #18452e;
+		font-weight: bold;
+	}
+
+	/* ===== Styles for the guide, shop links and FAQ sections on the
+	   specialist calculator pages (added 2026 — does not affect the
+	   original calculator controls above). ===== */
+	.calc-guide {
+		font-family: 'Poppins', sans-serif;
+		color: #333733;
+		text-align: left;
+	}
+
+	.calc-guide p {
+		line-height: 1.65;
+		font-size: 15px;
+		margin: 0 0 14px;
+	}
+
+	.calc-guide h2 {
+		color: #18452e;
+		font-size: 21px;
+		margin: 26px 0 14px;
+		text-align: left;
+		display: inline-block;
+		padding-bottom: 4px;
+		border-bottom: 3px solid #daaf3b;
+	}
+
+	.calc-guide h3 {
+		color: #18452e;
+		font-size: 17px;
+		margin: 0 0 10px;
+		text-align: left;
+	}
+
+	.calc-guide ol,
+	.calc-guide ul {
+		line-height: 1.65;
+		font-size: 15px;
+		padding-left: 22px;
+		margin: 0 0 14px;
+		text-align: left;
+	}
+
+	.calc-guide li {
+		margin-bottom: 8px;
+	}
+
+	.calc-guide img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.calc-note {
+		font-size: 13.5px;
+		color: #666;
+		text-align: center;
+		margin: 20px 0 2px;
+		line-height: 1.65;
+	}
+
+	.calc-note a {
+		color: #18452e;
+		font-weight: 600;
+	}
+
+	.calc-h1 {
+		color: #18452e;
+		font-size: 26px;
+		text-align: center;
+		margin: 6px 0 4px;
+		font-weight: 600;
+	}
+
+	.calc-back {
+		margin-bottom: 4px;
+	}
+
+	.calc-back a {
+		color: #18452e;
+		font-weight: 600;
+		text-decoration: none;
+		font-size: 14px;
+	}
+
+	.calc-back a:hover {
+		text-decoration: underline;
+	}
+
+	.calc-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 12px;
+		margin: 14px 0 18px;
+		padding: 0;
+	}
+
+	.calc-card {
+		background: #ffffff;
+		border: 1px solid #e2e6e2;
+		border-radius: 10px;
+		padding: 14px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.calc-card:hover {
+		border-color: #daaf3b;
+	}
+
+	.calc-card strong {
+		display: block;
+		color: #18452e;
+		font-size: 15.5px;
+		margin-bottom: 5px;
+		font-weight: 600;
+	}
+
+	.calc-card span {
+		display: block;
+		color: #5a615a;
+		font-size: 13.5px;
+		line-height: 1.5;
+	}
+
+	.calc-shop {
+		margin-top: 22px;
+		text-align: left;
+	}
+
+	.calc-products {
+		font-size: 14px;
+		color: #444a44;
+		line-height: 1.9;
+		margin: 0 0 4px;
+	}
+
+	.calc-products a {
+		color: #18452e;
+		font-weight: 600;
+	}
+
+	.assumptions {
+		background: #f0f0f0;
+		border-radius: 10px;
+		padding: 16px 20px;
+	}
+
+	.assumptions ul {
+		margin: 0;
+	}
+
+	.faq-item {
+		background: #f9f9f9;
+		border: 1px solid #e2e6e2;
+		border-radius: 10px;
+		margin-bottom: 10px;
+		overflow: hidden;
+	}
+
+	.faq-item summary {
+		cursor: pointer;
+		padding: 13px 16px;
+		font-weight: 600;
+		color: #18452e;
+		font-size: 15px;
+	}
+
+	.faq-item[open] summary {
+		border-bottom: 1px solid #e2e6e2;
+	}
+
+	.faq-item p {
+		padding: 12px 16px 14px;
+		margin: 0;
+	}
+
+	.calc-more-link {
+		text-align: center;
+		margin: 16px 0 2px;
+		font-size: 14.5px;
+	}
+
+	.calc-hub-links h2 {
+		margin-top: 0;
+	}
+
+	@media (max-width: 480px) {
+		.calc-cards {
+			grid-template-columns: 1fr;
+		}
+
+		.calc-guide h2 {
+			font-size: 19px;
+		}
+	}
+
+	/* Mimics the live site: #f5f5f5 page background. The white card comes
+	   from the snippet itself (.calc-page), so preview main stays plain. */
+	body.pv-preview { background: #f5f5f5; margin: 0; }
+	main.pv-main { max-width: 1170px; margin: 0 auto 60px; padding: 0 10px; }
+	.pv-header { background: #18452e; color: #fff; padding: 14px 18px; font-family: 'Poppins', sans-serif; }
+	.pv-header-inner { max-width: 1170px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+	.pv-brand { color: #fff; font-weight: 700; font-size: 18px; text-decoration: none; letter-spacing: .02em; }
+	.pv-brand span { color: #daaf3b; }
+	.pv-nav a { color: #cfe0d6; text-decoration: none; font-size: 14px; margin-left: 16px; }
+	.pv-nav a:hover { color: #fff; }
+	.pv-breadcrumb { background: #f2f4f2; border-bottom: 1px solid #e2e6e2; padding: 9px 18px; font-size: 13.5px; font-family: 'Poppins', sans-serif; color: #4c554c; }
+	.pv-breadcrumb-inner { max-width: 1170px; margin: 0 auto; }
+	.pv-breadcrumb a { color: #18452e; text-decoration: none; }
+	.pv-h1 { font-family: 'Poppins', sans-serif; color: #18452e; font-size: 28px; text-align: center; max-width: 700px; margin: 26px auto 0; padding: 0 15px; font-weight: 600; }
+	.pv-footer { background: #18452e; color: #cfe0d6; margin-top: 50px; padding: 26px 18px; font-size: 13.5px; line-height: 1.7; font-family: 'Poppins', sans-serif; }
+	.pv-footer-inner { max-width: 760px; margin: 0 auto; }
+	.pv-footer a { color: #daaf3b; text-decoration: none; }
+	.pv-note { font-size: 12px; color: #9db5a5; }
+</style>
+</head>
+<body class="pv-preview">
+	<header class="pv-header">
+		<div class="pv-header-inner">
+			<a class="pv-brand" href="https://www.silvertonbuildersmerchants.com/">SILVERTON <span>BUILDERS MERCHANTS</span></a>
+			<nav class="pv-nav">
+				<a href="https://www.silvertonbuildersmerchants.com/">Live site</a>
+				<a href="materials-calculator-hub.html">Calculator hub</a>
+				<a href="index.html">Preview index</a>
+			</nav>
+		</div>
+	</header>
+	<nav class="pv-breadcrumb"><div class="pv-breadcrumb-inner">		<a href="https://www.silvertonbuildersmerchants.com/">Home</a> &rsaquo; 		<a href="https://www.silvertonbuildersmerchants.com/page/materials-calculator">Materials Calculator</a> &rsaquo; <strong>Decorative Stone Calculator</strong></div></nav>
+	<h1 class="pv-h1">Decorative Stone Calculator</h1>
+	<main class="pv-main">
+
+<div class="calc-page">
+
+<div class="calculator-container calc-guide">
+	<p class="calc-back"><a href="materials-calculator-hub.html">&larr; All materials calculators</a></p>
+	<p>Our decorative stone calculator takes the guesswork out of ordering gravel, chippings and pebbles for your garden. Enter the width and length of the area you are covering to get the square meterage, or tick <strong>Calculate Volume</strong> and add a depth to see how many cubic metres, tonnes, bulk bags, mini bulk bags and small bags of decorative stone you will need. Whether you are freshening up borders, laying a new path or covering a driveway, order online from Silverton Builders Merchants for free local delivery across Essex, Suffolk, Norfolk and Cambridgeshire when you spend over &pound;20.</p>
+</div>
+
+<div class="calculator-container" style="text-align: center;"><img src="https://www.silvertonbuildersmerchants.com/file/Dimensions.png" alt="Diagram showing how to measure the width, length and depth of an area in metres and millimetres" style="max-width: 100%;"></div>
+
+<div class="calculator-container" style="text-align: center;">
+	<div class="tabcontent active" id="areaVolumeCalculator" data-calculator-type="decorative_stone" style="display: block;">
+
+		<h3>Area &amp; Volume Calculator</h3>
+		<label for="widthAV">Width (m):</label>
+		<input type="number" id="widthAV" name="widthAV" value="1" min="0">
+		<br>
+		<br>
+		<label for="heightAV">Length (m):</label>
+		<input type="number" id="heightAV" name="heightAV" value="1" min="0">
+		<br>
+		<br>
+		<label>
+			<input type="checkbox" id="volumeCheckboxAV" onclick="toggleVolumeInputAV()" value="on">&nbsp;Calculate Volume </label>
+		<br>
+		<br>
+		<div class="volumeInput" id="volumeInputAV" style="display: none;">
+			<label for="depthAV">Depth (mm):</label>
+			<input type="number" id="depthAV" name="depthAV" value="1" min="0">
+			<br>
+			<br>
+		</div>
+		<button class="button-calculate" id="calculateAreaButton" onclick="handleAVButton()" type="button">Calculate Area</button>
+		<br>
+		<div class="grey-container" id="areaVolumeResult" style="font-size: 16px;">
+			<br>
+		</div>
+
+		<div class="calc-shop">
+			<h3>Shop decorative stone</h3>
+			<div class="calc-cards">
+				<a class="calc-card" href="https://www.silvertonbuildersmerchants.com/category/aggregates/decorative-stone"><strong>Decorative stone &amp; gravel</strong><span>Chippings, cobbles and pebbles in granite, slate, marble and more.</span></a>
+				<a class="calc-card" href="https://www.silvertonbuildersmerchants.com/category/aggregates/bagged-aggregates"><strong>Bagged aggregates</strong><span>Bulk, mini bulk and small bags for every project size.</span></a>
+				<a class="calc-card" href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/landscaping-fabric"><strong>Weed control membrane</strong><span>Separate stone from soil, improve drainage and reduce weeding.</span></a>
+			</div>
+			<p class="calc-products">Popular right now: <a href="https://www.silvertonbuildersmerchants.com/product/category/l000145">Cotswold Buff Chippings 20mm &mdash; Bulk Bag</a> &middot; <a href="https://www.silvertonbuildersmerchants.com/product/category/l000303">Polar White Chippings 20mm &mdash; Bulk Bag</a> &middot; <a href="https://www.silvertonbuildersmerchants.com/product/category/l000229">Black Ice Chippings 20mm &mdash; Bulk Bag</a></p>
+		</div>
+
+		<p class="calc-note">If you have any questions or think something is wrong, <a href="https://www.silvertonbuildersmerchants.com/page/customer-services/contact-us">give us a call</a> on <a href="tel:01255446920"><strong>01255 446920</strong></a>. This calculator provides estimations so the actual measurements and material quantity should be verified.</p>
+	</div>
+</div>
+
+<div class="calculator-container calc-guide">
+	<h2>How to use the decorative stone calculator</h2>
+	<ol>
+		<li>Enter the <strong>width</strong> and <strong>length</strong> of the area you are covering, in metres.</li>
+		<li>Press <strong>Calculate Area</strong> for the square meterage on its own.</li>
+		<li>To work out how much stone to order, tick <strong>Calculate Volume</strong>, enter your <strong>depth</strong> in millimetres (30&ndash;50mm is typical for borders and paths) and press <strong>Calculate Volume</strong>.</li>
+		<li>The result shows the <strong>volume in cubic metres</strong>, the approximate <strong>tonnage</strong>, and the number of <strong>bulk bags, mini bulk bags and small bags</strong> that make up that weight.</li>
+		<li>For awkward shapes, split the area into rectangles, calculate each one and add the results together.</li>
+	</ol>
+</div>
+
+<div class="calculator-container calc-guide">
+	<h2>What the decorative stone calculator assumes</h2>
+	<div class="assumptions">
+		<ul>
+			<li>Volume is converted to tonnage at <strong>0.6 cubic metres per tonne</strong> (about 1.67 tonnes per m&sup3;), typical for decorative stone.</li>
+			<li>A <strong>bulk bag holds roughly 0.85 tonnes (850kg)</strong>, a <strong>mini bulk bag 425kg</strong> and a <strong>small decorative bag 20kg</strong>.</li>
+			<li>There are approximately <strong>42 small decorative bags in a bulk bag</strong>.</li>
+			<li>Coverage is calculated at the <strong>depth you enter</strong>, laid loose on a level surface. 30&ndash;50mm suits most borders and paths; driveways usually need 50mm or more.</li>
+			<li>No allowance is made for <strong>settlement or compaction</strong> &mdash; add 5&ndash;10% on driveways and busy areas.</li>
+			<li>The calculator does not include <strong>weed membrane</strong>, which we recommend under decorative stone.</li>
+		</ul>
+	</div>
+
+	<h2>Frequently asked questions</h2>
+	<details class="faq-item">
+		<summary>How deep should decorative stone be laid?</summary>
+		<p>30&ndash;50mm is typical for borders and paths laid over a weed membrane. Driveways and heavily used areas usually need 50mm or more.</p>
+	</details>
+	<details class="faq-item">
+		<summary>How much does a bulk bag of gravel cover?</summary>
+		<p>A bulk bag holds roughly 0.85 tonnes &mdash; about half a cubic metre. At 50mm deep, that covers approximately 10 square metres.</p>
+	</details>
+	<details class="faq-item">
+		<summary>How do I work out how much gravel I need?</summary>
+		<p>Multiply the width by the length of the area to get square metres, then multiply by your depth in metres to get cubic metres. The calculator does this for you and converts the result into tonnes and bags.</p>
+	</details>
+	<details class="faq-item">
+		<summary>Should I allow extra stone for settlement?</summary>
+		<p>Yes &mdash; decorative stone settles after laying, so add 5&ndash;10% on driveways and busy areas, and rake the stone over occasionally to keep the coverage even.</p>
+	</details>
+	<details class="faq-item">
+		<summary>Do I need a membrane under decorative stone?</summary>
+		<p>We recommend a weed control membrane. It separates the stone from the soil, improves drainage and reduces weeding &mdash; see our <a href="https://www.silvertonbuildersmerchants.com/category/landscaping-and-gardening/landscaping-fabric">landscaping fabric</a> range.</p>
+	</details>
+	<details class="faq-item">
+		<summary>Do you deliver decorative stone?</summary>
+		<p>Yes. Delivery is free locally across Essex, Suffolk, Norfolk and Cambridgeshire when you spend over &pound;20. Bulk bags are delivered by crane or tipper vehicle &mdash; call <a href="tel:01255446920">01255 446920</a> to check access.</p>
+	</details>
+
+	<h2>Other materials calculators</h2>
+	<div class="calc-cards">
+		<a class="calc-card" href="materials-calculator-hub.html"><strong>All materials calculators</strong><span>The Silverton calculator hub, with every tool in one place.</span></a>
+		<a class="calc-card" href="brick-and-block-calculator.html"><strong>Brick &amp; block calculator</strong><span>Bricks, blocks, sand and cement for single or double skin walls.</span></a>
+		<a class="calc-card" href="paving-calculator.html"><strong>Paving calculator</strong><span>Slab quantities for patios and paths, including patio packs.</span></a>
+	</div>
+</div>
+
+</div>
+<!-- /calc-page -->
+
+<script>
+	/* ===== Calculator tracking — pushes to the GTM dataLayer. See tracking.md ===== */
+	(function () {
+		window.SilvertonCalc = {
+			started: {},
+			TYPE_BY_CONTAINER: {
+				brickBlockCalculator: 'brick_and_block',
+				areaVolumeCalculator: 'decorative_stone',
+				tileCalculator: 'roof_tiles',
+				pavingCalculator: 'paving'
+			},
+			typeForLink: function (link) {
+				var owner = link.closest ? link.closest('.tabcontent,[data-calculator-type]') : null;
+				if (!owner) { return 'unknown'; }
+				return (owner.dataset && owner.dataset.calculatorType) || this.TYPE_BY_CONTAINER[owner.id] || 'unknown';
+			},
+			push: function (data) {
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push(data);
+			},
+			start: function (type) {
+				if (this.started[type]) { return; }
+				this.started[type] = true;
+				this.push({ event: 'calculator_start', calculator_type: type });
+			},
+			complete: function (type, mode) {
+				var payload = { event: 'calculator_complete', calculator_type: type };
+				if (mode) { payload.calculator_mode = mode; }
+				this.push(payload);
+			},
+			error: function (type, message) {
+				this.push({ event: 'calculator_error', calculator_type: type, error_message: message });
+			}
+		};
+
+		/* product_or_category_click — delegated so links rendered inside
+		   calculator results are tracked too. */
+		document.addEventListener('click', function (ev) {
+			var link = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+			if (!link) { return; }
+			var url;
+			try { url = new URL(link.href, window.location.href); } catch (e) { return; }
+			var linkType = null;
+			if (url.pathname.indexOf('/category/') === 0) { linkType = 'category'; }
+			else if (url.pathname.indexOf('/product/') === 0) { linkType = 'product'; }
+			if (!linkType) { return; }
+			window.SilvertonCalc.push({
+				event: 'product_or_category_click',
+				calculator_type: window.SilvertonCalc.typeForLink(link),
+				link_url: url.href,
+				link_text: (link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 100),
+				link_type: linkType
+			});
+		});
+	})();
+</script>
+<script>
+	/* ===== Decorative Stone (Area & Volume) Calculator — calculation rules
+	   identical to the master calculator: volume in m³, tonnage at 0.6 m³ per
+	   tonne, bulk bags at 0.85t, mini bulk bags at 0.425t and small decorative
+	   bags at 20kg. New: input validation and GA4 tracking events. ===== */
+	var CALC_TYPE = 'decorative_stone';
+
+	function readNumber(id) {
+		var value = parseFloat(document.getElementById(id).value);
+		return (isFinite(value) && value > 0) ? value : null;
+	}
+
+	function showCalcError(message) {
+		document.getElementById('areaVolumeResult').innerHTML =
+			'<div class="grey-box" style="color:#a33;"><b>Please check your inputs.</b><br>' + message + '</div>';
+	}
+
+	function calculateAreaAV() {
+		var width = readNumber('widthAV');
+		var height = readNumber('heightAV');
+		if (width === null || height === null) {
+			var msg = 'Enter a width and length in metres, greater than zero.';
+			showCalcError(msg);
+			return { ok: false, message: msg };
+		}
+		var area = width * height;
+		document.getElementById('areaVolumeResult').innerHTML = "<br>Area: <span><strong>" + area.toFixed(2) + " square meters</strong></span>";
+		return { ok: true };
+	}
+
+	function calculateVolumeAV() {
+		var width = readNumber('widthAV');
+		var height = readNumber('heightAV');
+		var depth = readNumber('depthAV');
+		if (width === null || height === null) {
+			var msg = 'Enter a width and length in metres, greater than zero.';
+			showCalcError(msg);
+			return { ok: false, message: msg };
+		}
+		if (depth === null) {
+			var depthMsg = 'Enter a depth in millimetres, greater than zero.';
+			showCalcError(depthMsg);
+			return { ok: false, message: depthMsg };
+		}
+
+		var volume = width * height * (depth / 1000); // Calculate volume in cubic meters
+		var totalWeightKg = volume / 0.6; // Convert volume from cubic meters to tonnes
+
+		var bulkBags = Math.floor(totalWeightKg / 0.85); // Calculate the number of bulk bags
+		var remainingWeightForMiniBags = totalWeightKg - bulkBags * 0.85; // Calculate remaining weight after bulk bags
+		var miniBags = Math.floor(remainingWeightForMiniBags / 0.425); // Calculate the number of mini bulk bags
+		var remainingWeightForSmallBags = (remainingWeightForMiniBags - miniBags * 0.425) * 1000; // Calculate remaining weight after mini bulk bags, converted back to kilograms
+		var smallBags = Math.ceil(remainingWeightForSmallBags / 20); // Calculate the number of small bags
+
+		// Build the result string for bag counts
+		var bagCounts = [];
+
+		if (bulkBags > 0) {
+			bagCounts.push(bulkBags + ' x bulk bag' + (bulkBags > 1 ? 's' : ''));
+		}
+
+		if (miniBags > 0) {
+			bagCounts.push(miniBags + ' x mini bulk bag' + (miniBags > 1 ? 's' : ''));
+		}
+
+		if (smallBags > 0) {
+			bagCounts.push(smallBags + ' x small bag' + (smallBags > 1 ? 's' : ''));
+		}
+
+		// Combine bag counts into a single sentence
+		var bagsResult = bagCounts.join(', ').replace(/, ([^,]*)$/, ' and $1');
+
+		// Display the results
+		var resultHtml = `
+        <div class="result">Volume: <b>${volume.toFixed(2)} m³</b></div>
+        <div class="result" style="margin-top: -10px;">Tonne: <b>${(volume / 0.6).toFixed(2)} T</b></div>
+        <div style="text-align: center;">
+            <div style="margin-bottom: 2px;"><b>For decorative stone coverage, you need a total of:</b></div>
+            <div>${bagsResult}</div>
+            <div style="font-size: 13px; margin-bottom: 10px; margin-top: 10px;">There are approx. 42 small decorative bags in a bulk bag</div>
+                <div style="font-style: italic; margin-top: 10px;"><a href="https://www.silvertonbuildersmerchants.com/category/aggregates/decorative-stone">Click here to browse Decorative Stone</a></div>
+        </div>
+    `;
+
+		document.getElementById('areaVolumeResult').innerHTML = resultHtml;
+		return { ok: true };
+	}
+
+	/* Matches the master: the checkbox reveals the depth field and relabels
+	   the button, then refreshes the area result. */
+	function toggleVolumeInputAV() {
+		var volumeInput = document.getElementById("volumeInputAV");
+		var calculateAreaButton = document.getElementById("calculateAreaButton");
+		if (volumeInput.style.display === "none") {
+			volumeInput.style.display = "block";
+			calculateAreaButton.textContent = "Calculate Volume";
+		} else {
+			volumeInput.style.display = "none";
+			calculateAreaButton.textContent = "Calculate Area";
+		}
+		recalculateArea();
+	}
+
+	function handleAVButton() {
+		SilvertonCalc.start(CALC_TYPE);
+		var volumeMode = document.getElementById('volumeCheckboxAV').checked;
+		var result = volumeMode ? calculateVolumeAV() : calculateAreaAV();
+		if (result.ok) {
+			SilvertonCalc.complete(CALC_TYPE, volumeMode ? 'volume' : 'area');
+		} else {
+			SilvertonCalc.error(CALC_TYPE, result.message);
+		}
+	}
+
+	/* Matches the master behaviour: typing refreshes the area result — press
+	   the Calculate button to refresh a volume result. */
+	function recalculateArea() {
+		SilvertonCalc.start(CALC_TYPE);
+		var result = calculateAreaAV();
+		if (result.ok) {
+			SilvertonCalc.complete(CALC_TYPE, 'area');
+		} else {
+			SilvertonCalc.error(CALC_TYPE, result.message);
+		}
+	}
+
+	/* Wiring */
+	var avInputs = document.querySelectorAll('#areaVolumeCalculator input[type="number"]');
+	for (var i = 0; i < avInputs.length; i++) {
+		avInputs[i].addEventListener('input', recalculateArea);
+	}
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": [
+		{
+			"@type": "Question",
+			"name": "How deep should decorative stone be laid?",
+			"acceptedAnswer": { "@type": "Answer", "text": "30–50mm is typical for borders and paths laid over a weed membrane. Driveways and heavily used areas usually need 50mm or more." }
+		},
+		{
+			"@type": "Question",
+			"name": "How much does a bulk bag of gravel cover?",
+			"acceptedAnswer": { "@type": "Answer", "text": "A bulk bag holds roughly 0.85 tonnes — about half a cubic metre. At 50mm deep, that covers approximately 10 square metres." }
+		},
+		{
+			"@type": "Question",
+			"name": "How do I work out how much gravel I need?",
+			"acceptedAnswer": { "@type": "Answer", "text": "Multiply the width by the length of the area to get square metres, then multiply by your depth in metres to get cubic metres. The calculator does this for you and converts the result into tonnes and bags." }
+		},
+		{
+			"@type": "Question",
+			"name": "Should I allow extra stone for settlement?",
+			"acceptedAnswer": { "@type": "Answer", "text": "Yes — decorative stone settles after laying, so add 5–10% on driveways and busy areas, and rake the stone over occasionally to keep the coverage even." }
+		},
+		{
+			"@type": "Question",
+			"name": "Do I need a membrane under decorative stone?",
+			"acceptedAnswer": { "@type": "Answer", "text": "We recommend a weed control membrane. It separates the stone from the soil, improves drainage and reduces weeding." }
+		},
+		{
+			"@type": "Question",
+			"name": "Do you deliver decorative stone?",
+			"acceptedAnswer": { "@type": "Answer", "text": "Yes. Delivery is free locally across Essex, Suffolk, Norfolk and Cambridgeshire when you spend over £20. Bulk bags are delivered by crane or tipper vehicle — call 01255 446920 to check access." }
+		}
+	]
+}
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.silvertonbuildersmerchants.com/" },
+		{ "@type": "ListItem", "position": 2, "name": "Materials Calculator", "item": "materials-calculator-hub.html" },
+		{ "@type": "ListItem", "position": 3, "name": "Decorative Stone Calculator" }
+	]
+}
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "WebApplication",
+	"name": "Decorative Stone Calculator",
+	"url": "decorative-stone-calculator.html",
+	"applicationCategory": "UtilityApplication",
+	"operatingSystem": "Any",
+	"browserRequirements": "Requires JavaScript",
+	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+	"publisher": { "@type": "Organization", "name": "Silverton Builders Merchants", "url": "https://www.silvertonbuildersmerchants.com/" }
+}
+</script>
+
+	</main>
+	<footer class="pv-footer">
+		<div class="pv-footer-inner">
+			<p><strong>Silverton Builders Merchants Ltd</strong> &middot; Devereux Farm, Walton Road, Kirby-le-Soken, Frinton-on-Sea, Essex CO13 0DA</p>
+			<p>Webshop support: <a href="tel:01255446920">01255 446920</a> &middot; <a href="mailto:info@silverton.uk.com">info@silverton.uk.com</a> &middot; <a href="https://www.silvertonbuildersmerchants.com/page/branches/branch-finder">Branch finder</a></p>
+			<p class="pv-note">Local preview build for QA — this file is not part of silvertonbuildersmerchants.com. Deployment-ready blocks are in <code>cms-snippets/</code>; metadata and tracking setup are documented in <code>metadata.md</code> and <code>tracking.md</code>.</p>
+		</div>
+	</footer>
+</body>
+</html>
