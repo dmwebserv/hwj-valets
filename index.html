@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HWJ Valets | Mobile Car Valeting &amp; Detailing in Colchester, Essex &amp; Suffolk</title>
-<meta name="description" content="HWJ Valets - professional mobile car care and vehicle detailing based in Colchester, covering Essex and parts of Suffolk. Exterior wash, standard valet, deep clean and premium detail packages. Call or WhatsApp 07926 517296 for a free quote.">
+<meta name="description" content="HWJ Valets - professional mobile car care and vehicle detailing based in Colchester, covering Essex and parts of Suffolk. Exterior wash, standard valet, deep clean packages and maintenance plans. Call or WhatsApp 07926 517296 for a free quote.">
 <link rel="canonical" href="https://hwjvalets.co.uk/">
 
 <link rel="icon" href="images/logo.png" sizes="any">
@@ -217,6 +217,23 @@
     transition:background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
   }
   .card-cta:hover{background:var(--teal-bright);color:#fff;transform:translateX(3px);}
+  .card.maintenance{
+    background:linear-gradient(160deg, var(--navy) 0%, #1b4b60 100%);
+    border-color:var(--teal);
+    color:#e7f3fa;
+  }
+  .card.maintenance:hover{border-color:var(--sky);}
+  .card.maintenance h3{color:#fff;margin-bottom:14px;}
+  .card.maintenance p{margin:0 0 22px;font-size:15.5px;line-height:1.65;color:#d9eef8;}
+  .card.maintenance .card-cta{
+    background:var(--sky);
+    color:var(--navy);
+    border-color:transparent;
+  }
+  .card.maintenance .card-cta:hover{
+    background:#fff;
+    color:var(--navy);
+  }
 
   /* Recent work */
   .spotlight{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
@@ -491,22 +508,10 @@
         <a class="card-cta" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27d%20like%20a%20quote%20for%20the%20Deep%20Clean%20Package" target="_blank" rel="noopener">Get a quote &rarr;</a>
       </div>
 
-      <div class="card reveal">
-        <h3>Premium Detail</h3>
-        <p class="package-price">From <strong>£160</strong></p>
-        <ul>
-          <li>A full deep clean of the interior</li>
-          <li>Wax sealant for lasting protection and gloss</li>
-          <li>Leather treatment and conditioning</li>
-          <li>Exterior safe wash</li>
-          <li>Paint decontamination and clay bar</li>
-        </ul>
-        <p class="extras-label">Good to know</p>
-        <ul class="extras">
-          <li>Usually a full day&#8217;s work</li>
-          <li>Leaves your car looking, feeling and smelling brand new</li>
-        </ul>
-        <a class="card-cta" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27d%20like%20a%20quote%20for%20a%20Premium%20Detail" target="_blank" rel="noopener">Get a quote &rarr;</a>
+      <div class="card maintenance reveal">
+        <h3>Maintenance Plan</h3>
+        <p>Keep your car looking its best all year round. After an initial deep clean to our high standard, enjoy regular monthly or fortnightly valets at a discounted rate &mdash; keeping your car consistently clean and fresh.</p>
+        <a class="card-cta" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27d%20like%20a%20quote%20for%20the%20Maintenance%20Plan" target="_blank" rel="noopener">Get a quote &rarr;</a>
       </div>
     </div>
   </div>
@@ -729,7 +734,7 @@
             <option value="Exterior Wash Package">Exterior Wash Package</option>
             <option value="Standard Valet Package">Standard Valet Package</option>
             <option value="Deep Clean Package">Deep Clean Package</option>
-            <option value="Premium Detail">Premium Detail</option>
+            <option value="Maintenance Plan">Maintenance Plan</option>
           </select>
         </div>
       </div>

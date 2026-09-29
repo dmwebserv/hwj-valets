@@ -4,7 +4,7 @@
 
 ## Key pages
 - [Homepage](https://hwjvalets.co.uk/): Services, genuine customer reviews, recent work, business information and contact form.
-- [Services](https://hwjvalets.co.uk/#services): Exterior Wash, Standard Valet, Deep Clean and Premium Detail packages.
+- [Services](https://hwjvalets.co.uk/#services): Exterior Wash, Standard Valet, Deep Clean and Maintenance Plan packages.
 - [Recent work](https://hwjvalets.co.uk/#gallery): Photographs of completed customer vehicles.
 - [Contact and booking](https://hwjvalets.co.uk/#contact): Quote request form and contact methods.
 - [Privacy Policy](https://hwjvalets.co.uk/privacy-policy.html): How enquiry data is handled.
