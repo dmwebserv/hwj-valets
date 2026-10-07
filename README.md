@@ -5,7 +5,7 @@ Marketing website for HWJ Valets, a mobile car valeting and detailing business b
 Static HTML/CSS site, no build step or framework. Pages:
 
 - `index.html`: homepage with services, gallery, about, contact details and enquiry form
-- `privacy-policy.html`: privacy information for enquiries and analytics
+- `privacy-policy.html`: privacy information for enquiries
 - `thanks.html`: enquiry form landing page, marked noindex
 
 ## Contact and social details
@@ -36,7 +36,7 @@ FormSubmit requires a one-time activation email for `harry@hwjvalets.co.uk` befo
 
 ## Known gaps / TODO
 
-- Replace the placeholder Google Analytics measurement ID in `analytics.js` once the GA4 property is ready.
+- Analytics: the half-built GA4 loader (and its consent banner) was removed on 7 October 2026. Visitor counting now uses cookieless Cloudflare Web Analytics, added via the dm-ops repo - see its SESSION-LOG.md. No cookie banner is needed.
 - More real job photos, such as extra before/after sets, exterior details and vans, would strengthen the gallery over time.
 
 ## Local preview
