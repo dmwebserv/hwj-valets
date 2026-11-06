@@ -7,6 +7,7 @@
 - [Services](https://hwjvalets.co.uk/#services): Exterior Wash, Standard Valet, Deep Clean and Maintenance Plan packages.
 - [Recent work](https://hwjvalets.co.uk/#gallery): Photographs of completed customer vehicles.
 - [Contact and booking](https://hwjvalets.co.uk/#contact): Quote request form and contact methods.
+- [Book online](https://hwjvalets.co.uk/book): Booking landing page that hands off to the online booking system.
 - [Privacy Policy](https://hwjvalets.co.uk/privacy-policy.html): How enquiry data is handled.
 
 ## Business details
