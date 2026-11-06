@@ -37,7 +37,7 @@ FormSubmit requires a one-time activation email for `harry@hwjvalets.co.uk` befo
 
 ## Google Tag Manager, consent and Google Ads setup
 
-- Google Tag Manager container snippets (head + noscript body) are installed on every page: index, thanks, privacy-policy, 404 and book. The container ID is the placeholder `GTM-XXXXXXX` - replace it in all five files once the real container exists (search for `GTM-XXXXXXX`).
+- Google Tag Manager container snippets (head + noscript body) are installed on every page: index, thanks, privacy-policy, 404 and book. The container ID is `GTM-KP9CNRDW`.
 - Cookie consent banner with Google Consent Mode v2: the default state denies `ad_storage`, `ad_user_data`, `ad_personalization` and `analytics_storage` before any tag loads. Accept / Reject / Customise updates consent via `gtag('consent', 'update', ...)` and stores the choice in the `hwj_cookie_consent` cookie for 12 months. `url_passthrough` is enabled so gclid attribution survives without cookies; `wait_for_update: 500`.
 - Phone number 07926 517296 appears as visible text (header, hero, contact section, footer and book page) as `tel:+447926517296` tap-to-call links.
 - "Book online" buttons link to `/book` from the menu, hero, contact section, footer, thanks page and 404 page.
@@ -47,7 +47,7 @@ FormSubmit requires a one-time activation email for `harry@hwjvalets.co.uk` befo
 
 ## Known gaps / TODO
 
-- Analytics: Google Tag Manager with Google Consent Mode v2 is now installed on every page, plus the cookie consent banner described above. The container ID is still the placeholder `GTM-XXXXXXX` - replace it in every HTML file before going live. Visitor counting also uses cookieless Cloudflare Web Analytics.
+- Analytics: Google Tag Manager with Google Consent Mode v2 is now installed on every page, plus the cookie consent banner described above. The container ID is `GTM-KP9CNRDW`. Visitor counting also uses cookieless Cloudflare Web Analytics.
 - Booking system: runs on Vercel at `https://hwj-valets.vercel.app/book`. `book.html` at `/book` is the landing page that hands off to it (carrying gclid + hash). If the booking system should move onto hwjvalets.co.uk itself, send the booking files and it can be wired up here instead.
 - More real job photos, such as extra before/after sets, exterior details and vans, would strengthen the gallery over time.
 
