@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book online | HWJ Valets</title>
+<meta name="description" content="Book your mobile car valet online with HWJ Valets - Colchester, Essex and parts of Suffolk. Call or text 07926 517296 for a free quote.">
+<!-- Placeholder booking page: this file is served at /book. When the supplied booking
+     file arrives, replace this file with it and keep the Google Tag Manager and
+     consent snippets below. Remove the noindex line once the real booking page is live. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://hwjvalets.co.uk/book">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+<!-- Google Tag Manager -->
+<script>
+  // Google Consent Mode v2 - deny all storage until the visitor chooses.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = window.gtag || gtag;
+  (function(){
+    var m = document.cookie.match(/(?:^|;\s*)hwj_cookie_consent=([^;]+)/);
+    var saved = null;
+    if (m) { try { saved = JSON.parse(decodeURIComponent(m[1])); } catch(e) {} }
+    var ads = !!(saved && saved.ads);
+    var ana = !!(saved && saved.analytics);
+    gtag('js', new Date());
+    gtag('consent', 'default', {
+      ad_storage: ads ? 'granted' : 'denied',
+      ad_user_data: ads ? 'granted' : 'denied',
+      ad_personalization: ads ? 'granted' : 'denied',
+      analytics_storage: ana ? 'granted' : 'denied',
+      url_passthrough: true,
+      wait_for_update: 500
+    });
+  })();
+  // TODO: replace GTM-XXXXXXX below with the real Google Tag Manager container ID.
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');
+</script>
+<!-- End Google Tag Manager -->
+
+<style>
+  :root{--navy:#0a1e26;--teal:#3f7a97;--teal-bright:#74acc3;--sky:#9bd6f6;--red:#c62c3c;
+    --ink:#0f2027;--muted:#4d6873;--paper:#ffffff;--mist:#f2f9fd;--border:#d7e9f2;
+    --font-display:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--font-body);background:var(--mist);color:var(--ink);line-height:1.6;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-family:var(--font-display);font-weight:800;font-size:18px;}
+  .brand img{width:36px;height:36px;}
+  .nav-book{background:var(--teal);color:#fff;padding:8px 16px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;}
+  .nav-book:hover{background:var(--teal-bright);}
+  main{width:min(688px,100%);margin:0 auto;padding:44px 24px 60px;}
+  .track-badge{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:var(--sky);
+    border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;margin-bottom:22px;word-break:break-all;}
+  .eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:700;color:var(--teal);margin:0 0 10px;}
+  h1{font-family:var(--font-display);font-size:clamp(30px,5.5vw,44px);margin:0 0 14px;color:var(--navy);line-height:1.12;}
+  p.lead{color:var(--muted);font-size:16.5px;margin:0 0 26px;}
+  .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:14px;box-shadow:0 10px 30px rgba(10,30,38,.08);}
+  .card h2{font-family:var(--font-display);font-size:17px;margin:0 0 6px;color:var(--navy);}
+  .card p{margin:0;font-size:14.5px;color:var(--muted);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid transparent;transition:transform .25s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 14px 30px rgba(198,44,60,.3);}
+  .btn-ghost{background:var(--navy);color:#fff;}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+  .actions .btn{flex:1 1 200px;}
+  .note{margin-top:22px;font-size:13.5px;color:var(--muted);}
+  footer{padding:22px 24px 40px;text-align:center;font-size:13px;color:var(--muted);}
+  footer a{color:var(--teal);font-weight:700;text-decoration:none;}
+
+  /* Cookie consent banner */
+  .cc-overlay{position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--navy);color:#e7f3fa;
+    box-shadow:0 -12px 40px rgba(10,30,38,.35);max-width:1180px;margin:0 auto;border-radius:18px 18px 0 0;padding:18px 20px;
+    transform:translateY(110%);transition:transform .4s ease;}
+  .cc-overlay.is-open{transform:translateY(0);}
+  .cc-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;}
+  .cc-text{margin:0;font-size:14.5px;flex:1 1 320px;}
+  .cc-text a{color:var(--sky);font-weight:700;}
+  .cc-actions{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;}
+  .cc-btn{border:none;border-radius:999px;padding:11px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:transform .2s ease,background .2s ease;}
+  .cc-btn:hover{transform:translateY(-2px);}
+  .cc-accept{background:var(--red);color:#fff;}
+  .cc-deny{background:transparent;color:#cfe6f0;border:1px solid rgba(207,230,240,.4);}
+  .cc-customise{background:var(--teal);color:#fff;}
+  .cc-panel{display:none;width:100%;margin-top:14px;padding-top:14px;border-top:1px solid rgba(207,230,240,.18);}
+  .cc-panel.is-open{display:block;}
+  .cc-panel h3{font-size:14px;margin:0 0 10px;color:#fff;font-family:var(--font-display);}
+  .cc-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:13.5px;}
+  .cc-row input[type="checkbox"]{width:16px;height:16px;margin-top:3px;accent-color:var(--teal-bright);flex-shrink:0;}
+  .cc-row label{cursor:pointer;}
+  .cc-row .cc-always{color:var(--sky);font-size:12.5px;}
+  @media (max-width:560px){
+    .cc-inner{flex-direction:column;align-items:stretch;}
+    .cc-actions{flex-direction:column;}
+    .cc-btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header>
+  <div class="nav">
+    <a class="brand" href="/"><img src="images/logo.png" width="36" height="36" alt="HWJ Valets logo">HWJ Valets</a>
+    <a class="nav-book" href="/book">Book online</a>
+  </div>
+</header>
+
+<main>
+  <div class="track-badge" id="track-badge" hidden></div>
+  <p class="eyebrow">Online booking</p>
+  <h1>Book your valet</h1>
+  <p class="lead">Choose your package and pick a time that suits you. We'll come to your driveway anywhere in Colchester, Essex and parts of Suffolk.</p>
+
+  <div class="card">
+    <h2>Exterior Wash</h2>
+    <p>Safe two-bucket wash, foam, wheel deep clean and towel dry.</p>
+  </div>
+  <div class="card">
+    <h2>Standard Valet</h2>
+    <p>Everything in the wash plus interior clean and quick detail.</p>
+  </div>
+  <div class="card">
+    <h2>Deep Clean</h2>
+    <p>Full interior deep clean with leather treatment and paint decontamination.</p>
+  </div>
+
+  <div class="actions">
+    <a class="btn btn-primary" href="tel:+447926517296">Call or text 07926 517296</a>
+    <a class="btn btn-ghost" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27d%20like%20a%20booking" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+  <p class="note">This is the booking landing page for HWJ Valets. Online booking is being set up - in the meantime, call, text or WhatsApp 07926 517296 to book.</p>
+</main>
+
+<footer>
+  <a href="/">Back to homepage</a> &middot; <a href="tel:+447926517296">Call 07926 517296</a>
+</footer>
+
+<script>
+  // Reads tracking tags after the # in the address (e.g. /book#deep.google-ads)
+  // and any gclid Google Ads appends before the # (e.g. /book?gclid=...#deep.google-ads).
+  // The hash is available to location.hash regardless of query parameters.
+  (function(){
+    var params = new URLSearchParams(location.search);
+    var gclid = params.get('gclid');
+    var tag = location.hash.replace(/^#/, '');
+    var badge = document.getElementById('track-badge');
+    if (gclid || tag) {
+      if (badge) {
+        badge.hidden = false;
+        badge.textContent = (gclid ? 'gclid: ' + gclid + ' · ' : '') + (tag ? 'tag: #' + tag : '');
+      }
+    }
+    if (tag) console.log('[book] tracking tag in URL:', tag);
+    if (gclid) console.log('[book] gclid in URL:', gclid);
+  })();
+</script>
+
+<!-- Cookie consent banner (Google Consent Mode v2) -->
+<div class="cc-overlay" id="cc-banner" role="dialog" aria-labelledby="cc-text" hidden>
+  <div class="cc-inner">
+    <p class="cc-text" id="cc-text">We use cookies to measure how our ads perform and to improve your experience. You can choose which cookies to allow - see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    <div class="cc-actions">
+      <button type="button" class="cc-btn cc-deny" id="cc-deny">Reject all</button>
+      <button type="button" class="cc-btn cc-customise" id="cc-customise">Customise</button>
+      <button type="button" class="cc-btn cc-accept" id="cc-accept">Accept all</button>
+    </div>
+  </div>
+  <div class="cc-panel" id="cc-panel">
+    <h3>Cookie preferences</h3>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-essential" checked disabled>
+      <label for="cc-essential">Essential cookies <span class="cc-always">(always on)</span></label>
+    </div>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-analytics" checked>
+      <label for="cc-analytics">Analytics cookies (Google Analytics via Google Tag Manager)</label>
+    </div>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-ads" checked>
+      <label for="cc-ads">Advertising cookies (Google Ads)</label>
+    </div>
+    <div class="cc-actions">
+      <button type="button" class="cc-btn cc-deny" id="cc-save">Save settings</button>
+      <button type="button" class="cc-btn cc-accept" id="cc-accept2">Accept all</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var COOKIE_NAME = 'hwj_cookie_consent';
+  var VERSION = 1;
+  var EXPIRY_DAYS = 365;
+
+  function readConsent(){
+    var m = document.cookie.match(/(?:^|;\s*)hwj_cookie_consent=([^;]+)/);
+    if (!m) return null;
+    try { return JSON.parse(decodeURIComponent(m[1])); } catch(e) { return null; }
+  }
+  function writeConsent(c){
+    var expires = new Date(Date.now() + (EXPIRY_DAYS * 86400000)).toUTCString();
+    document.cookie = COOKIE_NAME + '=' + encodeURIComponent(JSON.stringify(c)) + '; expires=' + expires + '; path=/; SameSite=Lax; Secure';
+  }
+  function pushConsent(ads, ana){
+    if (typeof window.gtag !== 'function') return;
+    gtag('consent', 'update', {
+      ad_storage: ads ? 'granted' : 'denied',
+      ad_user_data: ads ? 'granted' : 'denied',
+      ad_personalization: ads ? 'granted' : 'denied',
+      analytics_storage: ana ? 'granted' : 'denied',
+      url_passthrough: true
+    });
+  }
+  function showBanner(){
+    var b = document.getElementById('cc-banner');
+    if (!b) return;
+    b.hidden = false;
+    requestAnimationFrame(function(){ b.classList.add('is-open'); });
+  }
+  function hideBanner(){
+    var b = document.getElementById('cc-banner');
+    if (!b) return;
+    b.classList.remove('is-open');
+    setTimeout(function(){ if (b) b.hidden = true; }, 400);
+  }
+  function apply(ads, ana){
+    writeConsent({ version: VERSION, ads: ads, analytics: ana, ts: Date.now() });
+    pushConsent(ads, ana);
+    hideBanner();
+    setTimeout(function(){ location.reload(); }, 300);
+  }
+
+  var consent = readConsent();
+
+  window.HWJConsent = {
+    open: function(){
+      var c = readConsent();
+      var a = document.getElementById('cc-analytics');
+      var d = document.getElementById('cc-ads');
+      if (a) a.checked = !!(c && c.analytics);
+      if (d) d.checked = !!(c && c.ads);
+      var p = document.getElementById('cc-panel');
+      if (p) p.classList.remove('is-open');
+      showBanner();
+    },
+    state: consent
+  };
+
+  if (!consent) showBanner();
+
+  var btnAccept = document.getElementById('cc-accept');
+  if (btnAccept) btnAccept.addEventListener('click', function(){ apply(true, true); });
+  var btnDeny = document.getElementById('cc-deny');
+  if (btnDeny) btnDeny.addEventListener('click', function(){ apply(false, false); });
+  var btnCustom = document.getElementById('cc-customise');
+  if (btnCustom) btnCustom.addEventListener('click', function(){
+    var p = document.getElementById('cc-panel');
+    if (p) p.classList.toggle('is-open');
+  });
+  var btnSave = document.getElementById('cc-save');
+  if (btnSave) btnSave.addEventListener('click', function(){
+    var a = document.getElementById('cc-analytics');
+    var d = document.getElementById('cc-ads');
+    apply(!!(d && d.checked), !!(a && a.checked));
+  });
+  var btnAccept2 = document.getElementById('cc-accept2');
+  if (btnAccept2) btnAccept2.addEventListener('click', function(){ apply(true, true); });
+})();
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a7f433ae23a247febf7e2ffcf8040c16"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

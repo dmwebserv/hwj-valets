@@ -396,11 +396,89 @@
   .cert-badges{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .cert-badges img{width:100%;height:260px;object-fit:cover;background:#fff;border-radius:14px;}
   @media(max-width:760px){.certification-card{grid-template-columns:1fr;padding:28px}.cert-badges img{height:220px}}
+
+  /* Booking CTA */
+  nav.links a.nav-book{
+    background:var(--teal);color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;
+    margin-left:8px;white-space:nowrap;display:inline-flex;align-items:center;
+    transition:background .25s var(--ease), transform .25s var(--ease);
+  }
+  nav.links a.nav-book::after{display:none;}
+  nav.links a.nav-book:hover{background:var(--teal-bright);color:#fff;transform:translateY(-2px);}
+  .btn-book{background:#fff;color:var(--navy);}
+  .btn-book:hover{background:var(--sky);}
+  .btn-teal{background:var(--teal);color:#fff;}
+  .btn-teal:hover{background:var(--teal-bright);}
+
+  /* Cookie consent banner */
+  .cc-overlay{
+    position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--navy);color:#e7f3fa;
+    box-shadow:0 -12px 40px rgba(10,30,38,.35);max-width:var(--max);margin:0 auto;
+    border-radius:18px 18px 0 0;padding:18px 20px;
+    transform:translateY(110%);transition:transform .4s var(--ease);
+  }
+  .cc-overlay.is-open{transform:translateY(0);}
+  .cc-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;}
+  .cc-text{margin:0;font-size:14.5px;flex:1 1 320px;}
+  .cc-text a{color:var(--sky);font-weight:700;}
+  .cc-actions{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;}
+  .cc-btn{
+    border:none;border-radius:999px;padding:11px 20px;font-weight:700;font-size:14px;cursor:pointer;
+    font-family:inherit;transition:transform .2s var(--ease), background .2s var(--ease);
+  }
+  .cc-btn:hover{transform:translateY(-2px);}
+  .cc-accept{background:var(--red);color:#fff;}
+  .cc-deny{background:transparent;color:#cfe6f0;border:1px solid rgba(207,230,240,.4);}
+  .cc-customise{background:var(--teal);color:#fff;}
+  .cc-panel{display:none;width:100%;margin-top:14px;padding-top:14px;border-top:1px solid rgba(207,230,240,.18);}
+  .cc-panel.is-open{display:block;}
+  .cc-panel h3{font-size:14px;margin:0 0 10px;color:#fff;font-family:var(--font-display);}
+  .cc-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:13.5px;}
+  .cc-row input[type="checkbox"]{width:16px;height:16px;margin-top:3px;accent-color:var(--teal-bright);flex-shrink:0;}
+  .cc-row label{cursor:pointer;}
+  .cc-row .cc-always{color:var(--sky);font-size:12.5px;}
+  @media (max-width:560px){
+    .cc-inner{flex-direction:column;align-items:stretch;}
+    .cc-actions{flex-direction:column;}
+    .cc-btn{width:100%;}
+  }
 </style>
 <style>
 </style>
+
+<!-- Google Tag Manager -->
+<script>
+  // Google Consent Mode v2 - deny all storage until the visitor chooses.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = window.gtag || gtag;
+  (function(){
+    var m = document.cookie.match(/(?:^|;\s*)hwj_cookie_consent=([^;]+)/);
+    var saved = null;
+    if (m) { try { saved = JSON.parse(decodeURIComponent(m[1])); } catch(e) {} }
+    var ads = !!(saved && saved.ads);
+    var ana = !!(saved && saved.analytics);
+    gtag('js', new Date());
+    gtag('consent', 'default', {
+      ad_storage: ads ? 'granted' : 'denied',
+      ad_user_data: ads ? 'granted' : 'denied',
+      ad_personalization: ads ? 'granted' : 'denied',
+      analytics_storage: ana ? 'granted' : 'denied',
+      url_passthrough: true,
+      wait_for_update: 500
+    });
+  })();
+  // TODO: replace GTM-XXXXXXX below with the real Google Tag Manager container ID.
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');
+</script>
+<!-- End Google Tag Manager -->
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header>
   <div class="nav">
@@ -415,6 +493,7 @@
         <a href="#gallery">Our Work</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
+        <a class="nav-book" href="/book">Book online</a>
       </nav>
       <a class="call-pill" href="tel:+447926517296">Call 07926 517296</a>
     </div>
@@ -433,6 +512,7 @@
     <p class="lead">HWJ Valets is a mobile car valeting and detailing service based in Colchester, covering Essex and parts of Suffolk. Safe wash methods, careful hand-finishing, and a job you can trust.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="tel:+447926517296">Call now</a>
+      <a class="btn btn-book" href="/book">Book online</a>
       <a class="btn btn-ghost" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27d%20like%20a%20valeting%20quote" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
   </div>
@@ -531,7 +611,7 @@
       <a class="btn btn-primary" style="margin-top:10px;animation:none;" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20my%20car%20needs%20the%20same%20treatment" target="_blank" rel="noopener">If your car needs the same &rarr;</a>
     </div>
     <div class="about-photo reveal">
-      <img loading="lazy" decoding="async" src="images/job-audi-a5.jpg" alt="Audi A5 after a premium detail from HWJ Valets">
+      <img loading="lazy" decoding="async" src="images/job-audi-a5.jpg" width="1100" height="1466" alt="Audi A5 after a premium detail from HWJ Valets">
     </div>
   </div>
 </section>
@@ -592,13 +672,13 @@
     <h2 class="reveal">Real jobs, real results</h2>
     <div class="gallery-grid">
       <figure class="gallery-item reveal">
-        <img loading="lazy" decoding="async" src="images/job-aston-martin-db9.jpg" alt="Aston Martin DB9 parked on a driveway after a valet">
+        <img loading="lazy" decoding="async" src="images/job-aston-martin-db9.jpg" width="738" height="985" alt="Aston Martin DB9 parked on a driveway after a valet">
         <figcaption>Aston Martin DB9</figcaption>
       </figure>
       <figure class="gallery-item reveal ba-figure">
         <div class="ba-slider" tabindex="0" role="slider" aria-label="Mercedes-Benz A-Class AMG interior, before and after cleaning. Use the arrow keys or drag to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-          <img class="ba-img ba-after" src="images/job-mercedes-after.jpg" alt="Mercedes-Benz A-Class AMG interior after a deep clean">
-          <img class="ba-img ba-before" src="images/job-mercedes-before.jpg" alt="Mercedes-Benz A-Class AMG interior before a deep clean, dirty footwell and seats">
+          <img class="ba-img ba-after" src="images/job-mercedes-after.jpg" width="445" height="694" alt="Mercedes-Benz A-Class AMG interior after a deep clean">
+          <img class="ba-img ba-before" src="images/job-mercedes-before.jpg" width="480" height="694" alt="Mercedes-Benz A-Class AMG interior before a deep clean, dirty footwell and seats">
           <span class="ba-tag ba-tag-before">Before</span>
           <span class="ba-tag ba-tag-after">After</span>
           <div class="ba-handle">
@@ -610,11 +690,11 @@
         <figcaption>Mercedes-Benz A-Class AMG - drag to compare</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img loading="lazy" decoding="async" src="images/job-bmw-interior-dash.jpg" alt="BMW 5 Series dashboard and front seats after a detail">
+        <img loading="lazy" decoding="async" src="images/job-bmw-interior-dash.jpg" width="900" height="1200" alt="BMW 5 Series dashboard and front seats after a detail">
         <figcaption>BMW 5 Series - dashboard &amp; seats</figcaption>
       </figure>
       <figure class="gallery-item reveal">
-        <img loading="lazy" decoding="async" src="images/hyundai-coupe.jpg" alt="Hyundai Coupe after professional detailing by HWJ Valets">
+        <img loading="lazy" decoding="async" src="images/hyundai-coupe.jpg" width="1536" height="2048" alt="Hyundai Coupe after professional detailing by HWJ Valets">
         <figcaption>Hyundai Coupe</figcaption>
       </figure>
       <figure class="gallery-item gallery-pair reveal" aria-labelledby="paint-correction-title">
@@ -634,8 +714,8 @@
     <div><p class="eyebrow">Certified expertise</p><h2 id="cert-title">Ceramic protection, professionally installed</h2>
     <p>Harry is a <strong>Cartec Certified Ceramic Installer</strong> and an <strong>AutoRitz Ceramic Installer</strong>. These professional credentials give you confidence your vehicle’s coating is prepared and applied to the correct standard.</p></div>
     <div class="cert-badges" role="group" aria-label="Professional ceramic installer certifications">
-      <img src="images/cartec-1.jpg" alt="Cartec Certified Ceramic Installer certificate" loading="lazy">
-      <img src="images/cartec-2.jpg" alt="AutoRitz Ceramic Installer certificate" loading="lazy">
+      <img src="images/cartec-1.jpg" width="1150" height="2048" alt="Cartec Certified Ceramic Installer certificate" loading="lazy">
+      <img src="images/cartec-2.jpg" width="1200" height="1600" alt="AutoRitz Ceramic Installer certificate" loading="lazy">
     </div>
   </div>
 </section>
@@ -654,7 +734,7 @@
       </div>
     </div>
     <div class="about-photo reveal">
-      <img loading="lazy" decoding="async" src="images/job-caddy-van-wash.jpg" alt="HWJ Valets at work washing a VW Caddy van">
+      <img loading="lazy" decoding="async" src="images/job-caddy-van-wash.jpg" width="337" height="365" alt="HWJ Valets at work washing a VW Caddy van">
     </div>
   </div>
 </section>
@@ -665,6 +745,7 @@
       <p class="eyebrow">Get in touch</p>
       <h2>Book your valet</h2>
       <p style="color:var(--muted);margin-bottom:24px;">Call, WhatsApp or message us on Facebook / Instagram - or fill in the form and we'll get back to you.</p>
+      <a class="btn btn-teal" href="/book" style="margin-bottom:24px;">Book online</a>
 
       <a class="contact-card" href="tel:+447926517296">
         <span><strong>Call or text</strong><span>07926 517296</span></span>
@@ -758,11 +839,14 @@
       <span>&copy; <span id="year"></span> HWJ Valets. All rights reserved.</span>
     </div>
     <div class="footer-links">
+      <a href="/book">Book online</a>
+      <a href="tel:+447926517296">Call 07926 517296</a>
       <a href="https://www.facebook.com/people/HWJ-Valets/61579054444028/" target="_blank" rel="noopener">Facebook</a>
       <a href="https://www.instagram.com/hwjvalets/" target="_blank" rel="noopener">Instagram</a>
       <a href="/#services">Services</a>
       <a href="/#contact">Contact</a>
       <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="#" data-cc-open>Cookie settings</a>
     </div>
   </div>
   <p class="built-by">Built by <a href="https://dmwebservices.co.uk" target="_blank" rel="noopener">dmwebservices</a></p>
@@ -857,6 +941,125 @@ document.querySelectorAll('.ba-slider').forEach(function(slider){
 
   setPos(50);
 });
+</script>
+
+<!-- Cookie consent banner (Google Consent Mode v2) -->
+<div class="cc-overlay" id="cc-banner" role="dialog" aria-labelledby="cc-text" hidden>
+  <div class="cc-inner">
+    <p class="cc-text" id="cc-text">We use cookies to measure how our ads perform and to improve your experience. You can choose which cookies to allow - see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    <div class="cc-actions">
+      <button type="button" class="cc-btn cc-deny" id="cc-deny">Reject all</button>
+      <button type="button" class="cc-btn cc-customise" id="cc-customise">Customise</button>
+      <button type="button" class="cc-btn cc-accept" id="cc-accept">Accept all</button>
+    </div>
+  </div>
+  <div class="cc-panel" id="cc-panel">
+    <h3>Cookie preferences</h3>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-essential" checked disabled>
+      <label for="cc-essential">Essential cookies <span class="cc-always">(always on)</span></label>
+    </div>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-analytics" checked>
+      <label for="cc-analytics">Analytics cookies (Google Analytics via Google Tag Manager)</label>
+    </div>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-ads" checked>
+      <label for="cc-ads">Advertising cookies (Google Ads)</label>
+    </div>
+    <div class="cc-actions">
+      <button type="button" class="cc-btn cc-deny" id="cc-save">Save settings</button>
+      <button type="button" class="cc-btn cc-accept" id="cc-accept2">Accept all</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var COOKIE_NAME = 'hwj_cookie_consent';
+  var VERSION = 1;
+  var EXPIRY_DAYS = 365;
+
+  function readConsent(){
+    var m = document.cookie.match(/(?:^|;\s*)hwj_cookie_consent=([^;]+)/);
+    if (!m) return null;
+    try { return JSON.parse(decodeURIComponent(m[1])); } catch(e) { return null; }
+  }
+  function writeConsent(c){
+    var expires = new Date(Date.now() + (EXPIRY_DAYS * 86400000)).toUTCString();
+    document.cookie = COOKIE_NAME + '=' + encodeURIComponent(JSON.stringify(c)) + '; expires=' + expires + '; path=/; SameSite=Lax; Secure';
+  }
+  function pushConsent(ads, ana){
+    if (typeof window.gtag !== 'function') return;
+    gtag('consent', 'update', {
+      ad_storage: ads ? 'granted' : 'denied',
+      ad_user_data: ads ? 'granted' : 'denied',
+      ad_personalization: ads ? 'granted' : 'denied',
+      analytics_storage: ana ? 'granted' : 'denied',
+      url_passthrough: true
+    });
+  }
+  function showBanner(){
+    var b = document.getElementById('cc-banner');
+    if (!b) return;
+    b.hidden = false;
+    requestAnimationFrame(function(){ b.classList.add('is-open'); });
+  }
+  function hideBanner(){
+    var b = document.getElementById('cc-banner');
+    if (!b) return;
+    b.classList.remove('is-open');
+    setTimeout(function(){ if (b) b.hidden = true; }, 400);
+  }
+  function apply(ads, ana){
+    writeConsent({ version: VERSION, ads: ads, analytics: ana, ts: Date.now() });
+    pushConsent(ads, ana);
+    hideBanner();
+    setTimeout(function(){ location.reload(); }, 300);
+  }
+
+  var consent = readConsent();
+
+  window.HWJConsent = {
+    open: function(){
+      var c = readConsent();
+      var a = document.getElementById('cc-analytics');
+      var d = document.getElementById('cc-ads');
+      if (a) a.checked = !!(c && c.analytics);
+      if (d) d.checked = !!(c && c.ads);
+      var p = document.getElementById('cc-panel');
+      if (p) p.classList.remove('is-open');
+      showBanner();
+    },
+    state: consent
+  };
+
+  if (!consent) showBanner();
+
+  var btnAccept = document.getElementById('cc-accept');
+  if (btnAccept) btnAccept.addEventListener('click', function(){ apply(true, true); });
+  var btnDeny = document.getElementById('cc-deny');
+  if (btnDeny) btnDeny.addEventListener('click', function(){ apply(false, false); });
+  var btnCustom = document.getElementById('cc-customise');
+  if (btnCustom) btnCustom.addEventListener('click', function(){
+    var p = document.getElementById('cc-panel');
+    if (p) p.classList.toggle('is-open');
+  });
+  var btnSave = document.getElementById('cc-save');
+  if (btnSave) btnSave.addEventListener('click', function(){
+    var a = document.getElementById('cc-analytics');
+    var d = document.getElementById('cc-ads');
+    apply(!!(d && d.checked), !!(a && a.checked));
+  });
+  var btnAccept2 = document.getElementById('cc-accept2');
+  if (btnAccept2) btnAccept2.addEventListener('click', function(){ apply(true, true); });
+
+  document.querySelectorAll('[data-cc-open]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      if (window.HWJConsent && window.HWJConsent.open) window.HWJConsent.open();
+    });
+  });
+})();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a7f433ae23a247febf7e2ffcf8040c16"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

@@ -43,12 +43,72 @@
   footer .built-by{display:block;margin-top:6px;font-size:12px;color:#8ba3ac;}
   footer .built-by a{color:#8ba3ac;font-weight:600;}
   footer .built-by a:hover{color:#0a1e26;}
+
+  /* Cookie consent banner */
+  .cc-overlay{position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--navy);color:#e7f3fa;
+    box-shadow:0 -12px 40px rgba(10,30,38,.35);max-width:1180px;margin:0 auto;border-radius:18px 18px 0 0;padding:18px 20px;
+    transform:translateY(110%);transition:transform .4s ease;}
+  .cc-overlay.is-open{transform:translateY(0);}
+  .cc-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;}
+  .cc-text{margin:0;font-size:14.5px;flex:1 1 320px;}
+  .cc-text a{color:var(--sky);font-weight:700;}
+  .cc-actions{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;}
+  .cc-btn{border:none;border-radius:999px;padding:11px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:transform .2s ease,background .2s ease;}
+  .cc-btn:hover{transform:translateY(-2px);}
+  .cc-accept{background:var(--red);color:#fff;}
+  .cc-deny{background:transparent;color:#cfe6f0;border:1px solid rgba(207,230,240,.4);}
+  .cc-customise{background:var(--teal);color:#fff;}
+  .cc-panel{display:none;width:100%;margin-top:14px;padding-top:14px;border-top:1px solid rgba(207,230,240,.18);}
+  .cc-panel.is-open{display:block;}
+  .cc-panel h3{font-size:14px;margin:0 0 10px;color:#fff;font-family:var(--font-display);}
+  .cc-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:13.5px;}
+  .cc-row input[type="checkbox"]{width:16px;height:16px;margin-top:3px;accent-color:var(--teal-bright);flex-shrink:0;}
+  .cc-row label{cursor:pointer;}
+  .cc-row .cc-always{color:var(--sky);font-size:12.5px;}
+  @media (max-width:560px){
+    .cc-inner{flex-direction:column;align-items:stretch;}
+    .cc-actions{flex-direction:column;}
+    .cc-btn{width:100%;}
+  }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hwjvalets.co.uk/"},{"@type":"ListItem","position":2,"name":"Enquiry received","item":"https://hwjvalets.co.uk/thanks.html"}]}</script>
 <style>
 </style>
+
+<!-- Google Tag Manager -->
+<script>
+  // Google Consent Mode v2 - deny all storage until the visitor chooses.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = window.gtag || gtag;
+  (function(){
+    var m = document.cookie.match(/(?:^|;\s*)hwj_cookie_consent=([^;]+)/);
+    var saved = null;
+    if (m) { try { saved = JSON.parse(decodeURIComponent(m[1])); } catch(e) {} }
+    var ads = !!(saved && saved.ads);
+    var ana = !!(saved && saved.analytics);
+    gtag('js', new Date());
+    gtag('consent', 'default', {
+      ad_storage: ads ? 'granted' : 'denied',
+      ad_user_data: ads ? 'granted' : 'denied',
+      ad_personalization: ads ? 'granted' : 'denied',
+      analytics_storage: ana ? 'granted' : 'denied',
+      url_passthrough: true,
+      wait_for_update: 500
+    });
+  })();
+  // TODO: replace GTM-XXXXXXX below with the real Google Tag Manager container ID.
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');
+</script>
+<!-- End Google Tag Manager -->
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <header>
   <a class="brand" href="/"><img src="images/logo.png" alt="HWJ Valets logo">HWJ Valets</a>
 </header>
@@ -60,15 +120,128 @@
     <p>We'll read through your enquiry and get back to you as soon as we can. If you want to send photos of your vehicle or add extra details, WhatsApp is usually the quickest way.</p>
     <div class="actions">
       <a class="btn btn-primary" href="/">Back to homepage</a>
+      <a class="btn btn-ghost" href="/book">Book online</a>
       <a class="btn btn-ghost" href="tel:+447926517296">Call us</a>
       <a class="btn btn-ghost" href="https://wa.me/447926517296?text=Hi%20HWJ%2C%20I%27ve%20just%20sent%20an%20enquiry" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
 </main>
 <footer>
-  &copy; 2026 HWJ Valets. <a href="privacy-policy.html">Privacy Policy</a>
+  &copy; 2026 HWJ Valets. <a href="/book">Book online</a> &middot; <a href="privacy-policy.html">Privacy Policy</a>
   <span class="built-by">Built by <a href="https://dmwebservices.co.uk" target="_blank" rel="noopener">dmwebservices</a></span>
 </footer>
+
+<!-- Cookie consent banner (Google Consent Mode v2) -->
+<div class="cc-overlay" id="cc-banner" role="dialog" aria-labelledby="cc-text" hidden>
+  <div class="cc-inner">
+    <p class="cc-text" id="cc-text">We use cookies to measure how our ads perform and to improve your experience. You can choose which cookies to allow - see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    <div class="cc-actions">
+      <button type="button" class="cc-btn cc-deny" id="cc-deny">Reject all</button>
+      <button type="button" class="cc-btn cc-customise" id="cc-customise">Customise</button>
+      <button type="button" class="cc-btn cc-accept" id="cc-accept">Accept all</button>
+    </div>
+  </div>
+  <div class="cc-panel" id="cc-panel">
+    <h3>Cookie preferences</h3>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-essential" checked disabled>
+      <label for="cc-essential">Essential cookies <span class="cc-always">(always on)</span></label>
+    </div>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-analytics" checked>
+      <label for="cc-analytics">Analytics cookies (Google Analytics via Google Tag Manager)</label>
+    </div>
+    <div class="cc-row">
+      <input type="checkbox" id="cc-ads" checked>
+      <label for="cc-ads">Advertising cookies (Google Ads)</label>
+    </div>
+    <div class="cc-actions">
+      <button type="button" class="cc-btn cc-deny" id="cc-save">Save settings</button>
+      <button type="button" class="cc-btn cc-accept" id="cc-accept2">Accept all</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var COOKIE_NAME = 'hwj_cookie_consent';
+  var VERSION = 1;
+  var EXPIRY_DAYS = 365;
+
+  function readConsent(){
+    var m = document.cookie.match(/(?:^|;\s*)hwj_cookie_consent=([^;]+)/);
+    if (!m) return null;
+    try { return JSON.parse(decodeURIComponent(m[1])); } catch(e) { return null; }
+  }
+  function writeConsent(c){
+    var expires = new Date(Date.now() + (EXPIRY_DAYS * 86400000)).toUTCString();
+    document.cookie = COOKIE_NAME + '=' + encodeURIComponent(JSON.stringify(c)) + '; expires=' + expires + '; path=/; SameSite=Lax; Secure';
+  }
+  function pushConsent(ads, ana){
+    if (typeof window.gtag !== 'function') return;
+    gtag('consent', 'update', {
+      ad_storage: ads ? 'granted' : 'denied',
+      ad_user_data: ads ? 'granted' : 'denied',
+      ad_personalization: ads ? 'granted' : 'denied',
+      analytics_storage: ana ? 'granted' : 'denied',
+      url_passthrough: true
+    });
+  }
+  function showBanner(){
+    var b = document.getElementById('cc-banner');
+    if (!b) return;
+    b.hidden = false;
+    requestAnimationFrame(function(){ b.classList.add('is-open'); });
+  }
+  function hideBanner(){
+    var b = document.getElementById('cc-banner');
+    if (!b) return;
+    b.classList.remove('is-open');
+    setTimeout(function(){ if (b) b.hidden = true; }, 400);
+  }
+  function apply(ads, ana){
+    writeConsent({ version: VERSION, ads: ads, analytics: ana, ts: Date.now() });
+    pushConsent(ads, ana);
+    hideBanner();
+    setTimeout(function(){ location.reload(); }, 300);
+  }
+
+  var consent = readConsent();
+
+  window.HWJConsent = {
+    open: function(){
+      var c = readConsent();
+      var a = document.getElementById('cc-analytics');
+      var d = document.getElementById('cc-ads');
+      if (a) a.checked = !!(c && c.analytics);
+      if (d) d.checked = !!(c && c.ads);
+      var p = document.getElementById('cc-panel');
+      if (p) p.classList.remove('is-open');
+      showBanner();
+    },
+    state: consent
+  };
+
+  if (!consent) showBanner();
+
+  var btnAccept = document.getElementById('cc-accept');
+  if (btnAccept) btnAccept.addEventListener('click', function(){ apply(true, true); });
+  var btnDeny = document.getElementById('cc-deny');
+  if (btnDeny) btnDeny.addEventListener('click', function(){ apply(false, false); });
+  var btnCustom = document.getElementById('cc-customise');
+  if (btnCustom) btnCustom.addEventListener('click', function(){
+    var p = document.getElementById('cc-panel');
+    if (p) p.classList.toggle('is-open');
+  });
+  var btnSave = document.getElementById('cc-save');
+  if (btnSave) btnSave.addEventListener('click', function(){
+    var a = document.getElementById('cc-analytics');
+    var d = document.getElementById('cc-ads');
+    apply(!!(d && d.checked), !!(a && a.checked));
+  });
+  var btnAccept2 = document.getElementById('cc-accept2');
+  if (btnAccept2) btnAccept2.addEventListener('click', function(){ apply(true, true); });
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a7f433ae23a247febf7e2ffcf8040c16"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
