@@ -5,7 +5,7 @@ Marketing website for HWJ Valets, a mobile car valeting and detailing business b
 Static HTML/CSS site, no build step or framework. Pages:
 
 - `index.html`: homepage with services, gallery, about, contact details and enquiry form
-- `book.html`: booking landing page served at `/book` (placeholder until the supplied booking file is dropped in)
+- `book.html`: booking landing page served at `/book` - hands off to the booking system at `hwj-valets.vercel.app/book`
 - `privacy-policy.html`: privacy information for enquiries
 - `thanks.html`: enquiry form landing page, marked noindex
 
@@ -41,13 +41,14 @@ FormSubmit requires a one-time activation email for `harry@hwjvalets.co.uk` befo
 - Cookie consent banner with Google Consent Mode v2: the default state denies `ad_storage`, `ad_user_data`, `ad_personalization` and `analytics_storage` before any tag loads. Accept / Reject / Customise updates consent via `gtag('consent', 'update', ...)` and stores the choice in the `hwj_cookie_consent` cookie for 12 months. `url_passthrough` is enabled so gclid attribution survives without cookies; `wait_for_update: 500`.
 - Phone number 07926 517296 appears as visible text (header, hero, contact section, footer and book page) as `tel:+447926517296` tap-to-call links.
 - "Book online" buttons link to `/book` from the menu, hero, contact section, footer, thanks page and 404 page.
-- `/book` is served by `book.html` at the repo root, so the URL is exactly `https://hwjvalets.co.uk/book` with no redirect. The tag after `#` (e.g. `/book#deep.google-ads`) and any `?gclid=...` before it both stay available to page scripts (`location.hash` / `location.search`); the placeholder shows the detected tag on screen.
+- "Get a quote" buttons (all four service cards and the 404 page) link straight to the booking system at `https://hwj-valets.vercel.app/book`.
+- `/book` is served by `book.html` at the repo root, so the URL is exactly `https://hwjvalets.co.uk/book` with no redirect. It is the ad landing page on the business's own domain and hands visitors off to the booking system at `https://hwj-valets.vercel.app/book`, carrying the gclid and any hash tag through. The tag after `#` (e.g. `/book#deep.google-ads`) and any `?gclid=...` before it both stay available to page scripts (`location.hash` / `location.search`); the page shows the detected tag on screen.
 - Mobile speed: referenced JPEGs re-encoded (quality 80, metadata stripped), `width`/`height` attributes added to images, hero and gallery images lazy-loaded.
 
 ## Known gaps / TODO
 
 - Analytics: Google Tag Manager with Google Consent Mode v2 is now installed on every page, plus the cookie consent banner described above. The container ID is still the placeholder `GTM-XXXXXXX` - replace it in every HTML file before going live. Visitor counting also uses cookieless Cloudflare Web Analytics.
-- Booking page: `book.html` is a placeholder served at `/book`. Replace it with the supplied booking file (keeping the GTM + consent snippets) and remove the `noindex` line in its `<head>` when it goes live.
+- Booking system: runs on Vercel at `https://hwj-valets.vercel.app/book`. `book.html` at `/book` is the landing page that hands off to it (carrying gclid + hash). If the booking system should move onto hwjvalets.co.uk itself, send the booking files and it can be wired up here instead.
 - More real job photos, such as extra before/after sets, exterior details and vans, would strengthen the gallery over time.
 
 ## Local preview
